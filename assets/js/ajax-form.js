@@ -1,48 +1,36 @@
-$(function() {
+$(function () {
 
-	// Get the form.
 	var form = $('#contact-form');
-
-	// Get the messages div.
 	var formMessages = $('.ajax-response');
 
-	// Set up an event listener for the contact form.
-	$(form).submit(function(e) {
-		// Stop the browser from submitting the form.
+	$(form).submit(function (e) {
 		e.preventDefault();
 
-		// Serialize the form data.
-		var formData = $(form).serialize();
+		// Optional: show sending state
+		$(formMessages)
+			.removeClass('success error')
+			.text('Sending...');
 
-		// Submit the form using AJAX.
-		$.ajax({
-			type: 'POST',
-			url: $(form).attr('action'),
-			data: formData
-		})
-		.done(function(response) {
-			// Make sure that the formMessages div has the 'success' class.
-			$(formMessages).removeClass('error');
-			$(formMessages).addClass('success');
+		emailjs.sendForm(
+			'service_4vm6rme',   // e.g. service_xxx
+			'template_0n7v7vu',  // e.g. template_xxx
+			'#contact-form'
+		)
+			.then(function () {
+				$(formMessages)
+					.removeClass('error')
+					.addClass('success')
+					.text('We received your message and will get back to you shortly.');
 
-			// Set the message text.
-			$(formMessages).text(response);
-
-			// Clear the form.
-			$('#contact-form input,#contact-form textarea').val('');
-		})
-		.fail(function(data) {
-			// Make sure that the formMessages div has the 'error' class.
-			$(formMessages).removeClass('success');
-			$(formMessages).addClass('error');
-
-			// Set the message text.
-			if (data.responseText !== '') {
-				$(formMessages).text(data.responseText);
-			} else {
-				$(formMessages).text('Oops! An error occured and your message could not be sent.');
-			}
-		});
+				$('#contact-form input, #contact-form textarea').val('');
+			})
+			.catch(function (error) {
+				console.error(error);
+				$(formMessages)
+					.removeClass('success')
+					.addClass('error')
+					.text('Oops! An error occurred and your message could not be sent.');
+			});
 	});
 
 });
