@@ -331,7 +331,9 @@ function mainSlider() {
 		autoplaySpeed: 5000,
 		dots: false,
 		fade: true,
-		arrows: false,
+		arrows: true,
+		prevArrow: '<button type="button" class="hero-slider-arrow hero-slider-prev" aria-label="Previous slide"><i class="fas fa-angle-left"></i></button>',
+		nextArrow: '<button type="button" class="hero-slider-arrow hero-slider-next" aria-label="Next slide"><i class="fas fa-angle-right"></i></button>',
 		responsive: [
 			{
                 breakpoint: 767,
