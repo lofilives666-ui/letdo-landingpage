@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Prevent indexing of backup folders
+Disallow: /whitelable/_cleanup_backup_20260302_175541/
+Disallow: /whitelable/_cleanup_backup_images_20260302_181548/
+Disallow: /whitelable/_cleanup_backup_phase2_20260302_180457/
+
+Sitemap: https://www.letsdocreative.com/sitemap.xml

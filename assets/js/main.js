@@ -703,16 +703,18 @@ $('[data-countdown]').each(function () {
 /*=============================================
 	=    	 Slider Range Active  	         =
 =============================================*/
-$("#slider-range").slider({
-	range: true,
-	min: 10,
-	max: 500,
-	values: [80, 380],
-	slide: function (event, ui) {
-		$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-	}
-});
-$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+if ($.fn.slider && $("#slider-range").length && $("#amount").length) {
+	$("#slider-range").slider({
+		range: true,
+		min: 10,
+		max: 500,
+		values: [80, 380],
+		slide: function (event, ui) {
+			$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+		}
+	});
+	$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+}
 
 
 /*===========================================
