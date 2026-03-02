@@ -1032,8 +1032,9 @@
       import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
       import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
+      const runtimeFirebaseApiKey = String(window.__GYM_SUPER_APP_FIREBASE_API_KEY__ || "").trim();
       const firebaseConfig = {
-        apiKey: "REDACTED_API_KEY",
+        apiKey: runtimeFirebaseApiKey,
         authDomain: "gym-super-app.firebaseapp.com",
         projectId: "gym-super-app",
         storageBucket: "gym-super-app.appspot.com",
@@ -1042,8 +1043,8 @@
         measurementId: "G-LFRM3RKNY5",
       };
 
-      const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
-      const db = getFirestore(app);
+      const app = firebaseConfig.apiKey ? (getApps().length ? getApps()[0] : initializeApp(firebaseConfig)) : null;
+      const db = app ? getFirestore(app) : null;
 
       const cardTierMap = {
         free_trial: "free_trial",
@@ -1139,6 +1140,10 @@
 
       (async () => {
         try {
+          if (!db) {
+            console.warn("Firebase pricing sync skipped: missing runtime API key.");
+            return;
+          }
           const snap = await getDoc(doc(db, "app_settings", "pricing"));
           if (!snap.exists()) return;
           const data = snap.data() || {};
