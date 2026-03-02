@@ -327,8 +327,8 @@ $swiperSelector.each(function(index) {
 =============================================*/
 function mainSlider() {
 	$('.slider-active').slick({
-		autoplay: false,
-		autoplaySpeed: 10000,
+		autoplay: true,
+		autoplaySpeed: 5000,
 		dots: false,
 		fade: true,
 		arrows: false,

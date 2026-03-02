@@ -1,0 +1,107 @@
+@font-face {
+    font-family: "flaticon_mizox";
+    src: url("../fonts/flaticon_mizoxda5a.ttf?c47119d88ce65e58a1528f9c090f5d88") format("truetype"),
+url("../fonts/flaticon_mizoxda5a.woff?c47119d88ce65e58a1528f9c090f5d88") format("woff"),
+url("../fonts/flaticon_mizoxda5a.woff2?c47119d88ce65e58a1528f9c090f5d88") format("woff2"),
+url("../fonts/flaticon_mizoxda5a.eot?c47119d88ce65e58a1528f9c090f5d88#iefix") format("embedded-opentype"),
+url("../fonts/flaticon_mizoxda5a.svg?c47119d88ce65e58a1528f9c090f5d88#flaticon_mizox") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon_mizox !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-development:before {
+    content: "\f101";
+}
+.flaticon-increment:before {
+    content: "\f102";
+}
+.flaticon-success:before {
+    content: "\f103";
+}
+.flaticon-marketing:before {
+    content: "\f104";
+}
+.flaticon-social-media:before {
+    content: "\f105";
+}
+.flaticon-webpage:before {
+    content: "\f106";
+}
+.flaticon-growth:before {
+    content: "\f107";
+}
+.flaticon-online-shopping:before {
+    content: "\f108";
+}
+.flaticon-planning:before {
+    content: "\f109";
+}
+.flaticon-app-development:before {
+    content: "\f10a";
+}
+.flaticon-checking:before {
+    content: "\f10b";
+}
+.flaticon-recommend:before {
+    content: "\f10c";
+}
+.flaticon-design:before {
+    content: "\f10d";
+}
+.flaticon-vector:before {
+    content: "\f10e";
+}
+.flaticon-megaphone:before {
+    content: "\f10f";
+}
+.flaticon-growth-graph:before {
+    content: "\f110";
+}
+.flaticon-developing:before {
+    content: "\f111";
+}
+.flaticon-light-bulb:before {
+    content: "\f112";
+}
+.flaticon-startup:before {
+    content: "\f113";
+}
+.flaticon-customer-review:before {
+    content: "\f114";
+}
+.flaticon-consulting:before {
+    content: "\f115";
+}
+.flaticon-consultation:before {
+    content: "\f116";
+}
+.flaticon-team-leader:before {
+    content: "\f117";
+}
+.flaticon-knight:before {
+    content: "\f118";
+}
+.flaticon-social-media-1:before {
+    content: "\f119";
+}
+.flaticon-checklist:before {
+    content: "\f11a";
+}
+.flaticon-computer-graphic:before {
+    content: "\f11b";
+}
+.flaticon-creative:before {
+    content: "\f11c";
+}
+.flaticon-lamp:before {
+    content: "\f11d";
+}
