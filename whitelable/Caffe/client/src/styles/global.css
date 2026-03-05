@@ -124,7 +124,9 @@ body,
   left: 50%;
   top: 43%;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index: 1;
+  opacity: 0.32;
+  pointer-events: none;
 }
 
 .onboarding-content h1 {
@@ -138,6 +140,13 @@ body,
   margin: 0;
   color: #d2d2d2;
   line-height: 1.5;
+}
+
+.onboarding-content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 920px);
+  margin: 0 auto;
 }
 
 .primary-btn {
@@ -1643,6 +1652,12 @@ th {
     padding: 38px 28px;
   }
 
+  .brand-floating {
+    top: 20%;
+    transform: translate(-50%, -50%) scale(0.82);
+    opacity: 0.22;
+  }
+
   .onboarding-content p {
     max-width: 620px;
   }
@@ -1726,6 +1741,16 @@ th {
 
   .onboarding-content {
     padding: 44px 42px;
+  }
+
+  .brand-floating {
+    top: 16%;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.18;
+  }
+
+  .onboarding-content h1 {
+    max-width: 1100px;
   }
 
   .auth-shell {
