@@ -24,7 +24,8 @@ export function AdminHomePage() {
   }, [adminKey]);
 
   useEffect(() => {
-    const fixedMenuUrl = `${window.location.origin}/home`;
+    const basePath = window.location.pathname.replace(/\/$/, "");
+    const fixedMenuUrl = `${window.location.origin}${basePath}/#/home`;
     setMenuUrl(fixedMenuUrl);
     QRCode.toDataURL(fixedMenuUrl, {
       width: 900,
