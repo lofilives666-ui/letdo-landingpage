@@ -60,7 +60,7 @@ export function MenuPage() {
           <div className="user-top-row">
             <div>
               <p className="meta">Canteen Location</p>
-              <h1>NIKKIS, Tanjungbalai</h1>
+              <h1>NIKKIS, Coimbatore</h1>
             </div>
             <div className="user-brand-badge">
               <span className="badge-dot" />

@@ -88,7 +88,7 @@ export function AdminHomePage() {
           <div className="admin-top-row">
             <div>
               <p className="meta">Admin Location</p>
-              <h1>NIKKIS, Tanjungbalai</h1>
+              <h1>NIKKIS, Coimbatore</h1>
             </div>
             <button className="qr-icon-btn" type="button" onClick={() => setQrOpen(true)} aria-label="Open QR">
               <svg viewBox="0 0 24 24" aria-hidden="true">

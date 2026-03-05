@@ -1706,12 +1706,15 @@ th {
 
 @media (min-width: 1100px) {
   .mobile-shell.user-fullscreen {
-    padding: 20px;
+    padding: 0;
+    place-items: stretch;
   }
 
   .phone-frame.user-fullscreen {
-    width: min(100%, var(--frame-desktop));
-    min-height: calc(100dvh - 40px);
+    width: 100%;
+    min-height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .onboarding-content {
@@ -1726,13 +1729,13 @@ th {
   .home-body,
   .profile-screen,
   .manage-screen {
-    padding-left: 28px;
-    padding-right: 28px;
+    padding-left: 34px;
+    padding-right: 34px;
   }
 
   .product-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
   }
 
   .user-screen .product-image {
@@ -1740,19 +1743,32 @@ th {
   }
 
   .top-swipe-card {
-    min-width: 68%;
+    min-width: 58%;
     height: 248px;
   }
 
   .fixed-home-nav {
-    width: min(calc(100% - 48px), var(--frame-desktop));
+    left: 24px !important;
+    right: 24px;
+    transform: none;
+    width: auto;
+    border-radius: 14px;
   }
 
   .manage-screen .manage-card,
   .manage-screen .manage-toolbar,
   .manage-screen .status {
-    max-width: 1120px;
+    max-width: 1320px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .admin-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .profile-icon-row {
+    justify-content: start;
   }
 }
