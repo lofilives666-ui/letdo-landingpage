@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: canteen-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npx prisma migrate deploy && npm run start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        sync: false
+      - key: ADMIN_USERNAME
+        value: Nikkis
+      - key: ADMIN_PASSWORD
+        value: Nikkis@1234
+      - key: ADMIN_KEY
+        value: nikkis-admin-token
+      - key: CORS_ORIGIN
+        sync: false
+

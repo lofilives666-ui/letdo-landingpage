@@ -29,6 +29,7 @@ PORT=4010
 ADMIN_USERNAME="Nikkis"
 ADMIN_PASSWORD="Nikkis@1234"
 ADMIN_KEY="nikkis-admin-token"
+CORS_ORIGIN="http://localhost:5173"
 ```
 
 ### Start PostgreSQL (Docker)
@@ -74,3 +75,15 @@ Client runs on `http://localhost:5173` and API on `http://localhost:4010`.
   - Username: `Nikkis`
   - Password: `Nikkis@1234`
 - Session token is stored in browser session for current tab
+
+## Deploy (Render + Vercel)
+
+Backend on Render:
+1. Connect repo and deploy from `server/`
+2. Use `render.yaml` defaults
+3. Set `DATABASE_URL` and `CORS_ORIGIN` (your Vercel app URL)
+
+Frontend on Vercel:
+1. Deploy from `client/`
+2. Set `VITE_API_URL` to your Render backend URL
+3. `vercel.json` rewrite is already added for SPA routes
