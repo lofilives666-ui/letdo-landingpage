@@ -13,6 +13,5 @@ return [
     // Sender/recipient
     'from_email' => 'info@letesdocreative.com',
     'from_name' => 'Letsdo Creative',
-    'recipient' => 'info@letesdocreative.com',
+    'recipient' => 'letsdoveera@gmail',
 ];
-
