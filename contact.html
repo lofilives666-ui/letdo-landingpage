@@ -413,6 +413,25 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="input-grp select-grp">
+                                        <select name="country_code" required>
+                                            <option value="+91" selected>+91 (IN)</option>
+                                            <option value="+1">+1 (US/CA)</option>
+                                            <option value="+44">+44 (UK)</option>
+                                            <option value="+61">+61 (AU)</option>
+                                            <option value="+65">+65 (SG)</option>
+                                            <option value="+971">+971 (UAE)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="input-grp">
+                                        <input name="phone" type="tel" placeholder="Mobile Number *" inputmode="numeric" autocomplete="tel-national" pattern="^[0-9]{6,14}$" title="Enter a valid mobile number without country code." required>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="input-grp select-grp">
                                 <select name="service" required>
                                     <option value="" selected disabled>Select Service / Product *</option>
