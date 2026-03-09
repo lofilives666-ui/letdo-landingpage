@@ -14,7 +14,7 @@
 
         $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
 
-        $subject = trim($_POST["subject"]);
+        $subject = isset($_POST["subject"]) ? trim($_POST["subject"]) : "";
 
         $message = trim($_POST["message"]);
 
@@ -22,7 +22,7 @@
 
         // Check that data was sent to the mailer.
 
-        if ( empty($name) OR empty($subject) OR empty($message) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if ( empty($name) OR empty($message) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
             // Set a 400 (bad request) response code and exit.
 
@@ -40,7 +40,7 @@
 
         // FIXME: Update this to your desired email address.
 
-        $recipient = "founder@stthemes.com";
+        $recipient = "info@letesdocreative.com";
 
 
 
@@ -64,7 +64,9 @@
 
         $email_content .= "Email: $email\n\n";
 
-        $email_content .= "Subject: $subject\n\n";
+        $email_subject = !empty($subject) ? $subject : "Website Enquiry";
+
+        $email_content .= "Subject: $email_subject\n\n";
 
         $email_content .= "Message:\n$message\n";
 
