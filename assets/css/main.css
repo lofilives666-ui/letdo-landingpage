@@ -11924,13 +11924,39 @@ blockquote p {
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
-.contact__form-wrap .input-grp input, .contact__form-wrap .input-grp textarea {
+.contact__form-wrap .input-grp input, .contact__form-wrap .input-grp textarea, .contact__form-wrap .input-grp select {
   display: block;
   width: 100%;
   border: 1px solid #262f39;
   background: transparent;
   color: var(--tg-common-color-white);
   padding: 15px 25px;
+}
+.contact__form-wrap .input-grp select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  padding-right: 48px;
+}
+.contact__form-wrap .input-grp select::-ms-expand {
+  display: none;
+}
+.contact__form-wrap .input-grp.select-grp::before {
+  content: "\f107";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--tg-common-color-white);
+  pointer-events: none;
+  z-index: 2;
+}
+.contact__form-wrap .input-grp select option {
+  background: #0f161e;
+  color: var(--tg-common-color-white);
 }
 .contact__form-wrap .input-grp textarea {
   height: 148px;

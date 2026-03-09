@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const querystring = require('querystring');
+const GMAIL_ADDRESS = 'letsdoveera@gmail.com';
 
 function parseBody(req) {
   if (!req.body) return {};
@@ -21,6 +22,7 @@ module.exports = async (req, res) => {
   const body = parseBody(req);
   const name = String(body.name || '').trim().replace(/[\r\n]/g, ' ');
   const email = String(body.email || '').trim();
+  const service = String(body.service || '').trim();
   const subject = String(body.subject || '').trim() || 'Website Enquiry';
   const message = String(body.message || '').trim();
 
@@ -33,18 +35,17 @@ module.exports = async (req, res) => {
     return res.status(400).send('Please enter a valid email address.');
   }
 
-  const host = env('TITAN_SMTP_HOST', 'smtp.titan.email');
-  const port = Number(env('TITAN_SMTP_PORT', '587'));
-  const secureEnv = env('TITAN_SMTP_SECURE', 'tls').toLowerCase();
-  const secure = secureEnv === 'ssl' || port === 465;
-  const user = env('TITAN_SMTP_USER', 'info@letesdocreative.com');
-  const pass = env('TITAN_SMTP_PASS', '');
-  const fromEmail = env('MAIL_FROM_EMAIL', user);
-  const fromName = env('MAIL_FROM_NAME', 'Letsdo Creative');
-  const toEmail = env('MAIL_TO_EMAIL', 'letsdoveera@gmail.com');
+  const host = 'smtp.gmail.com';
+  const port = 465;
+  const secure = true;
+  const user = GMAIL_ADDRESS;
+  const pass = env('GMAIL_APP_PASSWORD', '');
+  const fromEmail = GMAIL_ADDRESS;
+  const fromName = 'Letsdo Creative';
+  const toEmail = GMAIL_ADDRESS;
 
   if (!pass) {
-    return res.status(500).send('Mail service is not configured. Missing TITAN_SMTP_PASS.');
+    return res.status(500).send('Mail service is not configured. Missing GMAIL_APP_PASSWORD.');
   }
 
   const transporter = nodemailer.createTransport({
@@ -65,17 +66,17 @@ module.exports = async (req, res) => {
       to: toEmail,
       replyTo: `${name} <${email}>`,
       subject,
-      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n`,
+      text: `Name: ${name}\nEmail: ${email}\nService: ${service || 'Not specified'}\n\nMessage:\n${message}\n`,
     });
 
     return res.status(200).send('Thank You! Your message has been sent.');
   } catch (error) {
     if (error && error.code === 'EAUTH') {
-      return res.status(500).send('SMTP authentication failed. Check TITAN_SMTP_USER and TITAN_SMTP_PASS.');
+      return res.status(500).send('SMTP authentication failed. Check Gmail app password.');
     }
     if (error && (error.code === 'ESOCKET' || error.code === 'ECONNECTION' || error.code === 'ETIMEDOUT')) {
-      return res.status(500).send('SMTP connection failed. Check TITAN host/port/security settings.');
+      return res.status(500).send('SMTP connection failed. Check Gmail SMTP connectivity.');
     }
-    return res.status(500).send('SMTP send failed. Check Titan mailbox settings and credentials.');
+    return res.status(500).send('SMTP send failed. Check Gmail SMTP settings and credentials.');
   }
 };

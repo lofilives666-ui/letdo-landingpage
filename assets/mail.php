@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $name = strip_tags(trim($_POST['name'] ?? ''));
 $name = str_replace(["\r", "\n"], [' ', ' '], $name);
 $email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+$service = strip_tags(trim($_POST['service'] ?? ''));
 $subject = trim($_POST['subject'] ?? '');
 $message = trim($_POST['message'] ?? '');
 
@@ -25,48 +26,21 @@ if (empty($name) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL
     exit;
 }
 
-$defaultConfig = [
-    'host' => 'smtp.titan.email',
-    'port' => 587,
-    'secure' => 'tls',
-    'username' => 'info@letesdocreative.com',
-    'password' => '',
-    'from_email' => 'info@letesdocreative.com',
+// Gmail SMTP only
+$config = [
+    'host' => 'smtp.gmail.com',
+    'port' => 465,
+    'secure' => 'ssl',
+    'username' => 'letsdoveera@gmail.com',
+    'password' => getenv('GMAIL_APP_PASSWORD') ?: '',
+    'from_email' => 'letsdoveera@gmail.com',
     'from_name' => 'Letsdo Creative',
     'recipient' => 'letsdoveera@gmail.com',
 ];
 
-$fileConfig = [];
-$configPaths = [
-    __DIR__ . '/titan-smtp-config.local.php',
-    __DIR__ . '/titan-smtp-config.php',
-    __DIR__ . '/titan-smtp-config.example.php',
-];
-foreach ($configPaths as $configPath) {
-    if (!file_exists($configPath)) {
-        continue;
-    }
-    $loaded = require $configPath;
-    if (is_array($loaded)) {
-        $fileConfig = $loaded;
-        break;
-    }
-}
-
-$config = array_merge($defaultConfig, $fileConfig);
-
-$config['host'] = getenv('TITAN_SMTP_HOST') ?: $config['host'];
-$config['port'] = (int) (getenv('TITAN_SMTP_PORT') ?: $config['port']);
-$config['secure'] = getenv('TITAN_SMTP_SECURE') ?: $config['secure'];
-$config['username'] = getenv('TITAN_SMTP_USER') ?: $config['username'];
-$config['password'] = getenv('TITAN_SMTP_PASS') ?: $config['password'];
-$config['from_email'] = getenv('MAIL_FROM_EMAIL') ?: $config['from_email'];
-$config['from_name'] = getenv('MAIL_FROM_NAME') ?: $config['from_name'];
-$config['recipient'] = getenv('MAIL_TO_EMAIL') ?: $config['recipient'];
-
 if (empty($config['password'])) {
     http_response_code(500);
-    echo 'Mail service is not configured. Please set Titan SMTP password.';
+    echo 'Mail service is not configured. Please set GMAIL_APP_PASSWORD.';
     exit;
 }
 
@@ -91,7 +65,8 @@ try {
     $mail->addAddress($config['recipient']);
     $mail->addReplyTo($email, $name);
     $mail->Subject = $mailSubject;
-    $mail->Body = "Name: {$name}\nEmail: {$email}\n\nMessage:\n{$message}\n";
+    $selectedService = $service !== '' ? $service : 'Not specified';
+    $mail->Body = "Name: {$name}\nEmail: {$email}\nService: {$selectedService}\n\nMessage:\n{$message}\n";
     $mail->AltBody = $mail->Body;
 
     $mail->send();
