@@ -52,6 +52,8 @@ module.exports = async (req, res) => {
   });
 
   try {
+    await transporter.verify();
+
     await transporter.sendMail({
       from: `"${fromName}" <${fromEmail}>`,
       to: toEmail,
@@ -62,7 +64,12 @@ module.exports = async (req, res) => {
 
     return res.status(200).send('Thank You! Your message has been sent.');
   } catch (error) {
-    return res.status(500).send('Oops! Something went wrong and we could not send your message.');
+    if (error && error.code === 'EAUTH') {
+      return res.status(500).send('SMTP authentication failed. Check TITAN_SMTP_USER and TITAN_SMTP_PASS.');
+    }
+    if (error && (error.code === 'ESOCKET' || error.code === 'ECONNECTION' || error.code === 'ETIMEDOUT')) {
+      return res.status(500).send('SMTP connection failed. Check TITAN host/port/security settings.');
+    }
+    return res.status(500).send('SMTP send failed. Check Titan mailbox settings and credentials.');
   }
 };
-
