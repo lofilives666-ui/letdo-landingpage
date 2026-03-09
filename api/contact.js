@@ -7,6 +7,12 @@ function parseBody(req) {
   return req.body;
 }
 
+function env(key, fallback = '') {
+  const value = process.env[key];
+  if (typeof value !== 'string') return fallback;
+  return value.trim();
+}
+
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
     return res.status(405).send('Method Not Allowed');
@@ -27,15 +33,15 @@ module.exports = async (req, res) => {
     return res.status(400).send('Please enter a valid email address.');
   }
 
-  const host = process.env.TITAN_SMTP_HOST || 'smtp.titan.email';
-  const port = Number(process.env.TITAN_SMTP_PORT || 587);
-  const secureEnv = (process.env.TITAN_SMTP_SECURE || 'tls').toLowerCase();
+  const host = env('TITAN_SMTP_HOST', 'smtp.titan.email');
+  const port = Number(env('TITAN_SMTP_PORT', '587'));
+  const secureEnv = env('TITAN_SMTP_SECURE', 'tls').toLowerCase();
   const secure = secureEnv === 'ssl' || port === 465;
-  const user = process.env.TITAN_SMTP_USER || 'info@letesdocreative.com';
-  const pass = process.env.TITAN_SMTP_PASS || '';
-  const fromEmail = process.env.MAIL_FROM_EMAIL || user;
-  const fromName = process.env.MAIL_FROM_NAME || 'Letsdo Creative';
-  const toEmail = process.env.MAIL_TO_EMAIL || 'info@letesdocreative.com';
+  const user = env('TITAN_SMTP_USER', 'info@letesdocreative.com');
+  const pass = env('TITAN_SMTP_PASS', '');
+  const fromEmail = env('MAIL_FROM_EMAIL', user);
+  const fromName = env('MAIL_FROM_NAME', 'Letsdo Creative');
+  const toEmail = env('MAIL_TO_EMAIL', 'info@letesdocreative.com');
 
   if (!pass) {
     return res.status(500).send('Mail service is not configured. Missing TITAN_SMTP_PASS.');
