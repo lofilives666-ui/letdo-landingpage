@@ -33,7 +33,7 @@ $defaultConfig = [
     'password' => '',
     'from_email' => 'info@letesdocreative.com',
     'from_name' => 'Letsdo Creative',
-    'recipient' => 'letsdoveera@gmail',
+    'recipient' => 'letsdoveera@gmail.com',
 ];
 
 $fileConfig = [];

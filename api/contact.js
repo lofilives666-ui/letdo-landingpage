@@ -41,7 +41,7 @@ module.exports = async (req, res) => {
   const pass = env('TITAN_SMTP_PASS', '');
   const fromEmail = env('MAIL_FROM_EMAIL', user);
   const fromName = env('MAIL_FROM_NAME', 'Letsdo Creative');
-  const toEmail = env('MAIL_TO_EMAIL', 'letsdoveera@gmail');
+  const toEmail = env('MAIL_TO_EMAIL', 'letsdoveera@gmail.com');
 
   if (!pass) {
     return res.status(500).send('Mail service is not configured. Missing TITAN_SMTP_PASS.');
