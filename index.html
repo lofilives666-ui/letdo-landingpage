@@ -1,10 +1,13 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en-IN">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">    <title>Letsdo Creative | Game Development, AR/VR, Web3 & Ecommerce</title>
     <meta name="description" content="Letsdo Creative builds game, AR/VR, Web3, mobile app, and ecommerce white-label solutions for startups and enterprises in India.">
     <link rel="canonical" href="https://www.letsdocreative.com/">
+    <link rel="alternate" hreflang="en-IN" href="https://www.letsdocreative.com/">
+    <link rel="alternate" hreflang="en-US" href="https://www.letsdocreative.com/">
+    <link rel="alternate" hreflang="x-default" href="https://www.letsdocreative.com/">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Letsdo Creative | Game Development, AR/VR, Web3 & Ecommerce">
@@ -19,7 +22,11 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
     <link rel="apple-touch-icon" href="assets/img/favicon.png">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0f161e">
+    <link rel="preload" as="image" href="assets/img/slider/slider_bg.jpg">
+    <link rel="preload" as="image" href="assets/img/slider/slider_img01.png">
+    <link rel="preload" as="image" href="assets/img/logo/logo.png">
     <!-- Place favicon.ico in the root directory -->
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -131,10 +138,45 @@
                 display: none !important;
             }
         }
+        .main--area > section:not(.slider__area) {
+            content-visibility: auto;
+            contain-intrinsic-size: 1px 960px;
+        }
+        .social__item a,
+        .tg-btn-1,
+        .submit-btn,
+        .tgmobile__menu .navigation li a,
+        .dropdown-btn,
+        .scroll__top {
+            min-height: 44px;
+        }
+        @media (max-width: 767.98px) {
+            body,
+            p,
+            li,
+            input,
+            select,
+            textarea,
+            button {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            .section__title .title {
+                font-size: 32px;
+                line-height: 1.15;
+            }
+            .social__item a {
+                padding: 14px 12px;
+            }
+            .tgmobile__menu .navigation li > a,
+            .tgmobile__menu .navigation li .dropdown-btn {
+                min-height: 48px;
+            }
+        }
     </style>
 
     <!-- Page-Revealer -->
-    <script src="assets/js/tg-page-head.js"></script>
+    <script src="assets/js/tg-page-head.js" defer></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -150,7 +192,9 @@
         "addressCountry": "IN"
       },
       "sameAs": [
-        "https://www.facebook.com/profile.php?id=61587178422851"
+        "https://www.facebook.com/profile.php?id=61587178422851",
+        "https://x.com/letsdoveera",
+        "https://www.youtube.com/watch?v=ssrNcwxALS4"
       ]
     }
     </script>
@@ -382,9 +426,7 @@
                                 </svg>
                             </a>
                         </li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="https://www.youtube.com/watch?v=ssrNcwxALS4" rel="noopener noreferrer" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
                     </ul>
                 </div>
             </nav>
@@ -456,12 +498,11 @@
                             </a>
                         </li>
                         <li><a href="https://www.facebook.com/profile.php?id=61587178422851"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="https://www.youtube.com/watch?v=ssrNcwxALS4" rel="noopener noreferrer" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
                     </ul>
                 </div>
                 <div class="offCanvas__copyright">
-                    <p>Copyright © 2024 - By <span>LETSDO Creative</span></p>
+                    <p>Copyright &copy; 2026 - By <span>LETSDO Creative</span></p>
                 </div>
             </div>
         </div>
@@ -505,7 +546,7 @@
                             </div>
                             <div class="col-xxl-6 col-xl-5 col-lg-6">
                                 <div class="slider__img text-center">
-                                    <img src="assets/img/slider/slider_img01.png" data-magnetic alt="img" width="594" height="810" style="width:594px;height:810px;object-fit:contain;">
+                                    <img src="assets/img/slider/slider_img01.png" data-magnetic alt="Game development showcase" width="594" height="810" style="width:594px;height:810px;object-fit:contain;" fetchpriority="high" decoding="async">
                                 </div>
                             </div>
                         </div>
@@ -1952,8 +1993,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                 <div class="row justify-content-center gutter-20 row-cols-2 row-cols-lg-6 row-cols-md-4 row-cols-sm-3">
                     <div class="col">
                         <div class="social__item">
-                            <a href="https://www.facebook.com/profile.php?id=61587178422851
-">
+                            <a href="https://www.facebook.com/profile.php?id=61587178422851" rel="noopener noreferrer" target="_blank">
                                 <i class="flaticon-facebook"></i>
                                 <span>facebook</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="65" height="5" viewBox="0 0 65 5">
@@ -1964,8 +2004,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                     </div>
                     <div class="col">
                         <div class="social__item">
-                            <a href="https://x.com/letsdoveera
-">
+                            <a href="https://x.com/letsdoveera" rel="noopener noreferrer" target="_blank">
                                 <i class="flaticon-twitter"></i>
                                 <span>X</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="65" height="5" viewBox="0 0 65 5">
@@ -1976,19 +2015,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                     </div>
                     <div class="col">
                         <div class="social__item">
-                            <a href="https://x.com/letsdoveera
-">
-                                <i class="flaticon-instagram"></i>
-                                <span>instagram</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="65" height="5" viewBox="0 0 65 5">
-                                    <path d="M968,5630h65l-4,5H972Z" transform="translate(-968 -5630)" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="social__item">
-                            <a href="#">
+                            <a href="https://www.youtube.com/watch?v=ssrNcwxALS4" rel="noopener noreferrer" target="_blank">
                                 <i class="flaticon-youtube"></i>
                                 <span>youtube</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="65" height="5" viewBox="0 0 65 5">
@@ -1999,9 +2026,9 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                     </div>
                     <div class="col">
                         <div class="social__item">
-                            <a href="#">
-                                <i class="flaticon-discord"></i>
-                                <span>discord</span>
+                            <a href="contact.html">
+                                <i class="fas fa-address-card"></i>
+                                <span>contact</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="65" height="5" viewBox="0 0 65 5">
                                     <path d="M968,5630h65l-4,5H972Z" transform="translate(-968 -5630)" />
                                 </svg>
@@ -2010,9 +2037,20 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                     </div>
                     <div class="col">
                         <div class="social__item">
-                            <a href="#">
-                                <i class="flaticon-twitch"></i>
-                                <span>twitch</span>
+                            <a href="mailto:info@letesdocreative.com">
+                                <i class="fas fa-envelope"></i>
+                                <span>email</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="65" height="5" viewBox="0 0 65 5">
+                                    <path d="M968,5630h65l-4,5H972Z" transform="translate(-968 -5630)" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="social__item">
+                            <a href="tel:+919677913334">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>call</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="65" height="5" viewBox="0 0 65 5">
                                     <path d="M968,5630h65l-4,5H972Z" transform="translate(-968 -5630)" />
                                 </svg>
@@ -2147,7 +2185,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="copyright__text text-center text-lg-start">
-                            <p>Copyright © 2023 - All Rights Reserved By <span>Letsdo Creative</span></p>
+                            <p>Copyright &copy; 2026 - All Rights Reserved By <span>Letsdo Creative</span></p>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -2169,24 +2207,24 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
 
 
     <!-- JS here -->
-    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/jquery.waypoints.min.js"></script>
-    <script src="assets/js/jquery.odometer.min.js"></script>
-    <script src="assets/js/simpleParallax.min.js"></script>
-    <script src="assets/js/gsap.min.js"></script>
-    <script src="assets/js/scrollTrigger.min.js"></script>
-    <script src="assets/js/splitText.min.js"></script>
-    <script src="assets/js/jquery.appear.js"></script>
-    <script src="assets/js/tg-cursor.min.js"></script>
-    <script src="assets/js/swiper-bundle.js"></script>
-    <script src="assets/js/jarallax.min.js"></script>
-    <script src="assets/js/slick.min.js"></script>
-    <script src="assets/js/ajax-form.js"></script>
-    <script src="assets/js/vivus.min.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/vendor/jquery-3.6.0.min.js" defer></script>
+    <script src="assets/js/bootstrap.min.js" defer></script>
+    <script src="assets/js/jquery.magnific-popup.min.js" defer></script>
+    <script src="assets/js/jquery.waypoints.min.js" defer></script>
+    <script src="assets/js/jquery.odometer.min.js" defer></script>
+    <script src="assets/js/simpleParallax.min.js" defer></script>
+    <script src="assets/js/gsap.min.js" defer></script>
+    <script src="assets/js/scrollTrigger.min.js" defer></script>
+    <script src="assets/js/splitText.min.js" defer></script>
+    <script src="assets/js/jquery.appear.js" defer></script>
+    <script src="assets/js/tg-cursor.min.js" defer></script>
+    <script src="assets/js/swiper-bundle.js" defer></script>
+    <script src="assets/js/jarallax.min.js" defer></script>
+    <script src="assets/js/slick.min.js" defer></script>
+    <script src="assets/js/ajax-form.js" defer></script>
+    <script src="assets/js/vivus.min.js" defer></script>
+    <script src="assets/js/wow.min.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
 </body>
 
 </html>

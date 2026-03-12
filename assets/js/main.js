@@ -184,9 +184,32 @@ if($('.tgmenu__action .search').length) {
 /*===========================================
 	=        Click Sound Active		      =
 =============================================*/
-$('.search a, .tg-btn-1, .side-toggle-icon, .mobile-nav-toggler, .dropdown-btn').on('click', () => new Audio('assets/audio/click.wav').play());
-$('.search__close, .offCanvas__toggle, .offCanvas__overlay, .close-btn').on('click', () => new Audio('assets/audio/remove.wav').play());
-$('.about__tab-wrap ul button').on('click', () => new Audio('assets/audio/tab.mp3').play());
+const canPlayUiSounds = window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const uiSounds = canPlayUiSounds ? {
+	click: new Audio('assets/audio/click.wav'),
+	remove: new Audio('assets/audio/remove.wav'),
+	tab: new Audio('assets/audio/tab.mp3')
+} : null;
+
+function playUiSound(soundName) {
+	if (!uiSounds || !uiSounds[soundName]) {
+		return;
+	}
+
+	const sound = uiSounds[soundName];
+	sound.currentTime = 0;
+	sound.play().catch(() => {});
+}
+
+$('.search a, .tg-btn-1, .side-toggle-icon, .mobile-nav-toggler, .dropdown-btn').on('click', function () {
+	playUiSound('click');
+});
+$('.search__close, .offCanvas__toggle, .offCanvas__overlay, .close-btn').on('click', function () {
+	playUiSound('remove');
+});
+$('.about__tab-wrap ul button').on('click', function () {
+	playUiSound('tab');
+});
 
 
 /*===========================================
