@@ -95,6 +95,8 @@
         gtag('config', 'AW-17930320922');
 
         (function () {
+            var isMobileViewport = window.matchMedia('(max-width: 767.98px)').matches;
+
             function loadGtag() {
                 if (document.querySelector('script[data-gtag-loader]')) {
                     return;
@@ -104,6 +106,13 @@
                 script.dataset.gtagLoader = 'true';
                 script.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17930320922';
                 document.head.appendChild(script);
+            }
+
+            if (isMobileViewport) {
+                ['pointerdown', 'touchstart', 'keydown'].forEach(function (eventName) {
+                    window.addEventListener(eventName, loadGtag, { once: true, passive: true });
+                });
+                return;
             }
 
             if ('requestIdleCallback' in window) {
@@ -116,8 +125,45 @@
             }, { once: true });
         })();
     </script>
-    <link rel="preload" as="image" href="assets/img/slider/slider_bg.webp" fetchpriority="high">
-    <link rel="preload" as="image" href="assets/img/slider/slider_img01-594.webp" imagesrcset="assets/img/slider/slider_img01-420.webp 420w, assets/img/slider/slider_img01-594.webp 594w" imagesizes="(max-width: 767px) 382px, 495px" fetchpriority="high">
+    <script>
+        (function () {
+            if (window.matchMedia('(max-width: 767.98px)').matches) {
+                document.documentElement.classList.add('is-mobile-lite');
+                document.addEventListener('DOMContentLoaded', function () {
+                    var heroSection = document.querySelector('.slider__area[data-background]');
+                    var removableSections = document.querySelectorAll('.nft-item__area, .about__area, .gallery__area, .about__area-two, .team__area, .video__area, .roadMap__area, .trendingNft-area, .social__area');
+                    if (heroSection) {
+                        heroSection.removeAttribute('data-background');
+                        heroSection.removeAttribute('data-bg-eager');
+                    }
+                    removableSections.forEach(function (section) {
+                        section.remove();
+                    });
+                }, { once: true });
+                return;
+            }
+
+            [
+                { href: 'assets/img/slider/slider_bg.webp' },
+                {
+                    href: 'assets/img/slider/slider_img01-594.webp',
+                    imagesrcset: 'assets/img/slider/slider_img01-420.webp 420w, assets/img/slider/slider_img01-594.webp 594w',
+                    imagesizes: '(max-width: 767px) 382px, 495px'
+                }
+            ].forEach(function (config) {
+                var link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = config.href;
+                link.setAttribute('fetchpriority', 'high');
+                if (config.imagesrcset) {
+                    link.setAttribute('imagesrcset', config.imagesrcset);
+                    link.setAttribute('imagesizes', config.imagesizes);
+                }
+                document.head.appendChild(link);
+            });
+        })();
+    </script>
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -684,6 +730,20 @@
             .slider__img {
                 display: none !important;
             }
+            .is-mobile-lite .slider__area.slider__bg {
+                background-image: radial-gradient(circle at top, rgba(69, 248, 130, 0.14), transparent 36%), linear-gradient(180deg, #0f161e 0%, #09131a 100%) !important;
+            }
+            .is-mobile-lite .nft-item__area,
+            .is-mobile-lite .about__area,
+            .is-mobile-lite .gallery__area,
+            .is-mobile-lite .about__area-two,
+            .is-mobile-lite .team__area,
+            .is-mobile-lite .video__area,
+            .is-mobile-lite .roadMap__area,
+            .is-mobile-lite .trendingNft-area,
+            .is-mobile-lite .social__area {
+                display: none !important;
+            }
             .slider__bg {
                 padding-top: 148px;
                 padding-bottom: 44px;
@@ -1145,7 +1205,10 @@
                             </div>
                             <div class="col-xxl-6 col-xl-5 col-lg-6">
                                 <div class="slider__img text-center">
-                                    <img src="assets/img/slider/slider_img01-594.webp" srcset="assets/img/slider/slider_img01-420.webp 420w, assets/img/slider/slider_img01-594.webp 594w" sizes="(max-width: 767px) 382px, 495px" alt="Game development showcase" width="594" height="810" style="width:594px;height:810px;object-fit:contain;" fetchpriority="high" loading="eager">
+                                    <picture>
+                                        <source media="(min-width: 768px)" srcset="assets/img/slider/slider_img01-420.webp 420w, assets/img/slider/slider_img01-594.webp 594w" sizes="495px">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" width="594" height="810" style="width:594px;height:810px;object-fit:contain;" fetchpriority="low" loading="lazy" decoding="async">
+                                    </picture>
                                 </div>
                             </div>
                         </div>
@@ -2875,7 +2938,6 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
 
             function scheduleScriptLoading() {
                 if (isMobileViewport) {
-                    loadTimeoutId = window.setTimeout(startScriptLoading, 4500);
                     return;
                 }
 
