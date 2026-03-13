@@ -98,6 +98,51 @@ $("[data-background]").each(function () {
 })
 
 /*===========================================
+	=      Global Navigation Active State   =
+=============================================*/
+function syncCurrentNavState() {
+	var currentPath = window.location.pathname.replace(/\/+/g, '/');
+	var normalizedCurrent = currentPath.replace(/\/index\.html$/i, '/');
+	var currentFile = normalizedCurrent.split('/').pop() || 'index.html';
+	var isHomePage = normalizedCurrent === '/' || /\/index\.html$/i.test(currentPath);
+	var navLinks = $('.tgmenu__navbar-wrap .navigation a');
+
+	if (!navLinks.length) {
+		return;
+	}
+
+	navLinks.each(function () {
+		var $link = $(this);
+		var href = ($link.attr('href') || '').trim();
+		var normalizedHref;
+		var hrefFile;
+		var isMatch = false;
+
+		$link.parent('li').removeClass('active');
+
+		if (!href || href === '#' || href.charAt(0) === '#' || href.indexOf('javascript:') === 0) {
+			return;
+		}
+
+		normalizedHref = href.replace(/^https?:\/\/[^/]+/i, '').replace(/\/+/g, '/');
+		normalizedHref = normalizedHref.replace(/\/index\.html$/i, '/');
+		hrefFile = normalizedHref.split('/').pop() || 'index.html';
+
+		if (isHomePage && (href === 'index.html' || normalizedHref === '/')) {
+			isMatch = true;
+		} else if (!isHomePage && hrefFile === currentFile) {
+			isMatch = true;
+		}
+
+		if (isMatch) {
+			$link.parents('li').addClass('active');
+		}
+	});
+}
+
+syncCurrentNavState();
+
+/*===========================================
 	=           Data Color             =
 =============================================*/
 $("[data-bg-color]").each(function () {
