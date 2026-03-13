@@ -650,9 +650,25 @@
                 max-width: 100%;
                 flex: 0 0 auto;
             }
-            .slider-active,
+            .slider-active {
+                display: flex !important;
+                overflow-x: auto;
+                overflow-y: hidden;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                touch-action: pan-x;
+            }
+            .slider-active::-webkit-scrollbar {
+                display: none;
+            }
+            .slider-active:not(.slick-initialized) .single-slider,
             .slider-active .single-slider {
                 display: block !important;
+                flex: 0 0 100%;
+                width: 100%;
+                scroll-snap-align: start;
             }
             .slider__img {
                 display: none !important;
@@ -664,6 +680,44 @@
             }
             .slider__content {
                 margin-bottom: 12px;
+            }
+            .mobile-hero-controls {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                margin-top: 18px;
+            }
+            .mobile-hero-arrow {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 42px;
+                height: 42px;
+                border: 1px solid rgba(69, 248, 130, 0.45);
+                border-radius: 999px;
+                background: rgba(15, 22, 27, 0.88);
+                color: #45f882;
+                font-size: 20px;
+                line-height: 1;
+            }
+            .mobile-hero-dots {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+            }
+            .mobile-hero-dot {
+                width: 9px;
+                height: 9px;
+                padding: 0;
+                border: 0;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.28);
+            }
+            .mobile-hero-dot.is-active {
+                width: 24px;
+                background: #45f882;
             }
             body,
             p,
@@ -685,6 +739,11 @@
             .tgmobile__menu .navigation li > a,
             .tgmobile__menu .navigation li .dropdown-btn {
                 min-height: 48px;
+            }
+        }
+        @media (min-width: 768px) {
+            .mobile-hero-controls {
+                display: none !important;
             }
         }
     </style>
@@ -1162,6 +1221,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="mobile-hero-controls" aria-label="Mobile slider controls">
+                <button type="button" class="mobile-hero-arrow mobile-hero-prev" aria-label="Previous slide">&#8249;</button>
+                <div class="mobile-hero-dots" aria-label="Slide pagination"></div>
+                <button type="button" class="mobile-hero-arrow mobile-hero-next" aria-label="Next slide">&#8250;</button>
             </div>
             <div class="slider__shapes">
                 <img src="assets/img/slider/slider_shape01.webp" alt="shape" loading="lazy" decoding="async" fetchpriority="low">
@@ -2798,6 +2862,83 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
             ['pointerdown', 'touchstart', 'keydown'].forEach(function (eventName) {
                 window.addEventListener(eventName, startScriptLoading, { once: true, passive: true });
             });
+        })();
+    </script>
+    <script>
+        (function () {
+            if (!window.matchMedia('(max-width: 767.98px)').matches) {
+                return;
+            }
+
+            function setupMobileHeroSlider() {
+                var track = document.querySelector('.slider-active');
+                var slides = track ? Array.prototype.slice.call(track.querySelectorAll('.single-slider')) : [];
+                var dotsWrap = document.querySelector('.mobile-hero-dots');
+                var prevButton = document.querySelector('.mobile-hero-prev');
+                var nextButton = document.querySelector('.mobile-hero-next');
+
+                if (!track || slides.length < 2 || !dotsWrap || !prevButton || !nextButton) {
+                    return;
+                }
+
+                dotsWrap.innerHTML = '';
+                slides.forEach(function (_, index) {
+                    var dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'mobile-hero-dot';
+                    dot.setAttribute('aria-label', 'Go to slide ' + (index + 1));
+                    dot.addEventListener('click', function () {
+                        track.scrollTo({ left: index * track.clientWidth, behavior: 'smooth' });
+                    });
+                    dotsWrap.appendChild(dot);
+                });
+
+                var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.mobile-hero-dot'));
+
+                function getActiveIndex() {
+                    return Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / Math.max(track.clientWidth, 1))));
+                }
+
+                function updateState() {
+                    var activeIndex = getActiveIndex();
+
+                    dots.forEach(function (dot, index) {
+                        dot.classList.toggle('is-active', index === activeIndex);
+                    });
+
+                    prevButton.disabled = activeIndex === 0;
+                    nextButton.disabled = activeIndex === slides.length - 1;
+                }
+
+                function scrollToIndex(index) {
+                    track.scrollTo({
+                        left: Math.max(0, Math.min(slides.length - 1, index)) * track.clientWidth,
+                        behavior: 'smooth'
+                    });
+                }
+
+                prevButton.addEventListener('click', function () {
+                    scrollToIndex(getActiveIndex() - 1);
+                });
+
+                nextButton.addEventListener('click', function () {
+                    scrollToIndex(getActiveIndex() + 1);
+                });
+
+                track.addEventListener('scroll', function () {
+                    window.requestAnimationFrame(updateState);
+                }, { passive: true });
+
+                window.addEventListener('resize', updateState);
+                updateState();
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', setupMobileHeroSlider, { once: true });
+                return;
+            }
+
+            setupMobileHeroSlider();
         })();
     </script>
 </body>
