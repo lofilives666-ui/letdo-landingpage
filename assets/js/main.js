@@ -15,6 +15,12 @@ function onIdle(callback) {
 	window.setTimeout(callback, 1);
 }
 
+function setupMobileSliderStart() {
+	if (!isMobileViewport) {
+		mainSlider();
+	}
+}
+
 /*==============================
     Nested jQuery Active List
 --------------------------------
@@ -68,13 +74,7 @@ function preloader() {
 
 $(window).on('load', function () {
 	preloader();
-    if (isMobileViewport) {
-		onIdle(function () {
-			window.setTimeout(mainSlider, 600);
-		});
-	} else {
-		mainSlider();
-	}
+	setupMobileSliderStart();
 	if (canUseHeavyMotion) {
 		wowAnimation();
 		splitText();
@@ -467,8 +467,8 @@ function mainSlider() {
 		fade: true,
 		lazyLoad: 'ondemand',
 		arrows: true,
-		prevArrow: '<button type="button" class="hero-slider-arrow hero-slider-prev" aria-label="Previous slide"><i class="fas fa-angle-left"></i></button>',
-		nextArrow: '<button type="button" class="hero-slider-arrow hero-slider-next" aria-label="Next slide"><i class="fas fa-angle-right"></i></button>',
+		prevArrow: '<button type="button" class="hero-slider-arrow hero-slider-prev" aria-label="Previous slide"><span aria-hidden="true">&#8249;</span></button>',
+		nextArrow: '<button type="button" class="hero-slider-arrow hero-slider-next" aria-label="Next slide"><span aria-hidden="true">&#8250;</span></button>',
 		responsive: [
 			{
                 breakpoint: 767,

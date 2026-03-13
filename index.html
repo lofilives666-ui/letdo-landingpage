@@ -30,6 +30,65 @@
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" media="print" onload="this.media='all'">
     <script>
+        (function () {
+            var isMobileViewport = window.matchMedia('(max-width: 767.98px)').matches;
+            var deferredStylesLoaded = false;
+            var deferredStyleHrefs = [
+                'assets/css/fontawesome-all.min.css',
+                'assets/css/flaticon.css'
+            ];
+            var deferredInteractiveStyleHrefs = [
+                'assets/css/magnific-popup.css',
+                'assets/css/swiper-bundle.css',
+                'assets/css/slick.css'
+            ];
+
+            function loadStyle(href) {
+                if (document.querySelector('link[href="' + href + '"]')) {
+                    return;
+                }
+
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = href;
+                document.head.appendChild(link);
+            }
+
+            function loadDeferredStyles() {
+                if (deferredStylesLoaded) {
+                    return;
+                }
+
+                deferredStylesLoaded = true;
+                deferredStyleHrefs.forEach(loadStyle);
+                if (!isMobileViewport) {
+                    deferredInteractiveStyleHrefs.forEach(loadStyle);
+                }
+            }
+
+            function loadInteractiveStyles() {
+                loadDeferredStyles();
+                deferredInteractiveStyleHrefs.forEach(loadStyle);
+            }
+
+            function loadDeferredStylesSoon() {
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(loadDeferredStyles, { timeout: 2500 });
+                    return;
+                }
+
+                window.setTimeout(loadDeferredStyles, 1200);
+            }
+
+            window.loadDeferredStyles = loadDeferredStyles;
+            window.loadInteractiveStyles = loadInteractiveStyles;
+            window.addEventListener('load', loadDeferredStylesSoon, { once: true });
+            ['pointerdown', 'touchstart', 'keydown'].forEach(function (eventName) {
+                window.addEventListener(eventName, loadInteractiveStyles, { once: true, passive: true });
+            });
+        })();
+    </script>
+    <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -62,22 +121,392 @@
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/spacing.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="preload" as="style" href="assets/css/fontawesome-all.min.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="assets/css/slick.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="assets/css/flaticon.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="assets/css/magnific-popup.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="assets/css/swiper-bundle.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="assets/css/bootstrap.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="assets/css/spacing.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="assets/css/main.css" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/spacing.css">
+        <link rel="stylesheet" href="assets/css/main.css">
         <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="assets/css/slick.css">
         <link rel="stylesheet" href="assets/css/flaticon.css">
+        <link rel="stylesheet" href="assets/css/slick.css">
         <link rel="stylesheet" href="assets/css/magnific-popup.css">
         <link rel="stylesheet" href="assets/css/swiper-bundle.css">
     </noscript>
     <style>
+        :root {
+            --tg-body-font-family: 'Poppins', sans-serif;
+            --tg-heading-font-family: 'Barlow', sans-serif;
+            --tg-berlin-font-family: 'berlin_sans_fb_demibold', 'Barlow', sans-serif;
+            --tg-common-color-white: #fff;
+            --tg-common-color-gray: #182029;
+            --tg-common-color-black: #0f161b;
+            --tg-common-color-black-2: #201f2a;
+            --tg-heading-color: #fff;
+            --tg-body-color: #adb0bc;
+            --tg-theme-primary: #45f882;
+            --tg-border-2: #22292f;
+            --tg-fw-extra-bold: 800;
+            --tg-fw-bold: 700;
+            --tg-fw-regular: 400;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            background: #0f161b;
+        }
+        body {
+            margin: 0;
+            font-family: var(--tg-body-font-family);
+            font-size: 16px;
+            line-height: 1.75;
+            color: var(--tg-body-color);
+            background: var(--tg-common-color-black);
+            -webkit-text-size-adjust: 100%;
+        }
+        img,
+        svg {
+            max-width: 100%;
+            vertical-align: middle;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+        .container,
+        .custom-container {
+            width: 100%;
+            max-width: 1300px;
+            margin-right: auto;
+            margin-left: auto;
+            padding-right: 12px;
+            padding-left: 12px;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -12px;
+            margin-left: -12px;
+        }
+        .row > * {
+            width: 100%;
+            max-width: 100%;
+            padding-right: 12px;
+            padding-left: 12px;
+        }
+        .col-12,
+        .col-lg-6,
+        .col-xl-5,
+        .col-xxl-6 {
+            flex: 0 0 auto;
+            width: 100%;
+        }
+        .justify-content-between {
+            justify-content: space-between;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .d-none {
+            display: none !important;
+        }
+        .transparent-header {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            z-index: 9;
+        }
+        .tg-header__area {
+            padding: 20px 0;
+            transition: all 0.4s ease;
+        }
+        .tgmenu__nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .tgmenu__navbar-wrap {
+            display: none;
+        }
+        .logo a {
+            display: inline-block;
+        }
+        .logo img {
+            max-width: 177px;
+        }
+        .tg-header__area .mobile-nav-toggler {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            margin-left: auto;
+            padding: 0;
+            border: 2px solid var(--tg-theme-primary);
+            background: transparent;
+            color: var(--tg-theme-primary);
+            cursor: pointer;
+        }
+        .menu-bars {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .menu-bars span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: currentColor;
+        }
+        .scroll__top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 99;
+            width: 44px;
+            height: 44px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(12, 22, 38, 0.92);
+            color: #fff;
+        }
+        .scroll__top-label {
+            font-size: 20px;
+            line-height: 1;
+        }
+        .slider__area {
+            position: relative;
+        }
+        .slider__area::before,
+        .slider__area::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 50%;
+            height: 20px;
+            background: var(--tg-theme-primary);
+        }
+        .slider__area::before {
+            left: 0;
+            clip-path: polygon(0 0, 0 100%, 100% 100%);
+        }
+        .slider__area::after {
+            right: 0;
+            clip-path: polygon(100% 0, 0 100%, 100% 100%);
+        }
+        .slider__bg {
+            position: relative;
+            z-index: 1;
+            padding: 160px 0 55px;
+            background-color: #0f161b;
+            background-position: center;
+            background-size: cover;
+        }
+        .slider__content {
+            position: relative;
+            z-index: 2;
+            margin: 0 0 50px;
+            text-align: center;
+        }
+        .slider__content .sub-title {
+            position: relative;
+            z-index: 1;
+            margin: 0 0 19px;
+            padding: 15px 20px;
+            font-size: 17px;
+            line-height: 1;
+            letter-spacing: 4px;
+            font-weight: var(--tg-fw-bold);
+            color: var(--tg-theme-primary);
+            text-transform: uppercase;
+        }
+        .slider__content .sub-title::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            opacity: 0.28;
+            background: url("assets/img/slider/text_gradient_bg.webp") no-repeat center/256px auto;
+        }
+        .slider__content .title {
+            margin: 0 0 12px;
+            font-family: var(--tg-berlin-font-family);
+            font-size: 18vw;
+            line-height: 1.02;
+            color: var(--tg-heading-color);
+            text-shadow: -1px 3px 0 rgba(69, 248, 130, 0.66);
+        }
+        .slider__content p {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.45;
+            letter-spacing: 1.4px;
+            font-weight: var(--tg-fw-bold);
+            text-transform: uppercase;
+            color: var(--tg-common-color-white);
+        }
+        .slider__btn {
+            margin-top: 33px;
+        }
+        .tg-btn-1 {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 195px;
+            padding: 15px 49px;
+            overflow: hidden;
+            font-family: var(--tg-heading-font-family);
+            font-size: 15px;
+            font-weight: var(--tg-fw-extra-bold);
+            letter-spacing: 0.8px;
+            text-align: center;
+            text-transform: uppercase;
+            color: var(--tg-common-color-black-2);
+        }
+        .tg-btn-1 svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .tg-btn-1 .cls-1 {
+            fill: var(--tg-theme-primary);
+            stroke: var(--tg-common-color-white);
+            stroke-width: 1.5px;
+        }
+        .tg-btn-1 .cls-2 {
+            fill: var(--tg-common-color-white);
+            stroke: transparent;
+        }
+        .slider__img img {
+            display: block;
+            width: 100%;
+            max-width: 382px;
+            height: auto !important;
+            margin: 0 auto;
+        }
+        .tgmobile__menu,
+        .tgmobile__menu-backdrop,
+        .offCanvas__wrap,
+        .offCanvas__overlay {
+            display: none;
+        }
+        @media (min-width: 992px) {
+            .col-lg-6 {
+                width: 50%;
+            }
+            .slider__bg {
+                padding: 175px 0 55px;
+            }
+            .slider__content {
+                margin: 0 0 70px;
+            }
+            .slider__content .sub-title::before {
+                background-size: 297px auto;
+            }
+            .slider__content .title {
+                font-size: 120px;
+                line-height: 0.8;
+            }
+            .slider__content p {
+                font-size: 24px;
+                letter-spacing: 5px;
+            }
+            .slider__img img {
+                max-width: 480px;
+            }
+        }
+        @media (min-width: 1200px) {
+            .tg-header__area {
+                padding: 11px 0;
+            }
+            .tgmenu__nav {
+                justify-content: flex-start;
+            }
+            .tgmenu__navbar-wrap {
+                display: flex;
+                flex-grow: 1;
+            }
+            .tgmenu__navbar-wrap > ul.navigation {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0 auto 0 65px;
+            }
+            .tgmenu__navbar-wrap > ul.navigation > li {
+                position: relative;
+            }
+            .tgmenu__navbar-wrap > ul.navigation > li > a {
+                display: block;
+                padding: 38px 16px;
+                font-family: var(--tg-heading-font-family);
+                font-size: 15px;
+                font-weight: var(--tg-fw-bold);
+                line-height: 1;
+                letter-spacing: 0.8px;
+                text-transform: uppercase;
+                color: var(--tg-heading-color);
+            }
+            .tg-header__area .mobile-nav-toggler {
+                display: none;
+            }
+            .col-xl-5 {
+                width: 41.66666667%;
+            }
+            .slider__bg {
+                padding: 158px 0 54px;
+            }
+            .slider__content {
+                margin: 135px 0 0;
+                text-align: left;
+            }
+            .slider__content .sub-title {
+                font-size: 16px;
+            }
+            .slider__content .sub-title::before {
+                background-position: left center;
+                background-size: contain;
+            }
+            .slider__content .title {
+                font-size: 82px;
+                line-height: 0.95;
+                margin-bottom: 12px;
+            }
+            .slider__content p {
+                max-width: 95%;
+                font-size: 18px;
+                letter-spacing: 2px;
+            }
+            .slider__img img {
+                max-width: 495px;
+                margin-left: auto;
+            }
+            .slider__area::before,
+            .slider__area::after {
+                height: 30px;
+            }
+        }
+        @media (min-width: 1400px) {
+            .col-xxl-6 {
+                width: 50%;
+            }
+        }
         .tech-brand-link {
             flex-direction: column;
             height: auto;
@@ -196,6 +625,46 @@
             min-height: 44px;
         }
         @media (max-width: 767.98px) {
+            .gallery-active,
+            .gallery-active .swiper-wrapper {
+                display: grid !important;
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .gallery-active .swiper-slide {
+                width: auto !important;
+                margin: 0 !important;
+            }
+            .gallery-active .swiper-scrollbar,
+            .trendingNft__nav,
+            .hero-slider-arrow {
+                display: none !important;
+            }
+            .brand-active {
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 14px;
+            }
+            .brand-active > .col {
+                width: 100%;
+                max-width: 100%;
+                flex: 0 0 auto;
+            }
+            .slider-active,
+            .slider-active .single-slider {
+                display: block !important;
+            }
+            .slider__img {
+                display: none !important;
+            }
+            .slider__bg {
+                padding-top: 148px;
+                padding-bottom: 44px;
+                min-height: auto;
+            }
+            .slider__content {
+                margin-bottom: 12px;
+            }
             body,
             p,
             li,
@@ -220,8 +689,6 @@
         }
     </style>
 
-    <!-- Page-Revealer -->
-    <script src="assets/js/tg-page-head.js" defer></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -250,7 +717,7 @@
 
     <!-- scroll-top -->
     <button class="scroll__top scroll-to-target" data-target="html">
-        <i class="flaticon-right-arrow"></i>
+        <span class="scroll__top-label" aria-hidden="true">&#8593;</span>
     </button>
     <!-- scroll-top-end-->
 
@@ -260,11 +727,13 @@
             <div class="container custom-container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="mobile-nav-toggler"><i class="fas fa-bars"></i></div>
+                        <button type="button" class="mobile-nav-toggler" aria-label="Open menu">
+                            <span class="menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+                        </button>
                         <div class="tgmenu__wrap">
                             <nav class="tgmenu__nav">
                                 <div class="logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo-180.webp" srcset="assets/img/logo/logo-180.webp 180w, assets/img/logo/logo-360.webp 360w" sizes="177px" alt="Logo" width="177" height="47" fetchpriority="high" decoding="async"></a>
+                                    <a href="index.html"><img src="assets/img/logo/logo-180.webp" srcset="assets/img/logo/logo-180.webp 180w, assets/img/logo/logo-360.webp 360w" sizes="177px" alt="Logo" width="177" height="47" decoding="async"></a>
                                 </div>
                                 <div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-xl-flex">
                                     <ul class="navigation">
@@ -591,7 +1060,7 @@
                             </div>
                             <div class="col-xxl-6 col-xl-5 col-lg-6">
                                 <div class="slider__img text-center">
-                                    <img src="assets/img/slider/slider_img01-594.webp" srcset="assets/img/slider/slider_img01-420.webp 420w, assets/img/slider/slider_img01-594.webp 594w" sizes="(max-width: 767px) 382px, 495px" data-magnetic alt="Game development showcase" width="594" height="810" style="width:594px;height:810px;object-fit:contain;" fetchpriority="high" loading="eager" decoding="async">
+                                    <img src="assets/img/slider/slider_img01-594.webp" srcset="assets/img/slider/slider_img01-420.webp 420w, assets/img/slider/slider_img01-594.webp 594w" sizes="(max-width: 767px) 382px, 495px" alt="Game development showcase" width="594" height="810" style="width:594px;height:810px;object-fit:contain;" fetchpriority="high" loading="eager">
                                 </div>
                             </div>
                         </div>
@@ -2258,13 +2727,79 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
 
 
     <!-- JS here -->
-    <script src="assets/js/vendor/jquery-3.6.0.min.js" defer></script>
-    <script src="assets/js/bootstrap.min.js" defer></script>
-    <script src="assets/js/jquery.magnific-popup.min.js" defer></script>
-    <script src="assets/js/swiper-bundle.js" defer></script>
-    <script src="assets/js/slick.min.js" defer></script>
-    <script src="assets/js/ajax-form.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
+    <script>
+        (function () {
+            var isMobileViewport = window.matchMedia('(max-width: 767.98px)').matches;
+            var scriptsStarted = false;
+            var loadTimeoutId;
+            var scriptQueue = [
+                'assets/js/vendor/jquery-3.6.0.min.js',
+                'assets/js/bootstrap.min.js',
+                'assets/js/jquery.magnific-popup.min.js',
+                'assets/js/swiper-bundle.js',
+                'assets/js/slick.min.js',
+                'assets/js/ajax-form.js',
+                'assets/js/main.js'
+            ];
+
+            function loadScript(src) {
+                return new Promise(function (resolve, reject) {
+                    if (document.querySelector('script[src="' + src + '"]')) {
+                        resolve();
+                        return;
+                    }
+
+                    var script = document.createElement('script');
+                    script.src = src;
+                    script.async = false;
+                    script.defer = true;
+                    script.onload = resolve;
+                    script.onerror = reject;
+                    document.body.appendChild(script);
+                });
+            }
+
+            function loadScriptsSequentially(list) {
+                return list.reduce(function (promise, src) {
+                    return promise.then(function () {
+                        return loadScript(src);
+                    });
+                }, Promise.resolve());
+            }
+
+            function startScriptLoading() {
+                if (scriptsStarted) {
+                    return;
+                }
+
+                scriptsStarted = true;
+                window.clearTimeout(loadTimeoutId);
+                if (typeof window.loadInteractiveStyles === 'function') {
+                    window.loadInteractiveStyles();
+                }
+                loadScriptsSequentially(scriptQueue);
+            }
+
+            function scheduleScriptLoading() {
+                if (isMobileViewport) {
+                    loadTimeoutId = window.setTimeout(startScriptLoading, 4500);
+                    return;
+                }
+
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(startScriptLoading, { timeout: 1800 });
+                    return;
+                }
+
+                loadTimeoutId = window.setTimeout(startScriptLoading, 1200);
+            }
+
+            window.addEventListener('load', scheduleScriptLoading, { once: true });
+            ['pointerdown', 'touchstart', 'keydown'].forEach(function (eventName) {
+                window.addEventListener(eventName, startScriptLoading, { once: true, passive: true });
+            });
+        })();
+    </script>
 </body>
 
 </html>

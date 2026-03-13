@@ -40,6 +40,7 @@
   src: url("../fonts/berlin_sans_fb_demi_bold-webfont.woff2") format("woff2"), url("../fonts/berlin_sans_fb_demi_bold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 :root {
   --tg-body-font-family: 'Poppins', sans-serif;
