@@ -4,6 +4,7 @@ $(function () {
 	var formMessages = $('.ajax-response');
 	var recaptchaSiteKey = '';
 	var recaptchaReadyPromise = null;
+	var recaptchaPrepared = false;
 	var recaptchaTokenInput = form.find('input[name="g-recaptcha-response"]');
 
 	function refreshFormStartedAt() {
@@ -44,6 +45,11 @@ $(function () {
 	}
 
 	function prepareRecaptcha() {
+		if (recaptchaPrepared) {
+			return recaptchaReadyPromise || Promise.resolve();
+		}
+
+		recaptchaPrepared = true;
 		return new Promise(function (resolve) {
 			$.getJSON('/api/recaptcha-config')
 				.done(function (config) {
@@ -83,18 +89,21 @@ $(function () {
 	}
 
 	refreshFormStartedAt();
-	prepareRecaptcha();
+	form.one('focusin mouseenter touchstart', function () {
+		prepareRecaptcha();
+	});
 
 	$(form).submit(function (e) {
 		var useEmailJs = $(form).data('emailjs') === true || $(form).data('emailjs') === 'true';
 		e.preventDefault();
-		if (!recaptchaSiteKey) {
-			setFormMessage('error', 'Spam protection is not ready yet. Please refresh and try again.');
-			return;
-		}
-		e.preventDefault();
 		setFormMessage('', 'Sending...');
-		executeRecaptcha()
+		prepareRecaptcha()
+			.then(function () {
+				if (!recaptchaSiteKey) {
+					throw new Error('Spam protection is not ready yet. Please try again.');
+				}
+				return executeRecaptcha();
+			})
 			.then(function (token) {
 				if (!token) {
 					throw new Error('Missing reCAPTCHA token.');

@@ -1,6 +1,19 @@
 (function ($) {
 	"use strict";
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobileViewport = window.matchMedia('(max-width: 767.98px)').matches;
+const canUseHeavyMotion = !prefersReducedMotion && !isMobileViewport;
+const ioRootMargin = isMobileViewport ? '200px 0px' : '320px 0px';
+
+function onIdle(callback) {
+	if ('requestIdleCallback' in window) {
+		window.requestIdleCallback(callback, { timeout: 1200 });
+		return;
+	}
+
+	window.setTimeout(callback, 1);
+}
 
 /*==============================
     Nested jQuery Active List
@@ -47,15 +60,20 @@
 	=           Preloader          =
 ============================================*/
 function preloader() {
+	if (!$('.tg-preloader').length) {
+		return;
+	}
 	$('.tg-preloader').delay(0).fadeOut();
 };
 
 $(window).on('load', function () {
 	preloader();
     mainSlider();
-	wowAnimation();
-    splitText();
-    tg_title_animation();
+	if (canUseHeavyMotion) {
+		wowAnimation();
+		splitText();
+		tg_title_animation();
+	}
 });
 
 
@@ -93,9 +111,43 @@ if ($('.tgmobile__menu').length) {
 /*===========================================
      =          Data Background        =
 =============================================*/
-$("[data-background]").each(function () {
-	$(this).css("background-image", "url(" + $(this).attr("data-background") + ")")
-})
+function applyDataBackground(element) {
+	var background = element.getAttribute('data-background');
+
+	if (!background || element.dataset.bgLoaded === 'true') {
+		return;
+	}
+
+	element.style.backgroundImage = "url(" + background + ")";
+	element.dataset.bgLoaded = 'true';
+}
+
+var backgroundNodes = document.querySelectorAll('[data-background]');
+if (backgroundNodes.length) {
+	if ('IntersectionObserver' in window) {
+		var backgroundObserver = new IntersectionObserver(function (entries, observer) {
+			entries.forEach(function (entry) {
+				if (!entry.isIntersecting) {
+					return;
+				}
+
+				applyDataBackground(entry.target);
+				observer.unobserve(entry.target);
+			});
+		}, { rootMargin: ioRootMargin });
+
+		backgroundNodes.forEach(function (node) {
+			if (node.hasAttribute('data-bg-eager')) {
+				applyDataBackground(node);
+				return;
+			}
+
+			backgroundObserver.observe(node);
+		});
+	} else {
+		backgroundNodes.forEach(applyDataBackground);
+	}
+}
 
 /*===========================================
 	=      Global Navigation Active State   =
@@ -394,11 +446,16 @@ $swiperSelector.each(function(index) {
 	=        Third Slider Active		      =
 =============================================*/
 function mainSlider() {
+	if (!$('.slider-active').length || typeof $.fn.slick !== 'function') {
+		return;
+	}
+
 	$('.slider-active').slick({
 		autoplay: true,
 		autoplaySpeed: 5000,
 		dots: false,
 		fade: true,
+		lazyLoad: 'ondemand',
 		arrows: true,
 		prevArrow: '<button type="button" class="hero-slider-arrow hero-slider-prev" aria-label="Previous slide"><i class="fas fa-angle-left"></i></button>',
 		nextArrow: '<button type="button" class="hero-slider-arrow hero-slider-next" aria-label="Next slide"><i class="fas fa-angle-right"></i></button>',
@@ -412,160 +469,114 @@ function mainSlider() {
             },
 		]
 	})
-	.slickAnimation();
+	if (typeof $.fn.slickAnimation === 'function') {
+		$('.slider-active').slick('setPosition');
+		$('.slider-active').slickAnimation();
+	}
 }
 
 
 /*=============================================
 	=        Trending Active		      =
 =============================================*/
-var trendSwiper = new Swiper('.trendingNft-active', {
-    // Optional parameters
-    loop: true,
-    slidesPerView: 3,
-    spaceBetween: 30,
-    observer: true,
-    observeParents: true,
-    breakpoints: {
-        '1500': {
-            slidesPerView: 3,
-        },
-        '1200': {
-            slidesPerView: 3,
-        },
-        '992': {
-            slidesPerView: 2,
-        },
-        '768': {
-            slidesPerView: 2,
-        },
-        '576': {
-            slidesPerView: 1,
-        },
-        '0': {
-            slidesPerView: 1,
-        },
-    },
-    // Navigation arrows
-    navigation: {
-        nextEl: ".slider-button-next",
-        prevEl: ".slider-button-prev",
-    },
-});
+if (typeof window.Swiper === 'function' && $('.trendingNft-active').length) {
+	new Swiper('.trendingNft-active', {
+		loop: true,
+		slidesPerView: 3,
+		spaceBetween: 30,
+		observer: true,
+		observeParents: true,
+		breakpoints: {
+			'1500': { slidesPerView: 3 },
+			'1200': { slidesPerView: 3 },
+			'992': { slidesPerView: 2 },
+			'768': { slidesPerView: 2 },
+			'576': { slidesPerView: 1 },
+			'0': { slidesPerView: 1 }
+		},
+		navigation: {
+			nextEl: ".slider-button-next",
+			prevEl: ".slider-button-prev"
+		}
+	});
+}
 
 
 /*=============================================
 	=        Streamers Active		      =
 =============================================*/
-var streamersSwiper = new Swiper('.streamers-active', {
-    // Optional parameters
-    loop: true,
-    slidesPerView: 5,
-    spaceBetween: 20,
-    observer: true,
-    observeParents: true,
-    breakpoints: {
-        '1500': {
-            slidesPerView: 5,
-        },
-        '1200': {
-            slidesPerView: 4,
-        },
-        '992': {
-            slidesPerView: 4,
-        },
-        '768': {
-            slidesPerView: 3,
-        },
-        '576': {
-            slidesPerView: 2,
-        },
-        '0': {
-            slidesPerView: 1.5,
-            centeredSlides: true,
-            centeredSlidesBounds: true,
-        },
-    },
-    // If we need pagination
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    // Navigation arrows
-    navigation: {
-        nextEl: ".slider-button-next",
-        prevEl: ".slider-button-prev",
-    },
-});
+if (typeof window.Swiper === 'function' && $('.streamers-active').length) {
+	new Swiper('.streamers-active', {
+		loop: true,
+		slidesPerView: 5,
+		spaceBetween: 20,
+		observer: true,
+		observeParents: true,
+		breakpoints: {
+			'1500': { slidesPerView: 5 },
+			'1200': { slidesPerView: 4 },
+			'992': { slidesPerView: 4 },
+			'768': { slidesPerView: 3 },
+			'576': { slidesPerView: 2 },
+			'0': {
+				slidesPerView: 1.5,
+				centeredSlides: true,
+				centeredSlidesBounds: true
+			}
+		},
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true
+		},
+		navigation: {
+			nextEl: ".slider-button-next",
+			prevEl: ".slider-button-prev"
+		}
+	});
+}
 
 
 /*=============================================
 	=    		Brand Active		      =
 =============================================*/
-$('.brand-active').slick({
-	dots: false,
-	infinite: true,
-	speed: 500,
-	autoplay: true,
-	arrows: false,
-	slidesToShow: 6,
-	slidesToScroll: 2,
-	responsive: [
-		{
-			breakpoint: 1200,
-			settings: {
-				slidesToShow: 5,
-				slidesToScroll: 1,
-				infinite: true,
-			}
-		},
-		{
-			breakpoint: 992,
-			settings: {
-				slidesToShow: 4,
-				slidesToScroll: 1
-			}
-		},
-		{
-			breakpoint: 767,
-			settings: {
-				slidesToShow: 4,
-				slidesToScroll: 1,
-				arrows: false,
-			}
-		},
-		{
-			breakpoint: 575,
-			settings: {
-				slidesToShow: 3,
-				slidesToScroll: 1,
-				arrows: false,
-			}
-		},
-	]
-});
+if ($('.brand-active').length && typeof $.fn.slick === 'function') {
+	$('.brand-active').slick({
+		dots: false,
+		infinite: true,
+		speed: 500,
+		autoplay: true,
+		arrows: false,
+		slidesToShow: 6,
+		slidesToScroll: 2,
+		responsive: [
+			{ breakpoint: 1200, settings: { slidesToShow: 5, slidesToScroll: 1, infinite: true } },
+			{ breakpoint: 992, settings: { slidesToShow: 4, slidesToScroll: 1 } },
+			{ breakpoint: 767, settings: { slidesToShow: 4, slidesToScroll: 1, arrows: false } },
+			{ breakpoint: 575, settings: { slidesToShow: 3, slidesToScroll: 1, arrows: false } }
+		]
+	});
+}
 
 /*=============================================
 	=        testimonial Active		      =
 =============================================*/
-var streamersSwiper = new Swiper('.testimonial-active', {
-    // Optional parameters
-    loop: true,
-    slidesPerView: 1,
-    spaceBetween: 20,
-    observer: true,
-    observeParents: true,
-    // If we need pagination
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    // Navigation arrows
-    navigation: {
-        nextEl: ".slider-button-next",
-        prevEl: ".slider-button-prev",
-    },
-});
+if (typeof window.Swiper === 'function' && $('.testimonial-active').length) {
+	new Swiper('.testimonial-active', {
+		loop: true,
+		slidesPerView: 1,
+		spaceBetween: 20,
+		observer: true,
+		observeParents: true,
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true
+		},
+		navigation: {
+			nextEl: ".slider-button-next",
+			prevEl: ".slider-button-prev"
+		}
+	});
+}
 
 
 /*==========================================
@@ -644,38 +655,42 @@ let observer = new IntersectionObserver((entries, observer) => {
 /*=============================================
 	=           Brand effect         =
 =============================================*/
-var democol = $('.brand-active .col, .slider__brand-list li');
-democol.on({
-	mouseenter: function () {
-		$(this).siblings().stop().fadeTo(300, 0.3);
-	},
-	mouseleave: function () {
-		$(this).siblings().stop().fadeTo(300, 1);
-	}
-});
+if (!isMobileViewport) {
+	var democol = $('.brand-active .col, .slider__brand-list li');
+	democol.on({
+		mouseenter: function () {
+			$(this).siblings().stop().fadeTo(300, 0.3);
+		},
+		mouseleave: function () {
+			$(this).siblings().stop().fadeTo(300, 1);
+		}
+	});
+}
 
 
 /*==================================
           Button Icon Draw
 ====================================*/
 var $svgIconBox = $('.tg-svg');
-$svgIconBox.each(function() {
-    var $this = $(this),
-        $svgIcon = $this.find('.svg-icon'),
-        $id = $svgIcon.attr('id'),
-        $icon = $svgIcon.data('svg-icon');
-    var $vivus = new Vivus($id, { duration: 180, file: $icon });
-    $this.on('mouseenter', function () {
-        $vivus.reset().play();
-    });
-});
+if (typeof window.Vivus === 'function') {
+	$svgIconBox.each(function() {
+		var $this = $(this),
+			$svgIcon = $this.find('.svg-icon'),
+			$id = $svgIcon.attr('id'),
+			$icon = $svgIcon.data('svg-icon');
+		var $vivus = new Vivus($id, { duration: 180, file: $icon });
+		$this.on('mouseenter', function () {
+			$vivus.reset().play();
+		});
+	});
+}
 
 
 /*=============================================
 	=        parallaxMouse Active          =
 =============================================*/
 function parallaxMouse() {
-	if ($('.parallax').length) {
+	if ($('.parallax').length && typeof window.Parallax === 'function') {
 		var scene = document.querySelectorAll('.parallax');
 		for (var i = 0; i < scene.length; i++) {
 			var parallaxInstance = new Parallax(scene[i], {
@@ -693,44 +708,57 @@ parallaxMouse();
 /*=============================================
 	=    		Odometer Active  	       =
 =============================================*/
-$('.odometer').appear(function (e) {
-	var odo = $(".odometer");
-	odo.each(function () {
+var $odometer = $('.odometer');
+if ($odometer.length) {
+	$odometer.each(function () {
 		var countNumber = $(this).attr("data-count");
-		$(this).html(countNumber);
+		$(this).text(countNumber);
 	});
-});
+
+	if (typeof $.fn.appear === 'function') {
+		$odometer.appear(function () {
+			$odometer.each(function () {
+				$(this).text($(this).attr("data-count"));
+			});
+		});
+	}
+}
 
 
 /*=============================================
 	=    		Magnific Popup		      =
 =============================================*/
-$('.popup-image').magnificPopup({
-	type: 'image',
-	gallery: {
-		enabled: true
-	},
-    zoom: {
-        enabled: false,
-        duration: 300, // don't foget to change the duration also in CSS
-        opener: function(element) {
-            return element.find('img');
-        }
-    }
-});
+if (typeof $.fn.magnificPopup === 'function') {
+	$('.popup-image').magnificPopup({
+		type: 'image',
+		gallery: {
+			enabled: true
+		},
+		zoom: {
+			enabled: false,
+			duration: 300,
+			opener: function(element) {
+				return element.find('img');
+			}
+		}
+	});
 
-/* magnificPopup video view */
-$('.popup-video').magnificPopup({
-	type: 'iframe'
-});
+	$('.popup-video').magnificPopup({
+		type: 'iframe'
+	});
+}
 
 
 /*=============================================
 	=          Jarallax Active         =
 =============================================*/
-$('.tg-jarallax').jarallax({
-    speed: 0.2,
-});
+if (typeof $.fn.jarallax === 'function' && !isMobileViewport) {
+	onIdle(function () {
+		$('.tg-jarallax').jarallax({
+			speed: 0.2
+		});
+	});
+}
 
 
 /*=============================================
@@ -750,7 +778,7 @@ $('[data-countdown]').each(function () {
 (function () {
   var parallax = $('.tg-parallax');
 
-  if (parallax.length) {
+  if (parallax.length && typeof window.simpleParallax === 'function' && canUseHeavyMotion) {
     parallax.each(function () {
       var _this = $(this),
         scale = _this.data('scale'),
@@ -884,6 +912,9 @@ $('.faq__wrapper .accordion-item').on('click', function(){
 	=          SplitText Active         =
 =============================================*/
 function splitText() {
+	if (typeof $.fn.waypoint !== 'function') {
+		return;
+	}
     $(".tg__animate-text").each(function () {
         var a = $(this),
             d = a.text().split(""),
@@ -917,13 +948,18 @@ if($(window).width()<768){
 /*=============================================
 	=          GSAP Active         =
 =============================================*/
-gsap.registerPlugin(ScrollTrigger, SplitText);
-gsap.config({
-    nullTargetWarn: false,
-    trialWarn: false
-});
+if (window.gsap && window.ScrollTrigger && window.SplitText) {
+	gsap.registerPlugin(ScrollTrigger, SplitText);
+	gsap.config({
+		nullTargetWarn: false,
+		trialWarn: false
+	});
+}
 
 function tg_title_animation() {
+	if (!(window.gsap && window.ScrollTrigger && window.SplitText) || !canUseHeavyMotion) {
+		return;
+	}
 
     var tg_var = jQuery('.tg__heading-wrapper');
     if (!tg_var.length) {
@@ -982,13 +1018,18 @@ function tg_title_animation() {
         });
     });
 }
-ScrollTrigger.addEventListener("refresh", tg_title_animation);
+if (window.ScrollTrigger) {
+	ScrollTrigger.addEventListener("refresh", tg_title_animation);
+}
 
 
 /*=============================================
 	=    		 Wow Active  	         =
 =============================================*/
 function wowAnimation() {
+	if (typeof window.WOW !== 'function' || !canUseHeavyMotion) {
+		return;
+	}
 	var wow = new WOW({
 		boxClass: 'wow',
 		animateClass: 'animated',
