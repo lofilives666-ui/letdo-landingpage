@@ -68,7 +68,13 @@ function preloader() {
 
 $(window).on('load', function () {
 	preloader();
-    mainSlider();
+    if (isMobileViewport) {
+		onIdle(function () {
+			window.setTimeout(mainSlider, 600);
+		});
+	} else {
+		mainSlider();
+	}
 	if (canUseHeavyMotion) {
 		wowAnimation();
 		splitText();
@@ -450,6 +456,10 @@ function mainSlider() {
 		return;
 	}
 
+	if ($('.slider-active').hasClass('slick-initialized')) {
+		return;
+	}
+
 	$('.slider-active').slick({
 		autoplay: true,
 		autoplaySpeed: 5000,
@@ -468,7 +478,7 @@ function mainSlider() {
                 }
             },
 		]
-	})
+	});
 	if (typeof $.fn.slickAnimation === 'function') {
 		$('.slider-active').slick('setPosition');
 		$('.slider-active').slickAnimation();

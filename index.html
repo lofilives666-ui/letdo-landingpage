@@ -58,18 +58,25 @@
         })();
     </script>
     <link rel="preload" as="image" href="assets/img/slider/slider_bg.webp" fetchpriority="high">
-    <link rel="preload" as="image" href="assets/img/slider/slider_img01.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/img/slider/slider_img01-594.webp" imagesrcset="assets/img/slider/slider_img01-420.webp 420w, assets/img/slider/slider_img01-594.webp 594w" imagesizes="(max-width: 767px) 382px, 495px" fetchpriority="high">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/flaticon.css">
     <link rel="stylesheet" href="assets/css/spacing.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="preload" as="style" href="assets/css/fontawesome-all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="assets/css/slick.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="assets/css/flaticon.css" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" as="style" href="assets/css/magnific-popup.css" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" as="style" href="assets/css/swiper-bundle.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="assets/css/slick.css">
+        <link rel="stylesheet" href="assets/css/flaticon.css">
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="assets/css/swiper-bundle.css">
+    </noscript>
     <style>
         .tech-brand-link {
             flex-direction: column;
@@ -168,6 +175,14 @@
                 display: none !important;
             }
         }
+        .slider-active:not(.slick-initialized) .single-slider:not(:first-child) {
+            display: none;
+        }
+        .logo img,
+        .nav-logo img,
+        .footer-el-logo img {
+            height: auto;
+        }
         .main--area > section:not(.slider__area) {
             content-visibility: auto;
             contain-intrinsic-size: 1px 960px;
@@ -249,7 +264,7 @@
                         <div class="tgmenu__wrap">
                             <nav class="tgmenu__nav">
                                 <div class="logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.webp" alt="Logo"></a>
+                                    <a href="index.html"><img src="assets/img/logo/logo-180.webp" srcset="assets/img/logo/logo-180.webp 180w, assets/img/logo/logo-360.webp 360w" sizes="177px" alt="Logo" width="177" height="47" fetchpriority="high" decoding="async"></a>
                                 </div>
                                 <div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-xl-flex">
                                     <ul class="navigation">
@@ -433,7 +448,7 @@
             <nav class="tgmobile__menu-box">
                 <div class="close-btn"><i class="flaticon-swords-in-cross-arrangement"></i></div>
                 <div class="nav-logo">
-                    <a href="index.html"><img src="assets/img/logo/logo.webp" alt="Logo"></a>
+                    <a href="index.html"><img src="assets/img/logo/logo-180.webp" srcset="assets/img/logo/logo-180.webp 180w, assets/img/logo/logo-360.webp 360w" sizes="177px" alt="Logo" width="177" height="47" decoding="async"></a>
                 </div>
                 <div class="tgmobile__search">
                     <form action="#">
@@ -493,7 +508,7 @@
             <div class="offCanvas__body">
                 <div class="offCanvas__top">
                     <div class="offCanvas__logo logo">
-                        <a href="index.html"><img src="assets/img/logo/logo.webp" alt="Logo"></a>
+                        <a href="index.html"><img src="assets/img/logo/logo-180.webp" srcset="assets/img/logo/logo-180.webp 180w, assets/img/logo/logo-360.webp 360w" sizes="177px" alt="Logo" width="177" height="47" decoding="async"></a>
                     </div>
                     <div class="offCanvas__toggle">
                         <i class="flaticon-swords-in-cross-arrangement"></i>
@@ -576,7 +591,7 @@
                             </div>
                             <div class="col-xxl-6 col-xl-5 col-lg-6">
                                 <div class="slider__img text-center">
-                                    <img src="assets/img/slider/slider_img01.webp" data-magnetic alt="Game development showcase" width="594" height="810" style="width:594px;height:810px;object-fit:contain;" fetchpriority="high" decoding="async">
+                                    <img src="assets/img/slider/slider_img01-594.webp" srcset="assets/img/slider/slider_img01-420.webp 420w, assets/img/slider/slider_img01-594.webp 594w" sizes="(max-width: 767px) 382px, 495px" data-magnetic alt="Game development showcase" width="594" height="810" style="width:594px;height:810px;object-fit:contain;" fetchpriority="high" loading="eager" decoding="async">
                                 </div>
                             </div>
                         </div>
@@ -2192,7 +2207,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                     <div class="col-md-4 col-sm-5 order-0 order-md-2">
                         <div class="footer-el-widget text-start text-md-center widget_nav_menu">
                             <div class="footer-el-logo mb-35">
-                                <a href="index.html"><img src="assets/img/logo/logo.webp" alt="Letsdo"></a>
+                                <a href="index.html"><img src="assets/img/logo/logo-180.webp" srcset="assets/img/logo/logo-180.webp 180w, assets/img/logo/logo-360.webp 360w" sizes="177px" alt="Letsdo" width="177" height="47" loading="lazy" decoding="async"></a>
                             </div>
                             <div class="footer-el-menu">
                                 <ul class="list-wrap">
