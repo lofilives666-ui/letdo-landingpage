@@ -536,20 +536,21 @@
                         <div class="contact__content">
                             <h2 class="overlay-title"><span>join us</span></h2>
                             <h2 class="title">CONTACT US AND FIND YOUR Letsdo</h2>
-                            <p>Axcepteur sint occaecat atat non proident, sunt culpa officia deserunt mollit anim id est labor umLor emdolor</p>
+                            <p>Have a question or need help with our services? We’re here to help you get started quickly.
+                            </p>
                             <div class="footer-el-widget">
                                 <h4 class="title">information</h4>
                                 <ul class="list-wrap">
                                     <li><a href="tel:+919677913334">+91 9677913334</a></li>
-                                    <li><a href="mailto:info@letsdocreative.com">info@letsdocreative.com</a></li>
-                                    <li>Coimbatore, India</li>
+                                    <li><a href="mailto:info@letesdocreative.com">info@letesdocreative.com</a></li>
+                                    <li>Coimbatore, Chennai</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-10">
                         <div class="contact__form-wrap">
-                            <form id="contact-form" action="assets/mail.php" method="POST">
+                            <form id="contact-form" action="/api/contact" method="POST">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="input-grp">
@@ -562,14 +563,101 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="input-grp">
-                                    <input name="phone" type="tel" placeholder="Mobile Number *" inputmode="numeric" autocomplete="tel" pattern="^\+?[0-9]{7,15}$" title="Enter a valid mobile number." required>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="input-grp select-grp">
+                                            <select name="country_code" required>
+                                                <option value="+91" selected>+91 (IN)</option>
+                                                <option value="+1">+1 (US/CA)</option>
+                                                <option value="+44">+44 (UK)</option>
+                                                <option value="+61">+61 (AU)</option>
+                                                <option value="+65">+65 (SG)</option>
+                                                <option value="+971">+971 (UAE)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="input-grp">
+                                            <input name="phone" type="tel" placeholder="Mobile Number *" inputmode="numeric" autocomplete="tel-national" pattern="^[0-9]{6,14}$" title="Enter a valid mobile number without country code." required>
+                                        </div>
+                                    </div>
                                 </div>
-                                <input type="hidden" name="service" value="Hyper Casual Games">
+                                <div class="input-grp select-grp">
+                                    <select name="service" required>
+                                        <option value="" selected disabled>Select Service / Product *</option>
+                                        <option value="ERP">ERP</option>
+                                        <option value="CMS">CMS</option>
+                                        <option value="SAAS Model">SAAS Model</option>
+                                        <option value="AiTrainer (White-label Product)">AiTrainer (White-label Product)</option>
+                                        <option value="GymSuperApp (White-label Product)">GymSuperApp (White-label Product)</option>
+                                        <option value="Ecommerce White-label Product">Ecommerce White-label Product</option>
+                                        <option value="Casual Games">Casual Games</option>
+                                        <option value="Hyper Casual Games">Hyper Casual Games</option>
+                                        <option value="Casino Games">Casino Games</option>
+                                        <option value="Mini Games">Mini Games</option>
+                                        <option value="Mobile Games">Mobile Games</option>
+                                        <option value="Web Games">Web Games</option>
+                                        <option value="PC Games">PC Games</option>
+                                        <option value="Console Games">Console Games</option>
+                                        <option value="Multiplayer Games">Multiplayer Games</option>
+                                        <option value="Telegram Games">Telegram Games</option>
+                                        <option value="VR Game Development">VR Game Development</option>
+                                        <option value="AR Game Development">AR Game Development</option>
+                                        <option value="Metaverse Development">Metaverse Development</option>
+                                        <option value="Virtual Reality Experiences">Virtual Reality Experiences</option>
+                                        <option value="Augmented Reality Apps">Augmented Reality Apps</option>
+                                        <option value="3D Interactive Environments">3D Interactive Environments</option>
+                                        <option value="Blockchain Game Development">Blockchain Game Development</option>
+                                        <option value="Web3 Game Development">Web3 Game Development</option>
+                                        <option value="NFT Game Development">NFT Game Development</option>
+                                        <option value="Play-to-Earn Games">Play-to-Earn Games</option>
+                                        <option value="Smart Contract Development">Smart Contract Development</option>
+                                        <option value="Token &amp; Wallet Integration">Token &amp; Wallet Integration</option>
+                                        <option value="IDO">IDO</option>
+                                        <option value="ICO">ICO</option>
+                                        <option value="3D Game Art">3D Game Art</option>
+                                        <option value="2D Game Art">2D Game Art</option>
+                                        <option value="Character Design">Character Design</option>
+                                        <option value="Environment Design">Environment Design</option>
+                                        <option value="Animation 2D &amp; 3D">Animation 2D &amp; 3D</option>
+                                        <option value="UI / UX Design">UI / UX Design</option>
+                                        <option value="Website Development">Website Development</option>
+                                        <option value="Web App Development">Web App Development</option>
+                                        <option value="Landing Page Design">Landing Page Design</option>
+                                        <option value="CMS Development">CMS Development</option>
+                                        <option value="E-commerce Development">E-commerce Development</option>
+                                        <option value="Backend &amp; API Development">Backend &amp; API Development</option>
+                                        <option value="Android App Development">Android App Development</option>
+                                        <option value="iOS App Development">iOS App Development</option>
+                                        <option value="Cross-Platform Apps">Cross-Platform Apps</option>
+                                        <option value="UI / UX for Mobile Apps">UI / UX for Mobile Apps</option>
+                                        <option value="App Maintenance &amp; Support">App Maintenance &amp; Support</option>
+                                        <option value="Logo Design">Logo Design</option>
+                                        <option value="Brand Identity Design">Brand Identity Design</option>
+                                        <option value="Marketing Creatives">Marketing Creatives</option>
+                                        <option value="Social Media Creatives">Social Media Creatives</option>
+                                        <option value="Presentation Design">Presentation Design</option>
+                                        <option value="Promotional Videos">Promotional Videos</option>
+                                        <option value="Game Trailers">Game Trailers</option>
+                                        <option value="Motion Graphics">Motion Graphics</option>
+                                        <option value="Reels &amp; Shorts Editing">Reels &amp; Shorts Editing</option>
+                                        <option value="YouTube Video Editing">YouTube Video Editing</option>
+                                        <option value="Social Media Strategy">Social Media Strategy</option>
+                                        <option value="Content Creation">Content Creation</option>
+                                        <option value="Paid Ads Campaigns">Paid Ads Campaigns</option>
+                                        <option value="Influencer Marketing">Influencer Marketing</option>
+                                        <option value="Community Management">Community Management</option>
+                                    </select>
+                                </div>
+                                <input type="hidden" name="subject" value="Contact Page Enquiry">
+                                <input type="hidden" name="form_started_at" value="">
+                                <input type="hidden" name="g-recaptcha-response" value="">
+                                <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;">
                                 <div class="input-grp message-grp">
-                                    <textarea name="message" cols="30" rows="10" placeholder="Enter your message"></textarea>
+                                    <textarea name="message" cols="30" rows="10" placeholder="Enter your message"
+                                        required></textarea>
                                 </div>
-                                <button class="submit-btn">Submit Now</button>
+                                <button class="submit-btn" type="submit">Submit Now</button>
                             </form>
                             <p class="ajax-response"></p>
                         </div>
