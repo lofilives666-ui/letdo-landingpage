@@ -9639,6 +9639,24 @@ Default Tab Style
 .brand__link img {
   max-height: 100%;
 }
+.tech-brand-link {
+  flex-direction: column;
+  height: auto;
+  gap: 10px;
+  text-decoration: none;
+}
+.tech-brand-link img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+.tech-brand-link span {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
 .brand-active .col {
   padding-left: 15px;
   padding-right: 15px;
