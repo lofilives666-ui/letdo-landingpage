@@ -5,6 +5,8 @@ const SUBMISSION_WINDOW_MS = 2 * 60 * 60 * 1000;
 const MIN_SUBMIT_DELAY_MS = 4000;
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 const MAX_SUBMISSIONS_PER_WINDOW = 3;
+const RECAPTCHA_MIN_SCORE = 0.5;
+const RECAPTCHA_ACTION = 'contact_form';
 const submissionStore = new Map();
 
 function parseBody(req) {
@@ -184,6 +186,20 @@ async function verifyRecaptchaToken(token, clientIp) {
 
     const payload = await response.json();
     if (payload.success) {
+      if (typeof payload.action === 'string' && payload.action !== RECAPTCHA_ACTION) {
+        return {
+          ok: false,
+          status: 400,
+          message: 'Spam protection action mismatch. Please try again.',
+        };
+      }
+      if (typeof payload.score === 'number' && payload.score < RECAPTCHA_MIN_SCORE) {
+        return {
+          ok: false,
+          status: 400,
+          message: 'Spam protection check failed. Please try again.',
+        };
+      }
       return { ok: true };
     }
 
