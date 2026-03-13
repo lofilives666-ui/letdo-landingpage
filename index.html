@@ -288,6 +288,17 @@
             font-size: 20px;
             line-height: 1;
         }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
         .slider__area {
             position: relative;
         }
@@ -708,14 +719,29 @@
                 gap: 8px;
             }
             .mobile-hero-dot {
-                width: 9px;
-                height: 9px;
+                width: 24px;
+                height: 24px;
                 padding: 0;
                 border: 0;
                 border-radius: 999px;
+                background: transparent;
+                position: relative;
+            }
+            .mobile-hero-dot::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 9px;
+                height: 9px;
+                border-radius: 999px;
                 background: rgba(255, 255, 255, 0.28);
+                transform: translate(-50%, -50%);
             }
             .mobile-hero-dot.is-active {
+                width: 24px;
+            }
+            .mobile-hero-dot.is-active::before {
                 width: 24px;
                 background: #45f882;
             }
@@ -775,7 +801,7 @@
 
 
     <!-- scroll-top -->
-    <button class="scroll__top scroll-to-target" data-target="html">
+    <button class="scroll__top scroll-to-target" data-target="html" aria-label="Scroll to top">
         <span class="scroll__top-label" aria-hidden="true">&#8593;</span>
     </button>
     <!-- scroll-top-end-->
@@ -1045,7 +1071,7 @@
                 <div class="offCanvas__content">
                     <h2 class="title">Best Game <span>Development Company</span></h2>
                     <div class="offCanvas__contact">
-                        <h4 class="small-title">CONTACT US</h4>
+                        <p class="small-title">CONTACT US</p>
                         <ul class="offCanvas__contact-list list-wrap">
                             <li><a href="tel:+919677913334">+91 9677913334</a></li>
                             <li><a href="mailto:info@letesdocreative.com">info@letesdocreative.com</a></li>
@@ -1053,7 +1079,7 @@
                         </ul>
                     </div>
                     <div class="offCanvas__newsletter">
-                        <h4 class="small-title">Subscribe for Newsletter</h4>
+                        <p class="small-title">Subscribe for Newsletter</p>
                         <form action="#" class="offCanvas__newsletter-form">
                             <input type="email" placeholder="Get News & Updates">
                             <button type="submit"><i class="flaticon-send"></i></button>
@@ -1098,7 +1124,7 @@
                         <div class="row justify-content-between">
                             <div class="col-lg-6">
                                 <div class="slider__content">
-                                    <h6 class="sub-title wow fadeInUp" data-wow-delay=".2s">GAME DEVELOPMENT STUDIO</h6>
+                                    <p class="sub-title wow fadeInUp" data-wow-delay=".2s">GAME DEVELOPMENT STUDIO</p>
                                     <h1 class="title title--product wow fadeInUp" data-wow-delay=".5s">GAME DEVELOPMENT</h1>
                                     <p class="wow fadeInUp" data-wow-delay=".8s">NEXT-GEN GAMES</p>
                                     <div class="slider__btn wow fadeInUp" data-wow-delay="1.2s">
@@ -1130,7 +1156,7 @@
                         <div class="row justify-content-between">
                             <div class="col-lg-6">
                                 <div class="slider__content slider__content--product">
-                                    <h6 class="sub-title wow fadeInUp" data-wow-delay=".2s">WHITE-LABEL PRODUCT</h6>
+                                    <p class="sub-title wow fadeInUp" data-wow-delay=".2s">WHITE-LABEL PRODUCT</p>
                                     <h2 class="title title--product wow fadeInUp" data-wow-delay=".5s">AITRAINER</h2>
                                     <p class="wow fadeInUp" data-wow-delay=".8s">AI-POWERED LEARNING & TRAINING PLATFORM</p>
                                     <div class="slider__btn wow fadeInUp" data-wow-delay="1.2s">
@@ -1162,7 +1188,7 @@
                         <div class="row justify-content-between">
                             <div class="col-lg-6">
                                 <div class="slider__content slider__content--product">
-                                    <h6 class="sub-title wow fadeInUp" data-wow-delay=".2s">WHITE-LABEL PRODUCT</h6>
+                                    <p class="sub-title wow fadeInUp" data-wow-delay=".2s">WHITE-LABEL PRODUCT</p>
                                     <h2 class="title title--product wow fadeInUp" data-wow-delay=".5s">GYMSUPERAPP</h2>
                                     <p class="wow fadeInUp" data-wow-delay=".8s">SMART GYM OPERATIONS, BILLING & RETENTION</p>
                                     <div class="slider__btn wow fadeInUp" data-wow-delay="1.2s">
@@ -1194,7 +1220,7 @@
                         <div class="row justify-content-between">
                             <div class="col-lg-6">
                                 <div class="slider__content slider__content--product">
-                                    <h6 class="sub-title wow fadeInUp" data-wow-delay=".2s">ECOMMERCE SERVICE</h6>
+                                    <p class="sub-title wow fadeInUp" data-wow-delay=".2s">ECOMMERCE SERVICE</p>
                                     <h2 class="title title--product wow fadeInUp" data-wow-delay=".5s">ECOMMERCE</h2>
                                     <p class="wow fadeInUp" data-wow-delay=".8s">STORE DEVELOPMENT, PAYMENT INTEGRATION & GROWTH AUTOMATION</p>
                                     <div class="slider__btn wow fadeInUp" data-wow-delay="1.2s">
@@ -1457,26 +1483,26 @@
                         <div class="services__images">
                             <div class="services__images-item active">
                                 <img src="assets/img/others/services_img01.webp" alt="img" loading="lazy" decoding="async">
-                                <a href="services-details.html" class="services__link">
-                                    <i class="flaticon-next"></i>
+                                <a href="services-details.html" class="services__link" aria-label="View 2 Year Experience service details">
+                                    <i class="flaticon-next" aria-hidden="true"></i>
                                 </a>
                             </div>
                             <div class="services__images-item">
                                 <img src="assets/img/others/services_img02.webp" alt="img" loading="lazy" decoding="async">
-                                <a href="services-details.html" class="services__link">
-                                    <i class="flaticon-next"></i>
+                                <a href="services-details.html" class="services__link" aria-label="View Expert Teams service details">
+                                    <i class="flaticon-next" aria-hidden="true"></i>
                                 </a>
                             </div>
                             <div class="services__images-item">
                                 <img src="assets/img/others/services_img03.webp" alt="img" loading="lazy" decoding="async">
-                                <a href="services-details.html" class="services__link">
-                                    <i class="flaticon-next"></i>
+                                <a href="services-details.html" class="services__link" aria-label="View Best NFT Game service details">
+                                    <i class="flaticon-next" aria-hidden="true"></i>
                                 </a>
                             </div>
                             <div class="services__images-item">
                                 <img src="assets/img/others/services_img04.webp" alt="img" loading="lazy" decoding="async">
-                                <a href="services-details.html" class="services__link">
-                                    <i class="flaticon-next"></i>
+                                <a href="services-details.html" class="services__link" aria-label="View Worldwide Client service details">
+                                    <i class="flaticon-next" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
@@ -1946,7 +1972,7 @@
                         <div class="about__funFact-trophy">
                             <div class="icon"><img src="assets/img/icons/trophy.webp" alt="trophy" loading="lazy" decoding="async" fetchpriority="low"></div>
                             <div class="content">
-                                <h5>AR & VR </h5>
+                                <p class="title">AR & VR</p>
                                 <span>Development</span>
                             </div>
                         </div>
@@ -2194,7 +2220,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                                             <a href="shop-details.html"><img src="assets/img/nft/nft_avatar01.webp" alt="img"></a>
                                         </div>
                                         <div class="info">
-                                            <h6 class="name">Crypto Max</h6>
+                                            <p class="name">Crypto Max</p>
                                             <a href="shop-details.html" class="userName">@Jon Max</a>
                                         </div>
                                     </div>
@@ -2208,7 +2234,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                                 <div class="trendingNft__item-bottom">
                                     <div class="trendingNft__item-price">
                                         <span class="bid">Last Bid</span>
-                                        <h6 class="eth"><i class="fab fa-ethereum"></i> 1.002 <span>Eth</span></h6>
+                                        <p class="eth"><i class="fab fa-ethereum" aria-hidden="true"></i> 1.002 <span>Eth</span></p>
                                     </div>
                                     <a href="shop-details.html" class="bid-btn">Bid <i class="fas fa-long-arrow-alt-right"></i></a>
                                 </div>
@@ -2222,7 +2248,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                                             <a href="shop-details.html"><img src="assets/img/nft/nft_avatar02.webp" alt="img"></a>
                                         </div>
                                         <div class="info">
-                                            <h6 class="name">Golden Crypto</h6>
+                                            <p class="name">Golden Crypto</p>
                                             <a href="shop-details.html" class="userName">@Jon Max</a>
                                         </div>
                                     </div>
@@ -2236,7 +2262,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                                 <div class="trendingNft__item-bottom">
                                     <div class="trendingNft__item-price">
                                         <span class="bid">Last Bid</span>
-                                        <h6 class="eth"><i class="fab fa-ethereum"></i> 1.004 <span>Eth</span></h6>
+                                        <p class="eth"><i class="fab fa-ethereum" aria-hidden="true"></i> 1.004 <span>Eth</span></p>
                                     </div>
                                     <a href="shop-details.html" class="bid-btn">Bid <i class="fas fa-long-arrow-alt-right"></i></a>
                                 </div>
@@ -2250,7 +2276,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                                             <a href="shop-details.html"><img src="assets/img/nft/nft_avatar03.webp" alt="img"></a>
                                         </div>
                                         <div class="info">
-                                            <h6 class="name">Black Crypto</h6>
+                                            <p class="name">Black Crypto</p>
                                             <a href="shop-details.html" class="userName">@Jon Max</a>
                                         </div>
                                     </div>
@@ -2264,7 +2290,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                                 <div class="trendingNft__item-bottom">
                                     <div class="trendingNft__item-price">
                                         <span class="bid">Last Bid</span>
-                                        <h6 class="eth"><i class="fab fa-ethereum"></i> 1.005 <span>Eth</span></h6>
+                                        <p class="eth"><i class="fab fa-ethereum" aria-hidden="true"></i> 1.005 <span>Eth</span></p>
                                     </div>
                                     <a href="shop-details.html" class="bid-btn">Bid <i class="fas fa-long-arrow-alt-right"></i></a>
                                 </div>
@@ -2278,7 +2304,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                                             <a href="shop-details.html"><img src="assets/img/nft/nft_avatar02.webp" alt="img"></a>
                                         </div>
                                         <div class="info">
-                                            <h6 class="name">Luck Crypto</h6>
+                                            <p class="name">Luck Crypto</p>
                                             <a href="shop-details.html" class="userName">@Jon Max</a>
                                         </div>
                                     </div>
@@ -2292,7 +2318,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                                 <div class="trendingNft__item-bottom">
                                     <div class="trendingNft__item-price">
                                         <span class="bid">Last Bid</span>
-                                        <h6 class="eth"><i class="fab fa-ethereum"></i> 1.005 <span>Eth</span></h6>
+                                        <p class="eth"><i class="fab fa-ethereum" aria-hidden="true"></i> 1.005 <span>Eth</span></p>
                                     </div>
                                     <a href="shop-details.html" class="bid-btn">Bid <i class="fas fa-long-arrow-alt-right"></i></a>
                                 </div>
@@ -2306,7 +2332,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                                             <a href="shop-details.html"><img src="assets/img/nft/nft_avatar03.webp" alt="img"></a>
                                         </div>
                                         <div class="info">
-                                            <h6 class="name">King Crypto</h6>
+                                            <p class="name">King Crypto</p>
                                             <a href="shop-details.html" class="userName">@Jon Max</a>
                                         </div>
                                     </div>
@@ -2320,7 +2346,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                                 <div class="trendingNft__item-bottom">
                                     <div class="trendingNft__item-price">
                                         <span class="bid">Last Bid</span>
-                                        <h6 class="eth"><i class="fab fa-ethereum"></i> 1.005 <span>Eth</span></h6>
+                                        <p class="eth"><i class="fab fa-ethereum" aria-hidden="true"></i> 1.005 <span>Eth</span></p>
                                     </div>
                                     <a href="shop-details.html" class="bid-btn">Bid <i class="fas fa-long-arrow-alt-right"></i></a>
                                 </div>
@@ -2416,8 +2442,8 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                         <div class="services__images">
                             <div class="services__images-item active">
                                 <img src="assets/img/others/faq.webp" alt="img" loading="lazy" decoding="async">
-                                <a href="contact.html" class="services__link">
-                                    <i class="flaticon-next"></i>
+                                <a href="contact.html" class="services__link" aria-label="Contact Letsdo Creative">
+                                    <i class="flaticon-next" aria-hidden="true"></i>
                                 </a>
                             </div>
                                                     </div>
@@ -2436,7 +2462,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                             <h2 class="title">CONTACT US AND FIND YOUR Letsdo</h2>
                             <p>Tell us your product idea and business goals. Our team will help you plan, build, and launch a high-performance digital solution for your brand.</p>
                             <div class="footer-el-widget">
-                                <h4 class="title">information</h4>
+                                <p class="title">information</p>
                                 <ul class="list-wrap">
                                     <li><a href="tel:+919677913334">+91 9677913334</a></li>
                                     <li><a href="mailto:info@letesdocreative.com">info@letesdocreative.com</a></li>
@@ -2463,7 +2489,8 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="input-grp select-grp">
-                                            <select name="country_code" required>
+                                            <label class="sr-only" for="country_code">Country code</label>
+                                            <select id="country_code" name="country_code" aria-label="Country code" required>
                                                 <option value="+91" selected>+91 (IN)</option>
                                                 <option value="+1">+1 (US/CA)</option>
                                                 <option value="+44">+44 (UK)</option>
@@ -2480,7 +2507,8 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                                     </div>
                                 </div>
                                 <div class="input-grp select-grp">
-                                    <select name="service" required>
+                                    <label class="sr-only" for="service">Service or product</label>
+                                    <select id="service" name="service" aria-label="Service or product" required>
                                         <option value="" selected disabled>Select Service / Product *</option>
                                         <option value="ERP">ERP</option>
                                         <option value="CMS">CMS</option>
@@ -2659,47 +2687,47 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                 <div class="row brand-active">
                     <div class="col">
                         <div class="brand__item">
-                            <a href="web-app-evelopment.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/typescript.svg" alt="TypeScript"><span>TypeScript</span></a>
+                            <a href="web-app-evelopment.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/typescript.svg" alt="" aria-hidden="true"><span>TypeScript</span></a>
                         </div>
                     </div>
                     <div class="col">
                         <div class="brand__item">
-                            <a href="website-development.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/react.svg" alt="React"><span>React</span></a>
+                            <a href="website-development.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/react.svg" alt="" aria-hidden="true"><span>React</span></a>
                         </div>
                     </div>
                     <div class="col">
                         <div class="brand__item">
-                            <a href="landing-page-design.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/nextdotjs.svg" alt="Next.js"><span>Next.js</span></a>
+                            <a href="landing-page-design.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/nextdotjs.svg" alt="" aria-hidden="true"><span>Next.js</span></a>
                         </div>
                     </div>
                     <div class="col">
                         <div class="brand__item">
-                            <a href="backend-API-development.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/nodedotjs.svg" alt="Node.js"><span>Node.js</span></a>
+                            <a href="backend-API-development.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/nodedotjs.svg" alt="" aria-hidden="true"><span>Node.js</span></a>
                         </div>
                     </div>
                     <div class="col">
                         <div class="brand__item">
-                            <a href="App-maintenance-support.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/python.svg" alt="Python"><span>Python</span></a>
+                            <a href="App-maintenance-support.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/python.svg" alt="" aria-hidden="true"><span>Python</span></a>
                         </div>
                     </div>
                     <div class="col">
                         <div class="brand__item">
-                            <a href="cross-platform.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/docker.svg" alt="Docker"><span>Docker</span></a>
+                            <a href="cross-platform.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/docker.svg" alt="" aria-hidden="true"><span>Docker</span></a>
                         </div>
                     </div>
                     <div class="col">
                         <div class="brand__item">
-                            <a href="CMS-development.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/kubernetes.svg" alt="Kubernetes"><span>Kubernetes</span></a>
+                            <a href="CMS-development.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/kubernetes.svg" alt="" aria-hidden="true"><span>Kubernetes</span></a>
                         </div>
                     </div>
                     <div class="col">
                         <div class="brand__item">
-                            <a href="mobile-game.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/unity.svg" alt="Unity"><span>Unity</span></a>
+                            <a href="mobile-game.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/unity.svg" alt="" aria-hidden="true"><span>Unity</span></a>
                         </div>
                     </div>
                     <div class="col">
                         <div class="brand__item">
-                            <a href="VR-game-development.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/unrealengine.svg" alt="Unreal Engine"><span>Unreal</span></a>
+                            <a href="VR-game-development.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/unrealengine.svg" alt="" aria-hidden="true"><span>Unreal</span></a>
                         </div>
                     </div>
                 </div>
@@ -2729,7 +2757,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                 <div class="row">
                     <div class="col-md-4 col-sm-7 order-1 order-md-0">
                         <div class="footer-el-widget">
-                            <h4 class="title">information</h4>
+                            <p class="title">information</p>
                             <ul class="list-wrap">
                                 <li><a href="tel:+919677913334">+91 9677913334</a></li>
                                 <li><a href="mailto:info@letesdocreative.com">info@letesdocreative.com</a></li>
@@ -2753,7 +2781,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                     </div>
                     <div class="col-md-4 col-sm-7 order-3">
                         <div class="footer-el-widget text-start text-md-end">
-                            <h4 class="title">Book Call Now</h4>
+                            <p class="title">Book Call Now</p>
                             <ul class="list-wrap">
                                 <li><a href="tel:+919677913334">+91 9677913334</a></li>
                                 <li><a href="mailto:info@letesdocreative.com">info@letesdocreative.com</a></li>

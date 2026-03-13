@@ -4776,7 +4776,8 @@ Default Tab Style
 .about__funFact-trophy .content {
   text-align: right;
 }
-.about__funFact-trophy .content h5 {
+.about__funFact-trophy .content h5,
+.about__funFact-trophy .content .title {
   margin: 0 0 2px;
   font-size: 22px;
 }
