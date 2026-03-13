@@ -1,6 +1,11 @@
 const nodemailer = require('nodemailer');
 const querystring = require('querystring');
 const GMAIL_ADDRESS = 'letsdoveera@gmail.com';
+const SUBMISSION_WINDOW_MS = 2 * 60 * 60 * 1000;
+const MIN_SUBMIT_DELAY_MS = 4000;
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+const MAX_SUBMISSIONS_PER_WINDOW = 3;
+const submissionStore = new Map();
 
 function parseBody(req) {
   if (!req.body) return {};
@@ -88,6 +93,118 @@ ${message}
   return { html, text };
 }
 
+function getClientIp(req) {
+  const forwarded = req.headers['x-forwarded-for'];
+  if (typeof forwarded === 'string' && forwarded.trim()) {
+    return forwarded.split(',')[0].trim();
+  }
+  return String(
+    req.headers['x-real-ip']
+    || req.connection?.remoteAddress
+    || req.socket?.remoteAddress
+    || ''
+  ).trim();
+}
+
+function pruneRateLimitStore(now) {
+  for (const [key, timestamps] of submissionStore.entries()) {
+    const freshTimestamps = timestamps.filter((timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS);
+    if (freshTimestamps.length === 0) {
+      submissionStore.delete(key);
+      continue;
+    }
+    submissionStore.set(key, freshTimestamps);
+  }
+}
+
+function isRateLimited(key, now) {
+  if (!key) return false;
+  const timestamps = submissionStore.get(key) || [];
+  const freshTimestamps = timestamps.filter((timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS);
+  if (freshTimestamps.length >= MAX_SUBMISSIONS_PER_WINDOW) {
+    submissionStore.set(key, freshTimestamps);
+    return true;
+  }
+  freshTimestamps.push(now);
+  submissionStore.set(key, freshTimestamps);
+  return false;
+}
+
+function hasExternalUrl(value) {
+  return /(https?:\/\/|www\.)/i.test(value);
+}
+
+function hasSpamPhrase(value) {
+  return /(seo services|domain authority|backlinks|guest post|casino|crypto recovery|escort|loan approval)/i.test(value);
+}
+
+function looksLikeSpamMessage(value) {
+  const normalized = String(value || '').trim();
+  if (!normalized) return false;
+  if (hasExternalUrl(normalized)) return true;
+  if (hasSpamPhrase(normalized)) return true;
+  const wordCount = normalized.split(/\s+/).length;
+  const longTokenCount = normalized.split(/\s+/).filter((token) => token.length >= 20).length;
+  return wordCount >= 12 && longTokenCount >= 3;
+}
+
+async function verifyRecaptchaToken(token, clientIp) {
+  const secret = env('RECAPTCHA_SECRET_KEY', '');
+  if (!secret) {
+    return {
+      ok: false,
+      status: 500,
+      message: 'Spam protection is not configured. Please set RECAPTCHA_SECRET_KEY.',
+    };
+  }
+
+  const params = new URLSearchParams();
+  params.set('secret', secret);
+  params.set('response', token);
+  if (clientIp) {
+    params.set('remoteip', clientIp);
+  }
+
+  try {
+    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: params.toString(),
+    });
+
+    if (!response.ok) {
+      return {
+        ok: false,
+        status: 502,
+        message: 'Unable to verify spam protection. Please try again.',
+      };
+    }
+
+    const payload = await response.json();
+    if (payload.success) {
+      return { ok: true };
+    }
+
+    const errorCodes = Array.isArray(payload['error-codes']) ? payload['error-codes'] : [];
+    const isExpired = errorCodes.includes('timeout-or-duplicate');
+    return {
+      ok: false,
+      status: 400,
+      message: isExpired
+        ? 'reCAPTCHA expired. Please complete it again.'
+        : 'Please complete the reCAPTCHA challenge and try again.',
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      status: 502,
+      message: 'Unable to verify spam protection. Please try again.',
+    };
+  }
+}
+
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
     return res.status(405).send('Method Not Allowed');
@@ -96,26 +213,68 @@ module.exports = async (req, res) => {
   const body = parseBody(req);
   const name = String(body.name || '').trim().replace(/[\r\n]/g, ' ');
   const email = String(body.email || '').trim();
-  const countryCode = String(body.country_code || '').trim();
-  const phoneLocal = String(body.phone || '').trim().replace(/[^\d]/g, '');
-  const phone = `${countryCode} ${phoneLocal}`.trim();
+  const countryCodeRaw = String(body.country_code || '').trim();
+  const phoneRaw = String(body.phone || '').trim();
   const service = String(body.service || '').trim();
   const subject = String(body.subject || '').trim() || 'Website Enquiry';
   const message = String(body.message || '').trim();
+  const website = String(body.website || '').trim();
+  const formStartedAtRaw = String(body.form_started_at || '').trim();
+  const recaptchaToken = String(body['g-recaptcha-response'] || '').trim();
+  const now = Date.now();
+  const clientIp = getClientIp(req);
 
-  if (!name || !email || !countryCode || !phoneLocal || !message) {
+  pruneRateLimitStore(now);
+
+  if (!name || !email || !phoneRaw || !message) {
     return res.status(400).send('Please complete the form and try again.');
+  }
+  if (website) {
+    return res.status(400).send('Unable to submit this form.');
+  }
+
+  const formStartedAt = Number(formStartedAtRaw);
+  if (!Number.isFinite(formStartedAt)) {
+    return res.status(400).send('Please refresh the page and try again.');
+  }
+  if (formStartedAt > now || now - formStartedAt < MIN_SUBMIT_DELAY_MS || now - formStartedAt > SUBMISSION_WINDOW_MS) {
+    return res.status(400).send('Please take a moment to review your message and try again.');
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const countryCodeRegex = /^\+[0-9]{1,4}$/;
   const phoneLocalRegex = /^[0-9]{6,14}$/;
-  const fullPhoneRegex = /^\+[0-9]{1,4}\s[0-9]{6,14}$/;
+  const fullPhoneRegex = /^\+?[0-9]{7,15}$/;
+  const countryCode = countryCodeRaw.replace(/[^\d+]/g, '');
+  const phoneLocal = phoneRaw.replace(/[^\d]/g, '');
+  let phone = '';
   if (!emailRegex.test(email)) {
     return res.status(400).send('Please enter a valid email address.');
   }
-  if (!countryCodeRegex.test(countryCode) || !phoneLocalRegex.test(phoneLocal) || !fullPhoneRegex.test(phone)) {
-    return res.status(400).send('Please enter a valid mobile number.');
+  if (!recaptchaToken) {
+    return res.status(400).send('Please complete the reCAPTCHA challenge.');
+  }
+  if (hasExternalUrl(name) || hasExternalUrl(email) || hasExternalUrl(phoneRaw) || looksLikeSpamMessage(message)) {
+    return res.status(400).send('Please remove links or promotional content from your message.');
+  }
+  if (isRateLimited(`ip:${clientIp}`, now) || isRateLimited(`email:${email.toLowerCase()}`, now)) {
+    return res.status(429).send('Too many enquiries received. Please try again later.');
+  }
+  const recaptchaCheck = await verifyRecaptchaToken(recaptchaToken, clientIp);
+  if (!recaptchaCheck.ok) {
+    return res.status(recaptchaCheck.status).send(recaptchaCheck.message);
+  }
+  if (countryCode) {
+    phone = `${countryCode} ${phoneLocal}`.trim();
+    if (!countryCodeRegex.test(countryCode) || !phoneLocalRegex.test(phoneLocal)) {
+      return res.status(400).send('Please enter a valid mobile number.');
+    }
+  } else {
+    const normalizedPhone = phoneRaw.replace(/[^\d+]/g, '');
+    phone = normalizedPhone;
+    if (!fullPhoneRegex.test(normalizedPhone)) {
+      return res.status(400).send('Please enter a valid mobile number.');
+    }
   }
 
   const host = 'smtp.gmail.com';
