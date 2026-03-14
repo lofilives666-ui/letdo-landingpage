@@ -95,7 +95,7 @@ if ($('.tgmenu__wrap li.menu-item-has-children ul').length) {
 if ($('.tgmobile__menu').length) {
 
 	var mobileMenuContent = $('.tgmenu__wrap .tgmenu__main-menu').html();
-	$('.tgmobile__menu .tgmobile__menu-box .tgmobile__menu-outer').append(mobileMenuContent);
+	$('.tgmobile__menu .tgmobile__menu-box .tgmobile__menu-outer').html(mobileMenuContent);
 
 	//Dropdown Button
 	$('.tgmobile__menu li.menu-item-has-children .dropdown-btn').on('click', function () {

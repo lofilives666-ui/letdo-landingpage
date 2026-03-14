@@ -54,15 +54,17 @@
             <div class="container custom-container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="mobile-nav-toggler"><i class="fas fa-bars"></i></div>
+                        <button type="button" class="mobile-nav-toggler" aria-label="Open menu">
+                            <span class="menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+                        </button>
                         <div class="tgmenu__wrap">
                             <nav class="tgmenu__nav">
                                 <div class="logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.webp" alt="Logo"></a>
+                                    <a href="index.html"><img src="assets/img/logo/logo-180.webp" srcset="assets/img/logo/logo-180.webp 180w, assets/img/logo/logo-360.webp 360w" sizes="177px" alt="Logo" width="177" height="47" decoding="async"></a>
                                 </div>
                                 <div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-xl-flex">
                                     <ul class="navigation">
-                                        <li class="active"><a href="index.html">Home</a></li>
+                                        <li><a href="index.html">Home</a></li>
 
                                         <!--<li class="active menu-item-has-children"><a href="javascript:void(0)">Home</a>
                                             <ul class="sub-menu">
@@ -73,14 +75,14 @@
                                                 <li><a href="index-5.html">Home Five</a></li>
                                             </ul>
                                         </li>-->
-                                        <li><a href="#about">ABOUT US</a></li>
+                                        <li><a href="index.html#about">ABOUT US</a></li>
                                         <!--<li class="menu-item-has-children"><a href="javascript:void(0)">TOURNAMENT</a>
                                             <ul class="sub-menu">
                                                 <li><a href="tournament.html">TOURNAMENT</a></li>
                                                 <li><a href="tournament-details.html">TOURNAMENT Single</a></li>
                                             </ul>
                                         </li>-->
-                                        <li class="menu-item-has-children"><a href="javascript:void(0)">Whitelable Products</a>
+                                        <li class="menu-item-has-children"><a href="index.html#products">Whitelable Products</a>
                                             <ul class="sub-menu">
                                                 <li><a href="whitelable/Aitrainer/">AiTrainer</a></li>
                                                 <li><a href="whitelable/gymlandingpage/">GymSuperApp</a></li>
@@ -89,7 +91,7 @@
                                         </li>
                                         <li class="menu-item-has-children"><a href="javascript:void(0)">Services</a>
                                             <ul class="sub-menu">
-                                                <li class="menu-item-has-children"><a href="javascript:void(0)">Games</a>
+                                                <li class="menu-item-has-children"><a href="mobile-game.html">Games</a>
                                                     <ul class="sub-menu">
                                                         <li><a href="casual-game-development.html">Casual Games</a></li>
                                                         <li><a href="hyper-casual-games.html">Hyper Casual Games</a></li>
@@ -103,8 +105,7 @@
                                                         <li><a href="#">Telegram Games</a></li>
                                                     </ul>
                                                 </li>
-                                                
-                                                <li class="menu-item-has-children"><a href="javascript:void(0)">AR & VR</a>
+                                                <li class="menu-item-has-children"><a href="VR-game-development.html">AR & VR</a>
                                                     <ul class="sub-menu">
                                                         <li><a href="#">VR Game Development</a></li>
                                                         <li><a href="#">AR Game Development</a></li>
@@ -112,10 +113,9 @@
                                                         <li><a href="#">Virtual Reality Experiences</a></li>
                                                         <li><a href="#">Augmented Reality Apps</a></li>
                                                         <li><a href="#">3D Interactive Environments</a></li>
-                                                        
                                                     </ul>
                                                 </li>
-                                                <li class="menu-item-has-children"><a href="javascript:void(0)">Crypto & Blockchain</a>
+                                                <li class="menu-item-has-children"><a href="NFT-game-development.html">Crypto & Blockchain</a>
                                                     <ul class="sub-menu">
                                                         <li><a href="#">Blockchain Game Development</a></li>
                                                         <li><a href="#">Web3 Game Development</a></li>
@@ -125,10 +125,9 @@
                                                         <li><a href="#">Token & Wallet Integration</a></li>
                                                         <li><a href="#">IDO</a></li>
                                                         <li><a href="#">ICO</a></li>
-                                                        
                                                     </ul>
                                                 </li>
-                                                <li class="menu-item-has-children"><a href="javascript:void(0)">3D & 2D Services</a>
+                                                <li class="menu-item-has-children"><a href="contact.html">3D & 2D Services</a>
                                                     <ul class="sub-menu">
                                                         <li><a href="#">3D Game Art</a></li>
                                                         <li><a href="#">2D Game Art</a></li>
@@ -136,10 +135,9 @@
                                                         <li><a href="#">Environment Design</a></li>
                                                         <li><a href="#">Animation 2D & 3D</a></li>
                                                         <li><a href="#">UI / UX Design</a></li>
-                                                        
                                                     </ul>
                                                 </li>
-                                                <li class="menu-item-has-children"><a href="javascript:void(0)">Web Development</a>
+                                                <li class="menu-item-has-children"><a href="website-development.html">Web Development</a>
                                                     <ul class="sub-menu">
                                                         <li><a href="#">Website Development</a></li>
                                                         <li><a href="#">Web App Development</a></li>
@@ -147,54 +145,44 @@
                                                         <li><a href="CMS-development.html">CMS Development</a></li>
                                                         <li><a href="#">E-commerce Development</a></li>
                                                         <li><a href="#">Backend & API Development</a></li>
-                                                        
                                                     </ul>
                                                 </li>
-                                                <li class="menu-item-has-children"><a href="javascript:void(0)">Mobile App Development</a>
+                                                <li class="menu-item-has-children"><a href="cross-platform.html">Mobile App Development</a>
                                                     <ul class="sub-menu">
                                                         <li><a href="#">Android App Development</a></li>
                                                         <li><a href="#">iOS App Development</a></li>
                                                         <li><a href="#">Cross-Platform Apps</a></li>
                                                         <li><a href="#">UI / UX for Mobile Apps</a></li>
                                                         <li><a href="#">App Maintenance & Support</a></li>
-                                                        
-                                                        
                                                     </ul>
                                                 </li>
-                                                 <li class="menu-item-has-children"><a href="javascript:void(0)">Graphic Designing</a>
+                                                <li class="menu-item-has-children"><a href="contact.html">Graphic Designing</a>
                                                     <ul class="sub-menu">
                                                         <li><a href="#">Logo Design</a></li>
                                                         <li><a href="#">Brand Identity Design</a></li>
                                                         <li><a href="#">Marketing Creatives</a></li>
                                                         <li><a href="#">Social Media Creatives</a></li>
                                                         <li><a href="#">Presentation Design</a></li>
-                                                        
-                                                        
                                                     </ul>
                                                 </li>
-                                                <li class="menu-item-has-children"><a href="javascript:void(0)">Video Editing</a>
+                                                <li class="menu-item-has-children"><a href="promotional-videos.html">Video Editing</a>
                                                     <ul class="sub-menu">
                                                         <li><a href="#">Promotional Videos</a></li>
                                                         <li><a href="#">Game Trailers</a></li>
                                                         <li><a href="#">Motion Graphics</a></li>
                                                         <li><a href="#">Reels & Shorts Editing</a></li>
                                                         <li><a href="#">YouTube Video Editing</a></li>
-                                                        
-                                                        
                                                     </ul>
                                                 </li>
-                                                <li class="menu-item-has-children"><a href="javascript:void(0)">Social Media Marketing</a>
+                                                <li class="menu-item-has-children"><a href="social-media-strategy.html">Social Media Marketing</a>
                                                     <ul class="sub-menu">
                                                         <li><a href="#">Social Media Strategy</a></li>
                                                         <li><a href="#">Content Creation</a></li>
                                                         <li><a href="#">Paid Ads Campaigns</a></li>
                                                         <li><a href="#">Influencer Marketing</a></li>
                                                         <li><a href="#">Community Management</a></li>
-                                                        
-                                                        
                                                     </ul>
                                                 </li>
-                                                
                                             </ul>
                                         </li>
                                         <!--<li class="menu-item-has-children"><a href="javascript:void(0)">News</a>
@@ -242,7 +230,7 @@
             <nav class="tgmobile__menu-box">
                 <div class="close-btn"><i class="flaticon-swords-in-cross-arrangement"></i></div>
                 <div class="nav-logo">
-                    <a href="index.html"><img src="assets/img/logo/logo.webp" alt="Logo"></a>
+                    <a href="index.html"><img src="assets/img/logo/logo-180.webp" srcset="assets/img/logo/logo-180.webp 180w, assets/img/logo/logo-360.webp 360w" sizes="177px" alt="Logo" width="177" height="47" decoding="async"></a>
                 </div>
                 <div class="tgmobile__search">
                     <form action="#">
@@ -302,7 +290,7 @@
             <div class="offCanvas__body">
                 <div class="offCanvas__top">
                     <div class="offCanvas__logo logo">
-                        <a href="index.html"><img src="assets/img/logo/logo.webp" alt="Logo"></a>
+                        <a href="index.html"><img src="assets/img/logo/logo-180.webp" srcset="assets/img/logo/logo-180.webp 180w, assets/img/logo/logo-360.webp 360w" sizes="177px" alt="Logo" width="177" height="47" decoding="async"></a>
                     </div>
                     <div class="offCanvas__toggle">
                         <i class="flaticon-swords-in-cross-arrangement"></i>
@@ -311,7 +299,7 @@
                 <div class="offCanvas__content">
                     <h2 class="title">Best Game <span>Development Company</span></h2>
                     <div class="offCanvas__contact">
-                        <h4 class="small-title">CONTACT US</h4>
+                        <p class="small-title">CONTACT US</p>
                         <ul class="offCanvas__contact-list list-wrap">
                             <li><a href="tel:+919677913334">+91 9677913334</a></li>
                             <li><a href="mailto:info@letesdocreative.com">info@letesdocreative.com</a></li>
@@ -319,7 +307,7 @@
                         </ul>
                     </div>
                     <div class="offCanvas__newsletter">
-                        <h4 class="small-title">Subscribe for Newsletter</h4>
+                        <p class="small-title">Subscribe for Newsletter</p>
                         <form action="#" class="offCanvas__newsletter-form">
                             <input type="email" placeholder="Get News & Updates">
                             <button type="submit"><i class="flaticon-send"></i></button>

@@ -491,6 +491,9 @@
             }
         }
         @media (min-width: 1200px) {
+            .d-xl-flex {
+                display: flex !important;
+            }
             .tg-header__area {
                 padding: 11px 0;
             }
@@ -673,6 +676,57 @@
             content-visibility: auto;
             contain-intrinsic-size: 1px 960px;
         }
+        @media (min-width: 992px) {
+            #products .products-grid {
+                justify-content: center;
+            }
+            #products .products-grid > [class*="col-"] {
+                flex: 0 0 33.333333%;
+                width: 33.333333%;
+                display: flex;
+            }
+            #products .products-grid .services__item {
+                width: 100%;
+            }
+            .social__area .social-grid {
+                justify-content: center;
+            }
+            .social__area .social-grid > .col {
+                flex: 0 0 16.666667%;
+                width: 16.666667%;
+            }
+            .footer__country .col-6,
+            .footer__two-widgets .col-md-4,
+            .copyright__wrap .col-lg-6 {
+                flex: 0 0 auto;
+            }
+            .footer__country .col-6 {
+                width: 50%;
+            }
+            .footer__two-widgets .col-md-4 {
+                width: 33.333333%;
+            }
+            .copyright__wrap .row {
+                align-items: center;
+            }
+            .copyright__wrap .col-lg-6 {
+                width: 50%;
+            }
+            .footer__two-widgets .text-md-center {
+                text-align: center;
+            }
+            .footer__country .text-sm-end,
+            .footer__two-widgets .text-md-end,
+            .copyright__wrap .text-lg-start {
+                text-align: right;
+            }
+            .copyright__wrap .copyright__text.text-lg-start {
+                text-align: left;
+            }
+            .copyright__wrap .justify-content-lg-end {
+                justify-content: flex-end;
+            }
+        }
         .social__item a,
         .tg-btn-1,
         .submit-btn,
@@ -682,6 +736,136 @@
             min-height: 44px;
         }
         @media (max-width: 767.98px) {
+            .transparent-header,
+            .tg-header__area,
+            .tg-header__area.tg-sticky-menu,
+            .tg-header__area.tg-sticky-menu.sticky-menu__show {
+                background: rgba(15, 22, 27, 0.96);
+                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+            }
+            html,
+            body {
+                overflow-x: clip;
+            }
+            .footer__country {
+                margin: 0 0 40px;
+            }
+            .footer__country .row,
+            .footer__two-widgets .row,
+            .copyright__wrap .row {
+                row-gap: 18px;
+            }
+            .footer__country .col-6,
+            .footer__two-widgets [class*="col-"],
+            .copyright__wrap [class*="col-"] {
+                width: 100%;
+            }
+            .footer__country-name,
+            .footer__country .text-sm-end,
+            .copyright__wrap .copyright__text,
+            .copyright__wrap .copyright__menu {
+                text-align: center;
+            }
+            .footer__country-name .text {
+                font-size: clamp(48px, 13vw, 64px);
+                line-height: 0.95;
+                opacity: 0.5;
+            }
+            .footer__two-widgets .row {
+                justify-content: center;
+            }
+            .footer__two-widgets .row > div:nth-child(1) {
+                order: 2;
+            }
+            .footer__two-widgets .row > div:nth-child(2) {
+                order: 1;
+            }
+            .footer__two-widgets .row > div:nth-child(3) {
+                order: 3;
+            }
+            .footer__two-widgets .row > [class*="col-"] {
+                max-width: 340px;
+                margin: 0 auto;
+            }
+            .footer-el-widget {
+                margin: 0;
+                padding: 22px 20px;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                background: rgba(255, 255, 255, 0.02);
+                border-radius: 18px;
+                text-align: center;
+            }
+            .footer-el-widget .title,
+            .footer-el-widget.text-start .title {
+                display: block;
+                margin-bottom: 14px;
+                text-align: center;
+            }
+            .footer-el-widget.widget_nav_menu {
+                padding: 0;
+                border: 0;
+                background: transparent;
+                text-align: center;
+            }
+            .footer-el-logo {
+                margin-bottom: 18px;
+                text-align: center;
+            }
+            .footer-el-menu {
+                text-align: center;
+            }
+            .footer-el-menu .list-wrap,
+            .copyright__menu .list-wrap {
+                justify-content: center;
+            }
+            .footer-el-widget.widget_nav_menu ul li {
+                justify-content: center;
+                text-align: center;
+            }
+            .footer-el-widget > ul.list-wrap li {
+                line-height: 1.65;
+                text-align: center;
+            }
+            .copyright__menu .list-wrap {
+                gap: 10px 18px;
+                margin-top: 0;
+            }
+            .copyright__text p {
+                font-size: 13px;
+            }
+            .tgmobile__menu {
+                display: block;
+                position: fixed;
+                right: 0;
+                top: 0;
+                width: 100%;
+                max-width: 320px;
+                height: 100%;
+                z-index: 9999;
+                visibility: hidden;
+                transform: translateX(101%);
+                transition: transform 0.4s ease, visibility 0.4s ease;
+            }
+            .tgmobile__menu-backdrop {
+                display: block;
+                position: fixed;
+                inset: 0;
+                z-index: 9998;
+                opacity: 0;
+                visibility: hidden;
+                background: rgba(0, 0, 0, 0.7);
+                transition: opacity 0.4s ease, visibility 0.4s ease;
+            }
+            .mobile-menu-visible .tgmobile__menu {
+                visibility: visible;
+                transform: translateX(0);
+            }
+            .mobile-menu-visible .tgmobile__menu-backdrop {
+                opacity: 1;
+                visibility: visible;
+            }
             .gallery-active,
             .gallery-active .swiper-wrapper {
                 display: grid !important;
@@ -697,18 +881,49 @@
             .hero-slider-arrow {
                 display: none !important;
             }
+            .brand-area {
+                padding: 72px 0 80px;
+            }
+            .brand__title {
+                margin: 0 0 30px;
+            }
+            .brand__title .title {
+                font-size: clamp(42px, 11vw, 54px);
+                line-height: 1;
+                letter-spacing: 0.5px;
+            }
             .brand-active {
                 display: grid !important;
                 grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 14px;
+                gap: 20px 12px;
+                align-items: start;
             }
             .brand-active > .col {
                 width: 100%;
                 max-width: 100%;
                 flex: 0 0 auto;
+                padding-right: 6px;
+                padding-left: 6px;
+            }
+            .brand__item {
+                display: flex;
+                justify-content: center;
+            }
+            .tech-brand-link {
+                gap: 8px;
+            }
+            .tech-brand-link img {
+                width: 40px;
+                height: 40px;
+            }
+            .tech-brand-link span {
+                font-size: 12px;
+                letter-spacing: 0.2px;
             }
             .slider-active {
                 display: flex !important;
+                width: 100%;
+                max-width: 100%;
                 overflow-x: auto;
                 overflow-y: hidden;
                 scroll-snap-type: x mandatory;
@@ -716,15 +931,23 @@
                 scrollbar-width: none;
                 -ms-overflow-style: none;
                 touch-action: pan-x;
+                overscroll-behavior-x: contain;
             }
             .slider-active::-webkit-scrollbar {
                 display: none;
+            }
+            .slider__area,
+            .slider__bg,
+            .single-slider {
+                overflow-x: clip;
             }
             .slider-active:not(.slick-initialized) .single-slider,
             .slider-active .single-slider {
                 display: block !important;
                 flex: 0 0 100%;
                 width: 100%;
+                min-width: 100%;
+                max-width: 100%;
                 scroll-snap-align: start;
             }
             .slider__img {
@@ -907,7 +1130,7 @@
                                                 <li><a href="whitelable/ecommerce/">Ecommerce</a></li>
                                             </ul>
                                         </li>
-                                        <li class="menu-item-has-children"><a href="services-details.html">Services</a>
+                                        <li class="menu-item-has-children"><a href="javascript:void(0)">Services</a>
                                             <ul class="sub-menu">
                                                 <li class="menu-item-has-children"><a href="mobile-game.html">Games</a>
                                                     <ul class="sub-menu">
@@ -923,7 +1146,6 @@
                                                         <li><a href="#">Telegram Games</a></li>
                                                     </ul>
                                                 </li>
-                                                
                                                 <li class="menu-item-has-children"><a href="VR-game-development.html">AR & VR</a>
                                                     <ul class="sub-menu">
                                                         <li><a href="#">VR Game Development</a></li>
@@ -932,7 +1154,6 @@
                                                         <li><a href="#">Virtual Reality Experiences</a></li>
                                                         <li><a href="#">Augmented Reality Apps</a></li>
                                                         <li><a href="#">3D Interactive Environments</a></li>
-                                                        
                                                     </ul>
                                                 </li>
                                                 <li class="menu-item-has-children"><a href="NFT-game-development.html">Crypto & Blockchain</a>
@@ -945,7 +1166,6 @@
                                                         <li><a href="#">Token & Wallet Integration</a></li>
                                                         <li><a href="#">IDO</a></li>
                                                         <li><a href="#">ICO</a></li>
-                                                        
                                                     </ul>
                                                 </li>
                                                 <li class="menu-item-has-children"><a href="contact.html">3D & 2D Services</a>
@@ -956,7 +1176,6 @@
                                                         <li><a href="#">Environment Design</a></li>
                                                         <li><a href="#">Animation 2D & 3D</a></li>
                                                         <li><a href="#">UI / UX Design</a></li>
-                                                        
                                                     </ul>
                                                 </li>
                                                 <li class="menu-item-has-children"><a href="website-development.html">Web Development</a>
@@ -967,7 +1186,6 @@
                                                         <li><a href="CMS-development.html">CMS Development</a></li>
                                                         <li><a href="#">E-commerce Development</a></li>
                                                         <li><a href="#">Backend & API Development</a></li>
-                                                        
                                                     </ul>
                                                 </li>
                                                 <li class="menu-item-has-children"><a href="cross-platform.html">Mobile App Development</a>
@@ -977,19 +1195,15 @@
                                                         <li><a href="#">Cross-Platform Apps</a></li>
                                                         <li><a href="#">UI / UX for Mobile Apps</a></li>
                                                         <li><a href="#">App Maintenance & Support</a></li>
-                                                        
-                                                        
                                                     </ul>
                                                 </li>
-                                                 <li class="menu-item-has-children"><a href="contact.html">Graphic Designing</a>
+                                                <li class="menu-item-has-children"><a href="contact.html">Graphic Designing</a>
                                                     <ul class="sub-menu">
                                                         <li><a href="#">Logo Design</a></li>
                                                         <li><a href="#">Brand Identity Design</a></li>
                                                         <li><a href="#">Marketing Creatives</a></li>
                                                         <li><a href="#">Social Media Creatives</a></li>
                                                         <li><a href="#">Presentation Design</a></li>
-                                                        
-                                                        
                                                     </ul>
                                                 </li>
                                                 <li class="menu-item-has-children"><a href="promotional-videos.html">Video Editing</a>
@@ -999,8 +1213,6 @@
                                                         <li><a href="#">Motion Graphics</a></li>
                                                         <li><a href="#">Reels & Shorts Editing</a></li>
                                                         <li><a href="#">YouTube Video Editing</a></li>
-                                                        
-                                                        
                                                     </ul>
                                                 </li>
                                                 <li class="menu-item-has-children"><a href="social-media-strategy.html">Social Media Marketing</a>
@@ -1010,11 +1222,8 @@
                                                         <li><a href="#">Paid Ads Campaigns</a></li>
                                                         <li><a href="#">Influencer Marketing</a></li>
                                                         <li><a href="#">Community Management</a></li>
-                                                        
-                                                        
                                                     </ul>
                                                 </li>
-                                                
                                             </ul>
                                         </li>
                                         <!--<li class="menu-item-has-children"><a href="javascript:void(0)">News</a>
@@ -1346,7 +1555,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row g-4 align-items-stretch">
+                <div class="row g-4 align-items-stretch products-grid">
                     <div class="col-md-6 col-lg-4 d-flex">
                         <div class="services__item" style="width:100%;display:flex;flex-direction:column;">
                             <div style="display:flex;justify-content:center;margin-bottom:20px;">
@@ -2666,7 +2875,7 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center gutter-20 row-cols-2 row-cols-lg-6 row-cols-md-4 row-cols-sm-3">
+                <div class="row justify-content-center gutter-20 row-cols-2 row-cols-lg-6 row-cols-md-4 row-cols-sm-3 social-grid">
                     <div class="col">
                         <div class="social__item">
                             <a href="https://www.facebook.com/profile.php?id=61587178422851" rel="noopener noreferrer" target="_blank">
@@ -3030,6 +3239,125 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
             }
 
             setupMobileHeroSlider();
+        })();
+    </script>
+    <script>
+        (function () {
+            if (!window.matchMedia('(max-width: 767.98px)').matches) {
+                return;
+            }
+
+            function onReady(callback) {
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', callback, { once: true });
+                    return;
+                }
+                callback();
+            }
+
+            onReady(function () {
+                var body = document.body;
+                var menuOuter = document.querySelector('.tgmobile__menu-outer');
+                var menuSource = document.querySelector('.tgmenu__wrap .tgmenu__main-menu');
+                var openButton = document.querySelector('.mobile-nav-toggler');
+                var closeButton = document.querySelector('.tgmobile__menu .close-btn');
+                var backdrop = document.querySelector('.tgmobile__menu-backdrop');
+                var scrollButton = document.querySelector('.scroll-to-target');
+
+                if (menuOuter && menuSource && !menuOuter.children.length) {
+                    menuOuter.innerHTML = menuSource.innerHTML;
+                }
+
+                function dedupeMobileMenu() {
+                    if (!menuOuter) {
+                        return;
+                    }
+
+                    var navigationLists = menuOuter.querySelectorAll('.navigation');
+
+                    if (navigationLists.length > 1) {
+                        Array.prototype.forEach.call(navigationLists, function (list, index) {
+                            if (index > 0) {
+                                list.remove();
+                            }
+                        });
+                    }
+                }
+
+                dedupeMobileMenu();
+
+                if (menuOuter) {
+                    Array.prototype.forEach.call(menuOuter.querySelectorAll('li.menu-item-has-children'), function (item) {
+                        var existingButton = null;
+                        var submenu = null;
+
+                        Array.prototype.forEach.call(item.children, function (child) {
+                            if (!existingButton && child.classList && child.classList.contains('dropdown-btn')) {
+                                existingButton = child;
+                            }
+                            if (!submenu && child.tagName === 'UL') {
+                                submenu = child;
+                            }
+                        });
+
+                        if (existingButton) {
+                            return;
+                        }
+
+                        var button = document.createElement('button');
+
+                        button.type = 'button';
+                        button.className = 'dropdown-btn';
+                        button.setAttribute('aria-label', 'Toggle submenu');
+                        button.innerHTML = '<span class="plus-line"></span>';
+                        item.appendChild(button);
+
+                        if (submenu) {
+                            submenu.style.display = 'none';
+                            button.addEventListener('click', function () {
+                                var isOpen = button.classList.toggle('open');
+                                submenu.style.display = isOpen ? 'block' : 'none';
+                            });
+                        }
+                    });
+                }
+
+                function openMenu() {
+                    body.classList.add('mobile-menu-visible');
+                }
+
+                function closeMenu() {
+                    body.classList.remove('mobile-menu-visible');
+                }
+
+                if (openButton) {
+                    openButton.addEventListener('click', openMenu);
+                }
+                if (closeButton) {
+                    closeButton.addEventListener('click', closeMenu);
+                }
+                if (backdrop) {
+                    backdrop.addEventListener('click', closeMenu);
+                }
+
+                function updateScrollButton() {
+                    if (!scrollButton) {
+                        return;
+                    }
+                    scrollButton.classList.toggle('open', window.scrollY >= 245);
+                }
+
+                if (scrollButton) {
+                    scrollButton.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+                    updateScrollButton();
+                    window.addEventListener('scroll', updateScrollButton, { passive: true });
+                }
+
+                window.setTimeout(dedupeMobileMenu, 1500);
+            });
         })();
     </script>
 </body>
