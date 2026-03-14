@@ -80,12 +80,45 @@
                 window.setTimeout(loadDeferredStyles, 1200);
             }
 
+            function observeDesktopInteractiveStyles() {
+                if (isMobileViewport || !('IntersectionObserver' in window)) {
+                    return;
+                }
+
+                var targets = document.querySelectorAll('.gallery__area, .video__area, .faq-area, .brand-area, .social__area, .trendingNft-area');
+
+                if (!targets.length) {
+                    return;
+                }
+
+                var observer = new IntersectionObserver(function (entries) {
+                    if (!entries.some(function (entry) { return entry.isIntersecting; })) {
+                        return;
+                    }
+
+                    loadInteractiveStyles();
+                    observer.disconnect();
+                }, { rootMargin: '200px 0px' });
+
+                targets.forEach(function (target) {
+                    observer.observe(target);
+                });
+            }
+
             window.loadDeferredStyles = loadDeferredStyles;
             window.loadInteractiveStyles = loadInteractiveStyles;
-            window.addEventListener('load', loadDeferredStylesSoon, { once: true });
             ['pointerdown', 'touchstart', 'keydown'].forEach(function (eventName) {
                 window.addEventListener(eventName, loadInteractiveStyles, { once: true, passive: true });
             });
+
+            window.addEventListener('wheel', loadInteractiveStyles, { once: true, passive: true });
+
+            if (isMobileViewport) {
+                window.addEventListener('load', loadDeferredStylesSoon, { once: true });
+                return;
+            }
+
+            document.addEventListener('DOMContentLoaded', observeDesktopInteractiveStyles, { once: true });
         })();
     </script>
     <script>
@@ -95,8 +128,6 @@
         gtag('config', 'AW-17930320922');
 
         (function () {
-            var isMobileViewport = window.matchMedia('(max-width: 767.98px)').matches;
-
             function loadGtag() {
                 if (document.querySelector('script[data-gtag-loader]')) {
                     return;
@@ -108,21 +139,11 @@
                 document.head.appendChild(script);
             }
 
-            if (isMobileViewport) {
-                ['pointerdown', 'touchstart', 'keydown'].forEach(function (eventName) {
-                    window.addEventListener(eventName, loadGtag, { once: true, passive: true });
-                });
-                return;
-            }
+            ['pointerdown', 'touchstart', 'keydown'].forEach(function (eventName) {
+                window.addEventListener(eventName, loadGtag, { once: true, passive: true });
+            });
 
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(loadGtag, { timeout: 4000 });
-                return;
-            }
-
-            window.addEventListener('load', function () {
-                window.setTimeout(loadGtag, 1200);
-            }, { once: true });
+            window.addEventListener('wheel', loadGtag, { once: true, passive: true });
         })();
     </script>
     <script>
@@ -162,6 +183,13 @@
                 }
                 document.head.appendChild(link);
             });
+
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelectorAll('[data-bg-eager][data-background]').forEach(function (element) {
+                    element.style.backgroundImage = 'url(' + element.getAttribute('data-background') + ')';
+                    element.dataset.bgLoaded = 'true';
+                });
+            }, { once: true });
         })();
     </script>
     <!-- Place favicon.ico in the root directory -->
@@ -1416,7 +1444,7 @@
                                 <div class="slider__img text-center">
                                     <picture>
                                         <source media="(min-width: 768px)" srcset="assets/img/slider/slider_img01-420.webp 420w, assets/img/slider/slider_img01-594.webp 594w" sizes="495px">
-                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" width="594" height="810" style="width:594px;height:810px;object-fit:contain;" fetchpriority="low" loading="lazy" decoding="async">
+                                        <img src="assets/img/slider/slider_img01-594.webp" alt="" width="594" height="810" style="width:594px;height:810px;object-fit:contain;" fetchpriority="high" loading="eager" decoding="async">
                                     </picture>
                                 </div>
                             </div>
@@ -3096,7 +3124,6 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
         (function () {
             var isMobileViewport = window.matchMedia('(max-width: 767.98px)').matches;
             var scriptsStarted = false;
-            var loadTimeoutId;
             var scriptQueue = [
                 'assets/js/vendor/jquery-3.6.0.min.js',
                 'assets/js/bootstrap.min.js',
@@ -3138,30 +3165,46 @@ From concept to launch, we deliver powerful, scalable, and engaging gaming exper
                 }
 
                 scriptsStarted = true;
-                window.clearTimeout(loadTimeoutId);
                 if (typeof window.loadInteractiveStyles === 'function') {
                     window.loadInteractiveStyles();
                 }
                 loadScriptsSequentially(scriptQueue);
             }
 
-            function scheduleScriptLoading() {
-                if (isMobileViewport) {
+            function observeDesktopInteractiveSections() {
+                if (isMobileViewport || !('IntersectionObserver' in window)) {
                     return;
                 }
 
-                if ('requestIdleCallback' in window) {
-                    requestIdleCallback(startScriptLoading, { timeout: 1800 });
+                var targets = document.querySelectorAll('.gallery__area, .video__area, .faq-area, .brand-area, .social__area, .trendingNft-area');
+
+                if (!targets.length) {
                     return;
                 }
 
-                loadTimeoutId = window.setTimeout(startScriptLoading, 1200);
+                var observer = new IntersectionObserver(function (entries) {
+                    if (!entries.some(function (entry) { return entry.isIntersecting; })) {
+                        return;
+                    }
+
+                    startScriptLoading();
+                    observer.disconnect();
+                }, { rootMargin: '200px 0px' });
+
+                targets.forEach(function (target) {
+                    observer.observe(target);
+                });
             }
 
-            window.addEventListener('load', scheduleScriptLoading, { once: true });
             ['pointerdown', 'touchstart', 'keydown'].forEach(function (eventName) {
                 window.addEventListener(eventName, startScriptLoading, { once: true, passive: true });
             });
+
+            window.addEventListener('wheel', startScriptLoading, { once: true, passive: true });
+
+            if (!isMobileViewport) {
+                document.addEventListener('DOMContentLoaded', observeDesktopInteractiveSections, { once: true });
+            }
         })();
     </script>
     <script>
