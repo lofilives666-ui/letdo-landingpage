@@ -76,7 +76,7 @@
       return;
     }
 
-    fetch("/api/blog/post?slug=" + encodeURIComponent(slug))
+    fetch("/api/blog?action=post&slug=" + encodeURIComponent(slug))
       .then(function (response) {
         if (!response.ok) throw new Error("Request failed");
         return response.json();

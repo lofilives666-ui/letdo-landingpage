@@ -20,7 +20,7 @@
   }
 
   function ensureSession() {
-    return request("/api/blog-admin/session").catch(function () {
+    return request("/api/blog-admin?action=session").catch(function () {
       window.location.href = "blog-admin-login.html";
       throw new Error("Unauthorized");
     });
@@ -98,7 +98,7 @@
     Array.prototype.forEach.call(container.querySelectorAll("[data-delete]"), function (button) {
       button.addEventListener("click", function () {
         if (!window.confirm("Delete this post permanently?")) return;
-        request("/api/blog-admin/post?id=" + encodeURIComponent(button.getAttribute("data-delete")), {
+        request("/api/blog-admin?action=post&id=" + encodeURIComponent(button.getAttribute("data-delete")), {
           method: "DELETE",
         }).then(loadDashboard).catch(showError);
       });
@@ -171,9 +171,9 @@
     if (admin) currentAdmin = admin;
     setLoading(true, "Loading dashboard data...");
     Promise.all([
-      request("/api/blog-admin/dashboard"),
-      request("/api/blog-admin/categories"),
-      request("/api/blog-admin/tags")
+      request("/api/blog-admin?action=dashboard"),
+      request("/api/blog-admin?action=categories"),
+      request("/api/blog-admin?action=tags")
     ])
       .then(function (results) {
         renderAdminProfile(currentAdmin);
@@ -189,7 +189,7 @@
   }
 
   document.getElementById("blog-admin-logout").addEventListener("click", function () {
-    request("/api/blog-admin/logout", { method: "POST" }).finally(function () {
+    request("/api/blog-admin?action=logout", { method: "POST" }).finally(function () {
       window.location.href = "blog-admin-login.html";
     });
   });
@@ -197,7 +197,7 @@
   document.getElementById("blog-admin-category-form").addEventListener("submit", function (event) {
     event.preventDefault();
     var form = event.currentTarget;
-    request("/api/blog-admin/categories", {
+    request("/api/blog-admin?action=categories", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -214,7 +214,7 @@
   document.getElementById("blog-admin-tag-form").addEventListener("submit", function (event) {
     event.preventDefault();
     var form = event.currentTarget;
-    request("/api/blog-admin/tags", {
+    request("/api/blog-admin?action=tags", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

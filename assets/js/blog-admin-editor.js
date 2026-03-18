@@ -53,9 +53,9 @@
 
   function loadLookups() {
     return Promise.all([
-      request("/api/blog-admin/session"),
-      request("/api/blog-admin/categories"),
-      request("/api/blog-admin/tags")
+      request("/api/blog-admin?action=session"),
+      request("/api/blog-admin?action=categories"),
+      request("/api/blog-admin?action=tags")
     ]).catch(function () {
       window.location.href = "blog-admin-login.html";
       throw new Error("Unauthorized");
@@ -174,7 +174,7 @@
     validateAiInputs();
     var payload = getPayload();
     var select = document.getElementById("blog-post-category");
-    return request("/api/blog-admin/ai-generate", {
+    return request("/api/blog-admin?action=ai-generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -190,7 +190,7 @@
   function savePost(statusOverride) {
     var postId = getPostId();
     var method = postId ? "PATCH" : "POST";
-    var url = postId ? "/api/blog-admin/post?id=" + encodeURIComponent(postId) : "/api/blog-admin/posts";
+    var url = postId ? "/api/blog-admin?action=post&id=" + encodeURIComponent(postId) : "/api/blog-admin?action=posts";
     var payload = getPayload();
     if (statusOverride) {
       payload.status = statusOverride;
@@ -322,7 +322,7 @@
     if (!cropper.image) return;
     showFeedback("Uploading cropped image...", "success");
     var croppedDataUrl = uploadCroppedImage();
-    request("/api/blog-admin/upload-image", {
+    request("/api/blog-admin?action=upload-image", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -348,7 +348,7 @@
 
     var postId = getPostId();
     if (postId) {
-      request("/api/blog-admin/post?id=" + encodeURIComponent(postId)).then(function (data) {
+      request("/api/blog-admin?action=post&id=" + encodeURIComponent(postId)).then(function (data) {
         fillForm(data.post);
         populateTags(tags, data.post.tags.map(function (item) { return item.tagId; }));
       }).catch(function (error) {
@@ -405,7 +405,7 @@
   });
 
   document.getElementById("blog-admin-logout").addEventListener("click", function () {
-    request("/api/blog-admin/logout", { method: "POST" }).finally(function () {
+    request("/api/blog-admin?action=logout", { method: "POST" }).finally(function () {
       window.location.href = "blog-admin-login.html";
     });
   });

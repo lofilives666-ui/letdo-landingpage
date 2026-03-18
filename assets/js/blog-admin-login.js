@@ -7,7 +7,7 @@
     feedback.textContent = message;
   }
 
-  fetch("/api/blog-admin/session")
+  fetch("/api/blog-admin?action=session")
     .then(function (response) {
       if (response.ok) {
         window.location.href = "blog-admin.html";
@@ -21,7 +21,7 @@
     event.preventDefault();
     showFeedback("Signing in...", "success");
 
-    fetch("/api/blog-admin/login", {
+    fetch("/api/blog-admin?action=login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
