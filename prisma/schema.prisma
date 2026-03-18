@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("BLOG_DATABASE_URL")
+}
+
+enum BlogPostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model BlogAdmin {
+  id           String     @id @default(cuid())
+  name         String
+  email        String     @unique
+  passwordHash String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  posts        BlogPost[]
+}
+
+model BlogCategory {
+  id          String     @id @default(cuid())
+  name        String     @unique
+  slug        String     @unique
+  description String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  posts       BlogPost[]
+}
+
+model BlogTag {
+  id        String        @id @default(cuid())
+  name      String        @unique
+  slug      String        @unique
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  posts     BlogPostTag[]
+}
+
+model BlogPost {
+  id             String         @id @default(cuid())
+  title          String
+  slug           String         @unique
+  excerpt        String
+  content        String
+  coverImage     String?
+  seoTitle       String?
+  seoDescription String?
+  featured       Boolean        @default(false)
+  readingMinutes Int            @default(4)
+  status         BlogPostStatus @default(DRAFT)
+  publishedAt    DateTime?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  authorId       String
+  categoryId     String
+  author         BlogAdmin      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  category       BlogCategory   @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  tags           BlogPostTag[]
+
+  @@index([status, publishedAt])
+  @@index([categoryId])
+}
+
+model BlogPostTag {
+  postId String
+  tagId  String
+  post   BlogPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag    BlogTag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId])
+}
+
+model BlogSetting {
+  key       String   @id
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

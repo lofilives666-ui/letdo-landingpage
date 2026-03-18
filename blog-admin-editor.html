@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Letsdo Blog Editor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/blog-admin.css">
+</head>
+<body class="blog-admin-body">
+    <main class="blog-admin-app">
+        <aside class="blog-admin-sidebar">
+            <div class="blog-admin-sidebar-top">
+                <a class="blog-admin-brand" href="index.html">
+                    <img src="assets/img/logo/logo-180.webp" srcset="assets/img/logo/logo-180.webp 180w, assets/img/logo/logo-360.webp 360w" sizes="177px" alt="Letsdo Creative" width="177" height="47" decoding="async">
+                </a>
+                <div class="blog-admin-sidebar-copy">
+                    <p class="blog-admin-kicker">Letsdo Creative</p>
+                    <h1>Blog Ops</h1>
+                    <p class="blog-admin-muted">Editorial control for the Letsdo product blog.</p>
+                </div>
+                <nav class="blog-admin-nav" aria-label="Dashboard sections">
+                    <a class="blog-admin-nav-link" href="blog-admin.html#overview">Overview</a>
+                    <a class="blog-admin-nav-link" href="blog-admin.html#posts">Posts</a>
+                    <a class="blog-admin-nav-link" href="blog-admin.html#taxonomy">Categories</a>
+                    <a class="blog-admin-nav-link" href="blog-admin.html#tags">Tags</a>
+                    <a class="blog-admin-nav-link is-active" href="blog-admin-editor.html">New Article</a>
+                    <a class="blog-admin-nav-link" href="blog.html" target="_blank" rel="noopener noreferrer">Preview Blog</a>
+                </nav>
+            </div>
+            <div class="blog-admin-sidebar-bottom">
+                <div class="blog-admin-operator">
+                    <span class="blog-admin-operator-label">Signed in as</span>
+                    <strong id="blog-admin-operator-name">Letsdo Admin</strong>
+                    <span id="blog-admin-operator-email" class="blog-admin-muted">admin@letsdocreative.com</span>
+                </div>
+                <button id="blog-admin-logout" class="blog-admin-button secondary blog-admin-sidebar-logout" type="button">Logout</button>
+            </div>
+        </aside>
+
+        <section class="blog-admin-content blog-admin-editor-layout">
+            <main class="blog-admin-shell p-0 m-0">
+                <section class="blog-admin-panel">
+                    <div class="blog-admin-header">
+                        <div class="blog-admin-title">
+                            <p class="blog-admin-kicker">Editor Workflow</p>
+                            <h1 id="blog-editor-heading">Create blog post</h1>
+                            <p class="blog-admin-muted mt-2 mb-0">Follow the flow: choose category, enter title, let AI build the draft, then review and publish.</p>
+                        </div>
+                        <div class="blog-admin-header-actions">
+                            <a class="blog-admin-button secondary" href="blog-admin.html">Back to Dashboard</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-editor-steps">
+                        <div class="blog-editor-step">
+                            <span class="blog-editor-step-number">1</span>
+                            <div>
+                                <strong>Select category</strong>
+                                <span>Choose the service bucket for this article.</span>
+                            </div>
+                        </div>
+                        <div class="blog-editor-step">
+                            <span class="blog-editor-step-number">2</span>
+                            <div>
+                                <strong>Add title</strong>
+                                <span>Write the topic or angle you want to publish.</span>
+                            </div>
+                        </div>
+                        <div class="blog-editor-step">
+                            <span class="blog-editor-step-number">3</span>
+                            <div>
+                                <strong>Generate full draft</strong>
+                                <span>AI fills excerpt, content, and SEO fields.</span>
+                            </div>
+                        </div>
+                        <div class="blog-editor-step">
+                            <span class="blog-editor-step-number">4</span>
+                            <div>
+                                <strong>Review and publish</strong>
+                                <span>Adjust details, add tags, then publish live.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="blog-editor-feedback" class="blog-admin-feedback d-none mb-3"></div>
+
+                    <form id="blog-editor-form" class="blog-admin-form">
+                        <div class="blog-admin-grid two-col">
+                            <div class="blog-admin-grid">
+                                <section class="blog-admin-card blog-editor-flow-card">
+                                    <p class="blog-admin-kicker">Step 1</p>
+                                    <h3>Category</h3>
+                                    <div class="blog-admin-field mt-3">
+                                        <label for="blog-post-category">Choose category</label>
+                                        <select id="blog-post-category" name="categoryId" class="blog-admin-select" required></select>
+                                    </div>
+                                </section>
+
+                                <section class="blog-admin-card blog-editor-flow-card">
+                                    <p class="blog-admin-kicker">Step 2</p>
+                                    <h3>Title</h3>
+                                    <div class="blog-admin-field mt-3">
+                                        <label for="blog-post-title">Article title</label>
+                                        <input id="blog-post-title" name="title" class="blog-admin-input" type="text" placeholder="How white label casino products reduce time to market" required>
+                                    </div>
+                                    <div class="blog-admin-field">
+                                        <label for="blog-post-slug">Slug</label>
+                                        <input id="blog-post-slug" name="slug" class="blog-admin-input" type="text" placeholder="auto-from-title">
+                                    </div>
+                                </section>
+
+                                <section class="blog-admin-card blog-editor-flow-card">
+                                    <div class="blog-admin-header blog-editor-flow-head">
+                                        <div>
+                                            <p class="blog-admin-kicker">Step 3</p>
+                                            <h3>AI Full Draft</h3>
+                                        </div>
+                                        <button id="blog-ai-generate-all" class="blog-admin-button" type="button">Generate Full Draft</button>
+                                    </div>
+                                    <p class="blog-admin-muted mb-3">AI will generate excerpt, body content, SEO title, and SEO description based on the category and title.</p>
+                                    <div id="blog-ai-progress" class="blog-ai-progress d-none" aria-live="polite">
+                                        <div class="blog-ai-progress-bar">
+                                            <span id="blog-ai-progress-fill" class="blog-ai-progress-fill"></span>
+                                        </div>
+                                        <div class="blog-ai-progress-meta">
+                                            <strong id="blog-ai-progress-label">Generating draft...</strong>
+                                            <span id="blog-ai-progress-value">0%</span>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="blog-admin-card blog-editor-flow-card">
+                                    <p class="blog-admin-kicker">Step 4</p>
+                                    <h3>Review Draft</h3>
+                                    <div class="blog-admin-field mt-3">
+                                        <label for="blog-post-excerpt">Excerpt</label>
+                                        <textarea id="blog-post-excerpt" name="excerpt" class="blog-admin-textarea" required></textarea>
+                                    </div>
+                                    <div class="blog-admin-field">
+                                        <label for="blog-post-content">Content</label>
+                                        <textarea id="blog-post-content" name="content" class="blog-admin-textarea" style="min-height:380px;" required></textarea>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <div class="blog-admin-grid">
+                                <div class="blog-admin-card">
+                                    <h3>Publishing</h3>
+                                    <div class="blog-admin-field">
+                                        <label for="blog-post-status">Status</label>
+                                        <select id="blog-post-status" name="status" class="blog-admin-select">
+                                            <option value="DRAFT">Draft</option>
+                                            <option value="PUBLISHED">Published</option>
+                                            <option value="ARCHIVED">Archived</option>
+                                        </select>
+                                    </div>
+                                    <div class="blog-admin-field">
+                                        <label>Cover image upload</label>
+                                        <div class="blog-admin-upload-actions">
+                                            <button id="blog-cover-upload-trigger" class="blog-admin-button blog-admin-button upload" type="button">Upload Image</button>
+                                            <input id="blog-cover-upload-input" type="file" accept=".png,.jpg,.jpeg,.webp" class="d-none">
+                                        </div>
+                                        <input id="blog-post-cover-image" name="coverImage" type="hidden">
+                                        <div id="blog-cover-preview" class="blog-cover-preview d-none">
+                                            <img id="blog-cover-preview-image" src="" alt="Cover preview">
+                                        </div>
+                                    </div>
+                                    <div class="blog-admin-checkbox-row">
+                                        <label class="blog-admin-tag-pill">
+                                            <input id="blog-post-featured" name="featured" type="checkbox">
+                                            <span>Featured post</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="blog-admin-card">
+                                    <div class="blog-admin-header">
+                                        <div>
+                                            <h3>SEO</h3>
+                                        </div>
+                                    </div>
+                                    <div class="blog-admin-field">
+                                        <label for="blog-post-seo-title">SEO title</label>
+                                        <input id="blog-post-seo-title" name="seoTitle" class="blog-admin-input" type="text">
+                                    </div>
+                                    <div class="blog-admin-field">
+                                        <label for="blog-post-seo-description">SEO description</label>
+                                        <textarea id="blog-post-seo-description" name="seoDescription" class="blog-admin-textarea"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="blog-admin-card">
+                                    <h3>Tags</h3>
+                                    <div id="blog-post-tag-grid" class="blog-admin-tag-grid"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="blog-admin-actions">
+                            <button id="blog-save-draft" class="blog-admin-button secondary" type="submit">Save Draft</button>
+                            <button id="blog-publish-post" class="blog-admin-button" type="button">Publish</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </section>
+    </main>
+
+    <div id="blog-image-modal" class="blog-image-modal d-none" aria-hidden="true">
+        <div class="blog-image-modal-backdrop"></div>
+        <div class="blog-image-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="blog-image-modal-title">
+            <div class="blog-image-modal-header">
+                <div>
+                    <p class="blog-admin-kicker">Image Upload</p>
+                    <h3 id="blog-image-modal-title">Crop and zoom cover image</h3>
+                </div>
+                <button id="blog-image-modal-close" class="blog-admin-button secondary" type="button">Close</button>
+            </div>
+            <p class="blog-admin-muted">Move and zoom the image to fit the blog cover ratio. The final file will be converted to WebP automatically.</p>
+            <div class="blog-image-crop-shell">
+                <canvas id="blog-image-crop-canvas" class="blog-image-crop-canvas" width="1200" height="675"></canvas>
+            </div>
+            <div class="blog-admin-field">
+                <label for="blog-image-zoom">Zoom</label>
+                <input id="blog-image-zoom" class="form-range" type="range" min="100" max="300" value="100">
+            </div>
+            <div class="blog-image-modal-actions">
+                <button id="blog-image-reset" class="blog-admin-button secondary" type="button">Reset</button>
+                <button id="blog-image-save" class="blog-admin-button" type="button">Crop and Use Image</button>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/blog-admin-editor.js"></script>
+</body>
+</html>

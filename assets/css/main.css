@@ -11099,13 +11099,180 @@ Default Tab Style
 .blog-details-area .blog-post-item {
   margin: 0 0 65px;
 }
+.blog-details-area .blog-post-wrapper {
+  width: 100%;
+}
+.blog-detail-sidebar {
+  margin-left: 12px;
+}
+@media (max-width: 991.98px) {
+  .blog-detail-sidebar {
+    margin: 50px 0 0;
+  }
+}
+.blog-detail-recent-list {
+  display: grid;
+  gap: 12px;
+}
+.blog-detail-recent-item {
+  margin: 0;
+}
+.blog-detail-recent-item a {
+  display: grid;
+  gap: 6px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #212d38;
+  background: #131c27;
+  text-decoration: none;
+}
+.blog-detail-recent-item a strong {
+  color: var(--tg-common-color-white);
+  font-size: 16px;
+  line-height: 1.35;
+}
+.blog-detail-recent-item a span {
+  color: var(--tg-body-color);
+  font-size: 13px;
+  font-weight: 600;
+}
+.blog-detail-recent-item a:hover strong {
+  color: var(--tg-theme-primary);
+}
+.blog-grid-layout .blog-post-wrapper {
+  width: 100%;
+}
+.blog-grid-layout .blog-grid-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.blog-grid-layout .blog-results-summary {
+  color: var(--tg-common-color-white);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.blog-grid-layout .sidebar-search-form {
+  width: 100%;
+  max-width: 360px;
+}
+.blog-grid-layout .blog-post-wrapper .pagination__wrap ul {
+  justify-content: center !important;
+}
+.blog-grid-layout .blog-taxonomy-block {
+  display: grid;
+  gap: 18px;
+  margin: 36px 0 0;
+  padding-top: 28px;
+  border-top: 1px solid #1f2a36;
+}
+.blog-grid-layout .blog-taxonomy-group {
+  display: grid;
+  gap: 12px;
+}
+.blog-grid-layout .blog-taxonomy-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tg-theme-primary);
+}
+.blog-grid-layout .blog-taxonomy-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.blog-grid-layout .blog-taxonomy-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid #243140;
+  background: #131c27;
+  color: var(--tg-body-color);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease-out 0s;
+}
+.blog-grid-layout .blog-taxonomy-chip span {
+  color: #7e90a5;
+}
+.blog-grid-layout .blog-taxonomy-chip:hover,
+.blog-grid-layout .blog-taxonomy-chip.is-active {
+  color: #0b1117;
+  background: var(--tg-theme-primary);
+  border-color: var(--tg-theme-primary);
+}
+.blog-grid-layout .blog-taxonomy-chip:hover span,
+.blog-grid-layout .blog-taxonomy-chip.is-active span {
+  color: #0b1117;
+}
+.blog-grid-layout .blog-post-item {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.blog-grid-layout .blog-post-thumb img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.blog-grid-layout .blog-post-content {
+  height: 100%;
+  padding: 30px 28px;
+}
+.blog-grid-layout .blog-post-content .title {
+  font-size: 24px;
+  line-height: 1.25;
+  margin: 0 0 16px;
+  word-break: break-word;
+}
+.blog-grid-layout .blog-post-content p {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.blog-grid-layout .blog-post-bottom {
+  margin-top: auto;
+  padding-top: 24px;
+}
+@media (max-width: 767.98px) {
+  .blog-grid-layout .blog-post-content {
+    padding: 24px 22px;
+  }
+  .blog-grid-layout .blog-post-content .title {
+    font-size: 22px;
+  }
+}
 .blog-details-area .blog-post-thumb {
   margin: 0 0 35px;
+}
+.blog-details-area .blog-post-thumb img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
 }
 @media (max-width: 767.98px) {
   .blog-details-area .blog-post-thumb {
     margin: 0 0 25px;
   }
+}
+.blog-details-area .row {
+  --bs-gutter-x: 28px;
+  align-items: flex-start;
+}
+.blog-details-area .blog-post-content .title {
+  max-width: 100%;
+  word-break: break-word;
 }
 .blog-details-content {
   background: transparent;

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Letsdo Blog Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/blog-admin.css">
+</head>
+<body class="blog-admin-body">
+    <main class="blog-admin-app">
+        <aside class="blog-admin-sidebar">
+            <div class="blog-admin-sidebar-top">
+                <a class="blog-admin-brand" href="index.html">
+                    <img src="assets/img/logo/logo-180.webp" srcset="assets/img/logo/logo-180.webp 180w, assets/img/logo/logo-360.webp 360w" sizes="177px" alt="Letsdo Creative" width="177" height="47" decoding="async">
+                </a>
+                <div class="blog-admin-sidebar-copy">
+                    <p class="blog-admin-kicker">Letsdo Creative</p>
+                    <h1>Blog Ops</h1>
+                    <p class="blog-admin-muted">Editorial control for the Letsdo product blog.</p>
+                </div>
+                <nav class="blog-admin-nav" aria-label="Dashboard sections">
+                    <a class="blog-admin-nav-link is-active" href="#overview">Overview</a>
+                    <a class="blog-admin-nav-link" href="#posts">Posts</a>
+                    <a class="blog-admin-nav-link" href="#taxonomy">Categories</a>
+                    <a class="blog-admin-nav-link" href="#tags">Tags</a>
+                    <a class="blog-admin-nav-link" href="blog-admin-editor.html">New Article</a>
+                    <a class="blog-admin-nav-link" href="blog.html" target="_blank" rel="noopener noreferrer">Preview Blog</a>
+                </nav>
+            </div>
+            <div class="blog-admin-sidebar-bottom">
+                <div class="blog-admin-operator">
+                    <span class="blog-admin-operator-label">Signed in as</span>
+                    <strong id="blog-admin-operator-name">Letsdo Admin</strong>
+                    <span id="blog-admin-operator-email" class="blog-admin-muted">admin@letsdocreative.com</span>
+                </div>
+                <button id="blog-admin-logout" class="blog-admin-button secondary blog-admin-sidebar-logout" type="button">Logout</button>
+            </div>
+        </aside>
+
+        <section class="blog-admin-content">
+            <div id="blog-admin-loader" class="blog-admin-loader" aria-live="polite" aria-hidden="true">
+                <div class="blog-admin-loader-spinner" aria-hidden="true"></div>
+                <span>Loading dashboard data...</span>
+            </div>
+            <div id="blog-admin-dashboard-feedback" class="blog-admin-feedback d-none mb-3"></div>
+
+            <section id="overview" class="blog-admin-hero">
+                <div class="blog-admin-hero-copy">
+                    <p class="blog-admin-kicker">Command Center</p>
+                    <h2>Run the Letsdo blog from one focused workspace.</h2>
+                    <p class="blog-admin-muted">This panel controls the content shown on <code>blog.html</code> and <code>blog-details.html</code>. Use the left menu to jump between sections or create a new article directly.</p>
+                </div>
+                <div class="blog-admin-hero-actions">
+                    <a class="blog-admin-button" href="blog-admin-editor.html">Create New Post</a>
+                    <a class="blog-admin-button secondary" href="blog.html" target="_blank" rel="noopener noreferrer">Preview Public Blog</a>
+                </div>
+            </section>
+
+            <section class="blog-admin-grid metrics" id="blog-admin-metrics"></section>
+
+            <section class="blog-admin-grid blog-admin-main-grid">
+                <div class="blog-admin-stack">
+                    <section id="posts" class="blog-admin-card blog-admin-section-card">
+                        <div class="blog-admin-section-head">
+                            <div>
+                                <p class="blog-admin-kicker">Posts</p>
+                                <h3>Latest articles</h3>
+                            </div>
+                            <a class="blog-admin-button secondary" href="blog-admin-editor.html">Draft New</a>
+                        </div>
+                        <div id="blog-admin-post-list" class="blog-admin-list"></div>
+                    </section>
+
+                    <section id="tags" class="blog-admin-card blog-admin-section-card">
+                        <div class="blog-admin-section-head">
+                            <div>
+                                <p class="blog-admin-kicker">Tags</p>
+                                <h3>Tag control</h3>
+                            </div>
+                        </div>
+                        <form id="blog-admin-tag-form" class="blog-admin-form blog-admin-compact-form mt-3">
+                            <div class="blog-admin-field">
+                                <label for="blog-admin-tag-select">Available tags</label>
+                                <select id="blog-admin-tag-select" class="blog-admin-select">
+                                    <option value="">Loading tags...</option>
+                                </select>
+                            </div>
+                            <div class="blog-admin-field">
+                                <label for="blog-admin-tag-name">New tag</label>
+                                <input id="blog-admin-tag-name" name="name" class="blog-admin-input" type="text" placeholder="casino">
+                            </div>
+                            <button class="blog-admin-button secondary" type="submit">Add Tag</button>
+                        </form>
+                    </section>
+                </div>
+
+                <div class="blog-admin-stack">
+                    <section id="taxonomy" class="blog-admin-card blog-admin-section-card">
+                        <div class="blog-admin-section-head">
+                            <div>
+                                <p class="blog-admin-kicker">Categories</p>
+                                <h3>Category control</h3>
+                            </div>
+                        </div>
+                        <form id="blog-admin-category-form" class="blog-admin-form blog-admin-compact-form mt-3">
+                            <div class="blog-admin-field">
+                                <label for="blog-admin-category-select">Available categories</label>
+                                <select id="blog-admin-category-select" class="blog-admin-select">
+                                    <option value="">Loading categories...</option>
+                                </select>
+                            </div>
+                            <div class="blog-admin-field">
+                                <label for="blog-admin-category-name">New category</label>
+                                <input id="blog-admin-category-name" name="name" class="blog-admin-input" type="text" placeholder="Game Development">
+                            </div>
+                            <button class="blog-admin-button secondary" type="submit">Add Category</button>
+                        </form>
+                    </section>
+
+                    <section class="blog-admin-card blog-admin-section-card blog-admin-utility-card">
+                        <p class="blog-admin-kicker">Workflow</p>
+                        <h3>Quick actions</h3>
+                        <div class="blog-admin-quick-links">
+                            <a class="blog-admin-quick-link" href="blog-admin-editor.html">
+                                <strong>Write a new article</strong>
+                                <span>Open the editor and start drafting immediately.</span>
+                            </a>
+                            <a class="blog-admin-quick-link" href="blog.html" target="_blank" rel="noopener noreferrer">
+                                <strong>Review public listing</strong>
+                                <span>Check how posts appear on the live blog grid.</span>
+                            </a>
+                            <a class="blog-admin-quick-link" href="blog-details.html?slug=how-white-label-casino-products-reduce-time-to-market" target="_blank" rel="noopener noreferrer">
+                                <strong>Inspect detail page</strong>
+                                <span>Preview the current sample article layout.</span>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </section>
+    </main>
+    <script src="assets/js/blog-admin-dashboard.js"></script>
+</body>
+</html>
