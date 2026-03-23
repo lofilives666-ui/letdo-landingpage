@@ -17,22 +17,34 @@ $name = strip_tags(trim($_POST['name'] ?? ''));
 $name = str_replace(["\r", "\n"], [' ', ' '], $name);
 $email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
 $countryCode = preg_replace('/[^0-9+]/', '', trim($_POST['country_code'] ?? ''));
-$phoneLocal = preg_replace('/[^0-9]/', '', trim($_POST['phone'] ?? ''));
-$phone = trim($countryCode . ' ' . $phoneLocal);
+$phoneRaw = trim($_POST['phone'] ?? '');
+$phoneLocal = preg_replace('/[^0-9]/', '', $phoneRaw);
+$phone = '';
 $service = strip_tags(trim($_POST['service'] ?? ''));
 $subject = trim($_POST['subject'] ?? '');
 $message = trim($_POST['message'] ?? '');
 
-if (empty($name) || empty($countryCode) || empty($phoneLocal) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+if (empty($name) || empty($phoneRaw) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     http_response_code(400);
     echo 'Please complete the form and try again.';
     exit;
 }
 
-if (!preg_match('/^\+[0-9]{1,4}$/', $countryCode) || !preg_match('/^[0-9]{6,14}$/', $phoneLocal) || !preg_match('/^\+[0-9]{1,4}\s[0-9]{6,14}$/', $phone)) {
-    http_response_code(400);
-    echo 'Please enter a valid mobile number.';
-    exit;
+if ($countryCode !== '') {
+    $phone = trim($countryCode . ' ' . $phoneLocal);
+    if (!preg_match('/^\+[0-9]{1,4}$/', $countryCode) || !preg_match('/^[0-9]{6,14}$/', $phoneLocal)) {
+        http_response_code(400);
+        echo 'Please enter a valid mobile number.';
+        exit;
+    }
+} else {
+    $normalizedPhone = preg_replace('/[^0-9+]/', '', $phoneRaw);
+    $phone = $normalizedPhone;
+    if (!preg_match('/^\+?[0-9]{7,15}$/', $normalizedPhone)) {
+        http_response_code(400);
+        echo 'Please enter a valid mobile number.';
+        exit;
+    }
 }
 
 // Gmail SMTP only
