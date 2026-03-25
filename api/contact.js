@@ -259,8 +259,8 @@ module.exports = async (req, res) => {
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const countryCodeRegex = /^\+[0-9]{1,4}$/;
-  const phoneLocalRegex = /^[0-9]{6,14}$/;
-  const fullPhoneRegex = /^\+?[0-9]{7,15}$/;
+  const phoneLocalRegex = /^[0-9]{10,14}$/;
+  const fullPhoneRegex = /^\+?[0-9]{10,15}$/;
   const countryCode = countryCodeRaw.replace(/[^\d+]/g, '');
   const phoneLocal = phoneRaw.replace(/[^\d]/g, '');
   let phone = '';
