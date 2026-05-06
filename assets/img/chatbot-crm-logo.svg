@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+<title>Chatbot CRM White Label Logo</title>
+<desc>Gradient logo with chat, AI, and CRM motifs.</desc>
+<defs>
+<linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#0f172a"/>
+<stop offset="100%" stop-color="#111827"/>
+</linearGradient>
+<linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#22c55e"/>
+<stop offset="50%" stop-color="#06b6d4"/>
+<stop offset="100%" stop-color="#3b82f6"/>
+</linearGradient>
+</defs>
+<rect width="512" height="512" rx="96" fill="url(#bg)"/>
+<rect x="76" y="92" width="360" height="252" rx="42" fill="#0b1220" stroke="rgba(255,255,255,.12)"/>
+<path d="M132 154c0-18 14-32 32-32h184c18 0 32 14 32 32v90c0 18-14 32-32 32H244l-62 54c-10 9-26 2-26-12v-42h8c-18 0-32-14-32-32z" fill="url(#accent)"/>
+<circle cx="208" cy="200" r="18" fill="#e0f2fe"/>
+<circle cx="256" cy="200" r="18" fill="#e0f2fe"/>
+<circle cx="304" cy="200" r="18" fill="#e0f2fe"/>
+<rect x="120" y="376" width="272" height="22" rx="11" fill="#1f2937"/>
+<rect x="120" y="418" width="174" height="18" rx="9" fill="#1f2937"/>
+<path d="M368 382h26c16 0 30 13 30 30s-14 30-30 30h-10" fill="none" stroke="#22c55e" stroke-width="14" stroke-linecap="round"/>
+<path d="M346 360a44 44 0 1 0 0 88" fill="none" stroke="#06b6d4" stroke-width="14" stroke-linecap="round"/>
+</svg>

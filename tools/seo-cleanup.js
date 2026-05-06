@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = process.cwd();
-const SITE_URL = "https://www.letsdocreative.com";
+const SITE_URL = "https://letsdocreative.com";
 
 const noindexPages = new Set([
   "404.html",
@@ -60,8 +60,8 @@ const serviceTypeMap = [
     files: new Set([
       "casual-game-development.html",
       "hyper-casual-games.html",
-      "casino-games.html",
-      "mini-games.html",
+      "casino-game-development.html",
+      "mini-game-development.html",
       "mobile-game.html",
       "web-games.html",
       "pc-games.html",
@@ -207,6 +207,16 @@ function titleCaseSlug(file) {
 }
 
 function extractHeading(html, file) {
+  const serviceSubtitleMatch = html.match(
+    /<div class="team__details-content">[\s\S]*?<span[^>]*class="sub-title"[^>]*>([\s\S]*?)<\/span>/i
+  );
+  if (serviceSubtitleMatch) return cleanText(serviceSubtitleMatch[1]);
+
+  const serviceHeadingMatch = html.match(
+    /<div class="team__details-content">[\s\S]*?<h([1-6])[^>]*class="title"[^>]*>([\s\S]*?)<\/h\1>/i
+  );
+  if (serviceHeadingMatch) return cleanText(serviceHeadingMatch[2]);
+
   const breadcrumbMatch = html.match(
     /<div class="breadcrumb__content">[\s\S]*?<h([1-6])[^>]*class="title"[^>]*>([\s\S]*?)<\/h\1>/i
   );
@@ -289,6 +299,7 @@ function replaceHeadMeta(file, html, robotsValue) {
     .replace(/^\s*<link rel="canonical"[\s\S]*?$\r?\n?/gim, "")
     .replace(/^\s*<meta property="og:[\s\S]*?$\r?\n?/gim, "")
     .replace(/^\s*<meta name="twitter:[\s\S]*?$\r?\n?/gim, "")
+    .replace(/^\s*<link rel="alternate" hreflang="[\s\S]*?$\r?\n?/gim, "")
     .replace(/^\s*<link rel="icon"[\s\S]*?$\r?\n?/gim, "")
     .replace(/^\s*<link rel="shortcut icon"[\s\S]*?$\r?\n?/gim, "")
     .replace(/^\s*<link rel="apple-touch-icon"[\s\S]*?$\r?\n?/gim, "");

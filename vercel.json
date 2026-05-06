@@ -1,0 +1,26 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/casino-games.html",
+      "destination": "/casino-game-development.html",
+      "permanent": true
+    },
+    {
+      "source": "/mini-games.html",
+      "destination": "/mini-game-development.html",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.letsdocreative.com"
+        }
+      ],
+      "destination": "https://letsdocreative.com/$1",
+      "permanent": true
+    }
+  ]
+}

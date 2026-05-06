@@ -113,8 +113,8 @@ async function main() {
       const targetFromFile = path.relative(fileDir, targetPath).split(path.sep).join('/');
       const sourceAbsUrl = `/${sourceRel}`;
       const targetAbsUrl = `/${targetRel}`;
-      const sourceSiteUrl = `https://www.letsdocreative.com/${sourceRel}`;
-      const targetSiteUrl = `https://www.letsdocreative.com/${targetRel}`;
+      const sourceSiteUrl = `https://letsdocreative.com/${sourceRel}`;
+      const targetSiteUrl = `https://letsdocreative.com/${targetRel}`;
 
       nextContent = nextContent.split(sourceRel).join(targetRel);
       nextContent = nextContent.split(sourceFromFile).join(targetFromFile);

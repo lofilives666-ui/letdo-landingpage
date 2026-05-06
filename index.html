@@ -1,197 +1,30 @@
-<!doctype html>
+﻿<!doctype html>
 <html class="no-js" lang="en-IN">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Letsdo Creative | Game Development, AR/VR, Web3 & Ecommerce</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">        <title>Letsdo Creative | Game Development, AR/VR, Web3 & Ecommerce</title>
     <meta name="description" content="Letsdo Creative builds game, AR/VR, Web3, mobile app, and ecommerce white-label solutions for startups and enterprises in India.">
-    <link rel="canonical" href="https://www.letsdocreative.com/">
-    <link rel="alternate" hreflang="en-IN" href="https://www.letsdocreative.com/">
-    <link rel="alternate" hreflang="en-US" href="https://www.letsdocreative.com/">
-    <link rel="alternate" hreflang="x-default" href="https://www.letsdocreative.com/">
+    <link rel="canonical" href="https://letsdocreative.com/">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Letsdo Creative | Game Development, AR/VR, Web3 & Ecommerce">
     <meta property="og:description" content="Build and scale with Letsdo Creative: game development, AR/VR, Web3, AI products, and ecommerce white-label solutions.">
-    <meta property="og:url" content="https://www.letsdocreative.com/">
+    <meta property="og:url" content="https://letsdocreative.com/">
     <meta property="og:site_name" content="Letsdo Creative">
-    <meta property="og:image" content="https://www.letsdocreative.com/assets/img/logo/logo.webp">
+    <meta property="og:image" content="https://letsdocreative.com/assets/img/logo/logo.webp">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Letsdo Creative | Game Development, AR/VR, Web3 & Ecommerce">
     <meta name="twitter:description" content="Build and scale with Letsdo Creative: game development, AR/VR, Web3, AI products, and ecommerce white-label solutions.">
-    <meta name="twitter:image" content="https://www.letsdocreative.com/assets/img/logo/logo.webp">
+    <meta name="twitter:image" content="https://letsdocreative.com/assets/img/logo/logo.webp">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
     <link rel="apple-touch-icon" href="assets/img/favicon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0f161e">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" media="print" onload="this.media='all'">
-    <script>
-        (function () {
-            var isMobileViewport = window.matchMedia('(max-width: 767.98px)').matches;
-            var deferredStylesLoaded = false;
-            var deferredStyleHrefs = [
-                'assets/css/fontawesome-all.min.css',
-                'assets/css/flaticon.css'
-            ];
-            var deferredInteractiveStyleHrefs = [
-                'assets/css/magnific-popup.css',
-                'assets/css/swiper-bundle.css',
-                'assets/css/slick.css'
-            ];
-
-            function loadStyle(href) {
-                if (document.querySelector('link[href="' + href + '"]')) {
-                    return;
-                }
-
-                var link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = href;
-                document.head.appendChild(link);
-            }
-
-            function loadDeferredStyles() {
-                if (deferredStylesLoaded) {
-                    return;
-                }
-
-                deferredStylesLoaded = true;
-                deferredStyleHrefs.forEach(loadStyle);
-                if (!isMobileViewport) {
-                    deferredInteractiveStyleHrefs.forEach(loadStyle);
-                }
-            }
-
-            function loadInteractiveStyles() {
-                loadDeferredStyles();
-                deferredInteractiveStyleHrefs.forEach(loadStyle);
-            }
-
-            function loadDeferredStylesSoon() {
-                if ('requestIdleCallback' in window) {
-                    requestIdleCallback(loadDeferredStyles, { timeout: 2500 });
-                    return;
-                }
-
-                window.setTimeout(loadDeferredStyles, 1200);
-            }
-
-            function observeDesktopInteractiveStyles() {
-                if (isMobileViewport || !('IntersectionObserver' in window)) {
-                    return;
-                }
-
-                var targets = document.querySelectorAll('.slider__area, .gallery__area, .video__area, .faq-area, .brand-area, .social__area, .trendingNft-area');
-
-                if (!targets.length) {
-                    return;
-                }
-
-                var observer = new IntersectionObserver(function (entries) {
-                    if (!entries.some(function (entry) { return entry.isIntersecting; })) {
-                        return;
-                    }
-
-                    loadInteractiveStyles();
-                    observer.disconnect();
-                }, { rootMargin: '200px 0px' });
-
-                targets.forEach(function (target) {
-                    observer.observe(target);
-                });
-            }
-
-            window.loadDeferredStyles = loadDeferredStyles;
-            window.loadInteractiveStyles = loadInteractiveStyles;
-            ['pointerdown', 'touchstart', 'keydown'].forEach(function (eventName) {
-                window.addEventListener(eventName, loadInteractiveStyles, { once: true, passive: true });
-            });
-
-            window.addEventListener('wheel', loadInteractiveStyles, { once: true, passive: true });
-
-            if (isMobileViewport) {
-                window.addEventListener('load', loadDeferredStylesSoon, { once: true });
-                return;
-            }
-
-            document.addEventListener('DOMContentLoaded', observeDesktopInteractiveStyles, { once: true });
-        })();
-    </script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'AW-17930320922');
-
-        (function () {
-            function loadGtag() {
-                if (document.querySelector('script[data-gtag-loader]')) {
-                    return;
-                }
-                var script = document.createElement('script');
-                script.async = true;
-                script.dataset.gtagLoader = 'true';
-                script.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17930320922';
-                document.head.appendChild(script);
-            }
-
-            ['pointerdown', 'touchstart', 'keydown'].forEach(function (eventName) {
-                window.addEventListener(eventName, loadGtag, { once: true, passive: true });
-            });
-
-            window.addEventListener('wheel', loadGtag, { once: true, passive: true });
-        })();
-    </script>
-    <script>
-        (function () {
-            if (window.matchMedia('(max-width: 767.98px)').matches) {
-                document.documentElement.classList.add('is-mobile-lite');
-                document.addEventListener('DOMContentLoaded', function () {
-                    var heroSection = document.querySelector('.slider__area[data-background]');
-                    var removableSections = document.querySelectorAll('.nft-item__area, .about__area, .gallery__area, .about__area-two, .team__area, .video__area, .roadMap__area, .trendingNft-area, .social__area');
-                    if (heroSection) {
-                        heroSection.removeAttribute('data-background');
-                        heroSection.removeAttribute('data-bg-eager');
-                    }
-                    removableSections.forEach(function (section) {
-                        section.remove();
-                    });
-                }, { once: true });
-                return;
-            }
-
-            [
-                { href: 'assets/img/slider/slider_bg.webp' },
-                {
-                    href: 'assets/img/slider/slider_img01-594.webp',
-                    imagesrcset: 'assets/img/slider/slider_img01-420.webp 420w, assets/img/slider/slider_img01-594.webp 594w',
-                    imagesizes: '(max-width: 767px) 382px, 495px'
-                }
-            ].forEach(function (config) {
-                var link = document.createElement('link');
-                link.rel = 'preload';
-                link.as = 'image';
-                link.href = config.href;
-                link.setAttribute('fetchpriority', 'high');
-                if (config.imagesrcset) {
-                    link.setAttribute('imagesrcset', config.imagesrcset);
-                    link.setAttribute('imagesizes', config.imagesizes);
-                }
-                document.head.appendChild(link);
-            });
-
-            document.addEventListener('DOMContentLoaded', function () {
-                document.querySelectorAll('[data-bg-eager][data-background]').forEach(function (element) {
-                    element.style.backgroundImage = 'url(' + element.getAttribute('data-background') + ')';
-                    element.dataset.bgLoaded = 'true';
-                });
-            }, { once: true });
-        })();
-    </script>
+        <script src="assets/js/index-head.js"></script>
+    
+    
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -208,1048 +41,15 @@
         <link rel="stylesheet" href="assets/css/magnific-popup.css">
         <link rel="stylesheet" href="assets/css/swiper-bundle.css">
     </noscript>
-    <style>
-        :root {
-            --tg-body-font-family: 'Poppins', sans-serif;
-            --tg-heading-font-family: 'Barlow', sans-serif;
-            --tg-berlin-font-family: 'berlin_sans_fb_demibold', 'Barlow', sans-serif;
-            --tg-common-color-white: #fff;
-            --tg-common-color-gray: #182029;
-            --tg-common-color-black: #0f161b;
-            --tg-common-color-black-2: #201f2a;
-            --tg-heading-color: #fff;
-            --tg-body-color: #adb0bc;
-            --tg-theme-primary: #45f882;
-            --tg-border-2: #22292f;
-            --tg-fw-extra-bold: 800;
-            --tg-fw-bold: 700;
-            --tg-fw-regular: 400;
-        }
-        * {
-            box-sizing: border-box;
-        }
-        html {
-            background: #0f161b;
-        }
-        body {
-            margin: 0;
-            font-family: var(--tg-body-font-family);
-            font-size: 16px;
-            line-height: 1.75;
-            color: var(--tg-body-color);
-            background: var(--tg-common-color-black);
-            -webkit-text-size-adjust: 100%;
-        }
-        img,
-        svg {
-            max-width: 100%;
-            vertical-align: middle;
-        }
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-        ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-        button,
-        input,
-        textarea,
-        select {
-            font: inherit;
-        }
-        .container,
-        .custom-container {
-            width: 100%;
-            max-width: 1300px;
-            margin-right: auto;
-            margin-left: auto;
-            padding-right: 12px;
-            padding-left: 12px;
-        }
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            margin-right: -12px;
-            margin-left: -12px;
-        }
-        .row > * {
-            width: 100%;
-            max-width: 100%;
-            padding-right: 12px;
-            padding-left: 12px;
-        }
-        .col-12,
-        .col-lg-6,
-        .col-xl-5,
-        .col-xxl-6 {
-            flex: 0 0 auto;
-            width: 100%;
-        }
-        .justify-content-between {
-            justify-content: space-between;
-        }
-        .text-center {
-            text-align: center;
-        }
-        .d-none {
-            display: none !important;
-        }
-        .transparent-header {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            z-index: 9;
-        }
-        .tg-header__area {
-            padding: 20px 0;
-            transition: all 0.4s ease;
-        }
-        .tgmenu__nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .tgmenu__navbar-wrap {
-            display: none;
-        }
-        .logo a {
-            display: inline-block;
-        }
-        .logo img {
-            max-width: 177px;
-        }
-        .tg-header__area .mobile-nav-toggler {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            margin-left: auto;
-            padding: 0;
-            border: 2px solid var(--tg-theme-primary);
-            background: transparent;
-            color: var(--tg-theme-primary);
-            cursor: pointer;
-        }
-        .menu-bars {
-            display: inline-flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-        .menu-bars span {
-            display: block;
-            width: 20px;
-            height: 2px;
-            background: currentColor;
-        }
-        .scroll__top {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            z-index: 99;
-            width: 44px;
-            height: 44px;
-            border: 0;
-            border-radius: 50%;
-            background: rgba(12, 22, 38, 0.92);
-            color: #fff;
-        }
-        .scroll__top-label {
-            font-size: 20px;
-            line-height: 1;
-        }
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-        .slider__area {
-            position: relative;
-        }
-        .slider__area::before,
-        .slider__area::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            width: 50%;
-            height: 20px;
-            background: var(--tg-theme-primary);
-        }
-        .slider__area::before {
-            left: 0;
-            clip-path: polygon(0 0, 0 100%, 100% 100%);
-        }
-        .slider__area::after {
-            right: 0;
-            clip-path: polygon(100% 0, 0 100%, 100% 100%);
-        }
-        .slider__bg {
-            position: relative;
-            z-index: 1;
-            padding: 160px 0 55px;
-            background-color: #0f161b;
-            background-position: center;
-            background-size: cover;
-        }
-        .slider__content {
-            position: relative;
-            z-index: 2;
-            margin: 0 0 50px;
-            text-align: center;
-        }
-        .slider__content .sub-title {
-            position: relative;
-            z-index: 1;
-            margin: 0 0 19px;
-            padding: 15px 20px;
-            font-size: 17px;
-            line-height: 1;
-            letter-spacing: 4px;
-            font-weight: var(--tg-fw-bold);
-            color: var(--tg-theme-primary);
-            text-transform: uppercase;
-        }
-        .slider__content .sub-title::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            opacity: 0.28;
-            background: url("assets/img/slider/text_gradient_bg.webp") no-repeat center/256px auto;
-        }
-        .slider__content .title {
-            margin: 0 0 12px;
-            font-family: var(--tg-berlin-font-family);
-            font-size: 18vw;
-            line-height: 1.02;
-            color: var(--tg-heading-color);
-            text-shadow: -1px 3px 0 rgba(69, 248, 130, 0.66);
-        }
-        .slider__content p {
-            margin: 0;
-            font-size: 15px;
-            line-height: 1.45;
-            letter-spacing: 1.4px;
-            font-weight: var(--tg-fw-bold);
-            text-transform: uppercase;
-            color: var(--tg-common-color-white);
-        }
-        .slider__btn {
-            margin-top: 33px;
-        }
-        .tg-btn-1 {
-            position: relative;
-            z-index: 1;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 195px;
-            padding: 15px 49px;
-            overflow: hidden;
-            font-family: var(--tg-heading-font-family);
-            font-size: 15px;
-            font-weight: var(--tg-fw-extra-bold);
-            letter-spacing: 0.8px;
-            text-align: center;
-            text-transform: uppercase;
-            color: var(--tg-common-color-black-2);
-        }
-        .tg-btn-1 svg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        .tg-btn-1 .cls-1 {
-            fill: var(--tg-theme-primary);
-            stroke: var(--tg-common-color-white);
-            stroke-width: 1.5px;
-        }
-        .tg-btn-1 .cls-2 {
-            fill: var(--tg-common-color-white);
-            stroke: transparent;
-        }
-        .slider__img img {
-            display: block;
-            width: 100%;
-            max-width: 382px;
-            height: auto !important;
-            margin: 0 auto;
-        }
-        .slider__area .single-slider .row.justify-content-between {
-            align-items: center;
-        }
-        .slider__img {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 440px;
-        }
-        .tgmobile__menu,
-        .tgmobile__menu-backdrop,
-        .offCanvas__wrap,
-        .offCanvas__overlay {
-            display: none;
-        }
-        @media (min-width: 992px) {
-            .col-lg-6 {
-                width: 50%;
-            }
-            .slider__bg {
-                padding: 175px 0 55px;
-            }
-            .slider__content {
-                margin: 0 0 70px;
-            }
-            .slider__content .sub-title::before {
-                background-size: 297px auto;
-            }
-            .slider__content .title {
-                font-size: 120px;
-                line-height: 0.8;
-            }
-            .slider__content p {
-                font-size: 24px;
-                letter-spacing: 5px;
-            }
-            .slider__img img {
-                max-width: 480px;
-            }
-        }
-        @media (min-width: 1200px) {
-            .d-xl-flex {
-                display: flex !important;
-            }
-            .tg-header__area {
-                padding: 11px 0;
-            }
-            .tgmenu__nav {
-                justify-content: flex-start;
-            }
-            .tgmenu__navbar-wrap {
-                display: flex;
-                flex-grow: 1;
-            }
-            .tgmenu__navbar-wrap > ul.navigation {
-                display: flex;
-                flex-wrap: wrap;
-                margin: 0 auto 0 65px;
-            }
-            .tgmenu__navbar-wrap > ul.navigation > li {
-                position: relative;
-            }
-            .tgmenu__navbar-wrap > ul.navigation > li > a {
-                display: block;
-                padding: 38px 16px;
-                font-family: var(--tg-heading-font-family);
-                font-size: 15px;
-                font-weight: var(--tg-fw-bold);
-                line-height: 1;
-                letter-spacing: 0.8px;
-                text-transform: uppercase;
-                color: var(--tg-heading-color);
-            }
-            .tg-header__area .mobile-nav-toggler {
-                display: none;
-            }
-            .col-xl-5 {
-                width: 41.66666667%;
-            }
-            .slider__bg {
-                padding: 158px 0 54px;
-            }
-            .slider__content {
-                margin: 135px 0 0;
-                text-align: left;
-            }
-            .slider__content .sub-title {
-                font-size: 16px;
-            }
-            .slider__content .sub-title::before {
-                background-position: left center;
-                background-size: contain;
-            }
-            .slider__content .title {
-                font-size: 82px;
-                line-height: 0.95;
-                margin-bottom: 12px;
-            }
-            .slider__content p {
-                max-width: 95%;
-                font-size: 18px;
-                letter-spacing: 2px;
-            }
-            .slider__img img {
-                max-width: 495px;
-                margin-left: auto;
-            }
-            .slider__area::before,
-            .slider__area::after {
-                height: 30px;
-            }
-        }
-        @media (min-width: 1400px) {
-            .col-xxl-6 {
-                width: 50%;
-            }
-        }
-        .tech-brand-link {
-            flex-direction: column;
-            height: auto;
-            gap: 10px;
-            text-decoration: none;
-        }
-        .tech-brand-link img {
-            width: 44px;
-            height: 44px;
-            object-fit: contain;
-        }
-        .tech-brand-link span {
-            color: #ffffff;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.6px;
-            text-transform: uppercase;
-        }
-        .slider__content .title.title--product {
-            font-size: 95px;
-            line-height: 0.95;
-        }
-        .slider__content.slider__content--product p {
-            max-width: 95%;
-        }
-        .single-slider--construction .slider__content .title.title--product {
-            font-size: 58px;
-            line-height: 0.96;
-        }
-        @media (max-width: 1199.98px) {
-            .slider__content .title.title--product {
-                font-size: 82px;
-            }
-            .single-slider--construction .slider__content .title.title--product {
-                font-size: 52px;
-            }
-        }
-        @media (max-width: 991.98px) {
-            .slider__content .title.title--product {
-                font-size: 66px;
-                line-height: 1;
-            }
-            .slider__content.slider__content--product p {
-                font-size: 18px;
-                letter-spacing: 2px;
-            }
-            .single-slider--construction .slider__content .title.title--product {
-                font-size: 52px;
-            }
-        }
-        @media (max-width: 767.98px) {
-            .slider__content .title.title--product {
-                font-size: 13.5vw;
-                line-height: 1.02;
-                margin-bottom: 12px;
-            }
-            .slider__content.slider__content--product p {
-                font-size: 15px;
-                letter-spacing: 1.4px;
-                line-height: 1.45;
-                max-width: 100%;
-            }
-            .single-slider--construction .slider__content .title.title--product {
-                font-size: 11.5vw;
-            }
-        }
-        .slider__area .hero-slider-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 52px;
-            height: 52px;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            border-radius: 50%;
-            background: rgba(12, 22, 38, 0.75);
-            color: #ffffff;
-            z-index: 15;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.25s ease;
-        }
-        .slider__area .hero-slider-prev {
-            left: 22px;
-        }
-        .slider__area .hero-slider-next {
-            right: 22px;
-        }
-        .slider__area .hero-slider-arrow:hover {
-            background: #45f882;
-            color: #0f161e;
-            border-color: #45f882;
-        }
-        .slider__img .hero-visual-panel {
-            width: min(100%, 620px);
-            margin: 0 auto;
-            padding: 0;
-            border: 0;
-            border-radius: 0;
-            background: transparent;
-            box-shadow: none;
-            min-height: 440px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .slider__img .hero-visual-panel img {
-            display: block;
-            width: auto;
-            max-width: 100%;
-            height: auto;
-            max-height: 440px;
-            object-fit: contain;
-            border-radius: 20px;
-        }
-        .slider__img .hero-visual-panel--light img {
-            background: #fff;
-            padding: 28px;
-        }
-        .slider__img .hero-visual-mock {
-            display: grid;
-            gap: 14px;
-            width: min(100%, 620px);
-        }
-        .slider__img .hero-visual-mock.hero-visual-mock--construction {
-            width: min(100%, 560px);
-        }
-        .slider__img .hero-visual-mock-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            padding: 18px 20px;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .slider__img .hero-visual-mock-top strong {
-            display: block;
-            color: #fff;
-            font-size: 18px;
-            line-height: 1.3;
-        }
-        .slider__img .hero-visual-mock-top span {
-            color: var(--tg-body-color);
-            font-size: 14px;
-        }
-        .slider__img .hero-visual-pill {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 118px;
-            padding: 10px 14px;
-            border-radius: 999px;
-            background: rgba(69, 248, 130, 0.14);
-            border: 1px solid rgba(69, 248, 130, 0.22);
-            color: var(--tg-theme-primary);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-        .slider__img .hero-visual-mock-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-        }
-        .slider__img .hero-visual-metric {
-            padding: 20px;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            text-align: left;
-        }
-        .slider__img .hero-visual-metric-label {
-            display: block;
-            color: var(--tg-body-color);
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 8px;
-        }
-        .slider__img .hero-visual-metric-value {
-            display: block;
-            color: #fff;
-            font-family: var(--tg-heading-font-family);
-            font-size: 26px;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        .slider__img .hero-visual-timeline {
-            padding: 20px;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .slider__img .hero-visual-timeline-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #fff;
-            font-size: 15px;
-            line-height: 1.5;
-        }
-        .slider__img .hero-visual-timeline-item + .hero-visual-timeline-item {
-            margin-top: 12px;
-        }
-        .slider__img .hero-visual-dot {
-            flex: 0 0 10px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--tg-theme-primary);
-            box-shadow: 0 0 0 6px rgba(69, 248, 130, 0.14);
-        }
-        @media (max-width: 991.98px) {
-            .slider__area .hero-slider-arrow {
-                width: 44px;
-                height: 44px;
-            }
-            .slider__area .hero-slider-prev {
-                left: 12px;
-            }
-            .slider__area .hero-slider-next {
-                right: 12px;
-            }
-        }
-        @media (max-width: 767.98px) {
-            .slider__area .hero-slider-arrow {
-                display: none !important;
-            }
-            .slider__img {
-                min-height: auto;
-            }
-            .slider__img .hero-visual-panel {
-                padding: 0;
-                border-radius: 0;
-                min-height: auto;
-            }
-            .slider__img .hero-visual-panel img {
-                max-height: none;
-            }
-            .slider__img .hero-visual-mock-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        .slider-active:not(.slick-initialized) .single-slider:not(:first-child) {
-            display: none;
-        }
-        .logo img,
-        .nav-logo img,
-        .footer-el-logo img {
-            height: auto;
-        }
-        .main--area > section:not(.slider__area) {
-            content-visibility: auto;
-            contain-intrinsic-size: 1px 960px;
-        }
-        @media (min-width: 992px) {
-            #products .products-grid {
-                justify-content: center;
-            }
-            #products .products-grid > [class*="col-"] {
-                flex: 0 0 33.333333%;
-                width: 33.333333%;
-                display: flex;
-            }
-            #products .products-grid .services__item {
-                width: 100%;
-            }
-            .social__area .social-grid {
-                justify-content: center;
-            }
-            .social__area .social-grid > .col {
-                flex: 0 0 16.666667%;
-                width: 16.666667%;
-            }
-            .footer__country .col-6,
-            .footer__two-widgets .col-md-4,
-            .copyright__wrap .col-lg-6 {
-                flex: 0 0 auto;
-            }
-            .footer__country .col-6 {
-                width: 50%;
-            }
-            .footer__two-widgets .col-md-4 {
-                width: 33.333333%;
-            }
-            .copyright__wrap .row {
-                align-items: center;
-            }
-            .copyright__wrap .col-lg-6 {
-                width: 50%;
-            }
-            .footer__two-widgets .text-md-center {
-                text-align: center;
-            }
-            .footer__country .text-sm-end,
-            .footer__two-widgets .text-md-end,
-            .copyright__wrap .text-lg-start {
-                text-align: right;
-            }
-            .copyright__wrap .copyright__text.text-lg-start {
-                text-align: left;
-            }
-            .copyright__wrap .justify-content-lg-end {
-                justify-content: flex-end;
-            }
-        }
-        .social__item a,
-        .tg-btn-1,
-        .submit-btn,
-        .tgmobile__menu .navigation li a,
-        .dropdown-btn,
-        .scroll__top {
-            min-height: 44px;
-        }
-        @media (max-width: 767.98px) {
-            .transparent-header,
-            .tg-header__area,
-            .tg-header__area.tg-sticky-menu,
-            .tg-header__area.tg-sticky-menu.sticky-menu__show {
-                background: rgba(15, 22, 27, 0.96);
-                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-            }
-            html,
-            body {
-                overflow-x: clip;
-            }
-            .footer__country {
-                margin: 0 0 40px;
-            }
-            .footer__country .row,
-            .footer__two-widgets .row,
-            .copyright__wrap .row {
-                row-gap: 18px;
-            }
-            .footer__country .col-6,
-            .footer__two-widgets [class*="col-"],
-            .copyright__wrap [class*="col-"] {
-                width: 100%;
-            }
-            .footer__country-name,
-            .footer__country .text-sm-end,
-            .copyright__wrap .copyright__text,
-            .copyright__wrap .copyright__menu {
-                text-align: center;
-            }
-            .footer__country-name .text {
-                font-size: clamp(48px, 13vw, 64px);
-                line-height: 0.95;
-                opacity: 0.5;
-            }
-            .footer__two-widgets .row {
-                justify-content: center;
-            }
-            .footer__two-widgets .row > div:nth-child(1) {
-                order: 2;
-            }
-            .footer__two-widgets .row > div:nth-child(2) {
-                order: 1;
-            }
-            .footer__two-widgets .row > div:nth-child(3) {
-                order: 3;
-            }
-            .footer__two-widgets .row > [class*="col-"] {
-                max-width: 340px;
-                margin: 0 auto;
-            }
-            .footer-el-widget {
-                margin: 0;
-                padding: 22px 20px;
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                background: rgba(255, 255, 255, 0.02);
-                border-radius: 18px;
-                text-align: center;
-            }
-            .footer-el-widget .title,
-            .footer-el-widget.text-start .title {
-                display: block;
-                margin-bottom: 14px;
-                text-align: center;
-            }
-            .footer-el-widget.widget_nav_menu {
-                padding: 0;
-                border: 0;
-                background: transparent;
-                text-align: center;
-            }
-            .footer-el-logo {
-                margin-bottom: 18px;
-                text-align: center;
-            }
-            .footer-el-menu {
-                text-align: center;
-            }
-            .footer-el-menu .list-wrap,
-            .copyright__menu .list-wrap {
-                justify-content: center;
-            }
-            .footer-el-widget.widget_nav_menu ul li {
-                justify-content: center;
-                text-align: center;
-            }
-            .footer-el-widget > ul.list-wrap li {
-                line-height: 1.65;
-                text-align: center;
-            }
-            .copyright__menu .list-wrap {
-                gap: 10px 18px;
-                margin-top: 0;
-            }
-            .copyright__text p {
-                font-size: 13px;
-            }
-            .tgmobile__menu {
-                display: block;
-                position: fixed;
-                right: 0;
-                top: 0;
-                width: 100%;
-                max-width: 320px;
-                height: 100%;
-                z-index: 9999;
-                visibility: hidden;
-                transform: translateX(101%);
-                transition: transform 0.4s ease, visibility 0.4s ease;
-            }
-            .tgmobile__menu-backdrop {
-                display: block;
-                position: fixed;
-                inset: 0;
-                z-index: 9998;
-                opacity: 0;
-                visibility: hidden;
-                background: rgba(0, 0, 0, 0.7);
-                transition: opacity 0.4s ease, visibility 0.4s ease;
-            }
-            .mobile-menu-visible .tgmobile__menu {
-                visibility: visible;
-                transform: translateX(0);
-            }
-            .mobile-menu-visible .tgmobile__menu-backdrop {
-                opacity: 1;
-                visibility: visible;
-            }
-            .gallery-active,
-            .gallery-active .swiper-wrapper {
-                display: grid !important;
-                grid-template-columns: 1fr;
-                gap: 18px;
-            }
-            .gallery-active .swiper-slide {
-                width: auto !important;
-                margin: 0 !important;
-            }
-            .gallery-active .swiper-scrollbar,
-            .trendingNft__nav,
-            .hero-slider-arrow {
-                display: none !important;
-            }
-            .brand-area {
-                padding: 72px 0 80px;
-            }
-            .brand__title {
-                margin: 0 0 30px;
-            }
-            .brand__title .title {
-                font-size: clamp(42px, 11vw, 54px);
-                line-height: 1;
-                letter-spacing: 0.5px;
-            }
-            .brand-active {
-                display: grid !important;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 20px 12px;
-                align-items: start;
-            }
-            .brand-active > .col {
-                width: 100%;
-                max-width: 100%;
-                flex: 0 0 auto;
-                padding-right: 6px;
-                padding-left: 6px;
-            }
-            .brand__item {
-                display: flex;
-                justify-content: center;
-            }
-            .tech-brand-link {
-                gap: 8px;
-            }
-            .tech-brand-link img {
-                width: 40px;
-                height: 40px;
-            }
-            .tech-brand-link span {
-                font-size: 12px;
-                letter-spacing: 0.2px;
-            }
-            .slider-active {
-                display: flex !important;
-                width: 100%;
-                max-width: 100%;
-                overflow-x: auto;
-                overflow-y: hidden;
-                scroll-snap-type: x mandatory;
-                scroll-behavior: smooth;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-                touch-action: pan-x;
-                overscroll-behavior-x: contain;
-            }
-            .slider-active::-webkit-scrollbar {
-                display: none;
-            }
-            .slider__area,
-            .slider__bg,
-            .single-slider {
-                overflow-x: clip;
-            }
-            .slider-active:not(.slick-initialized) .single-slider,
-            .slider-active .single-slider {
-                display: block !important;
-                flex: 0 0 100%;
-                width: 100%;
-                min-width: 100%;
-                max-width: 100%;
-                scroll-snap-align: start;
-            }
-            .slider__img {
-                display: none !important;
-            }
-            .is-mobile-lite .slider__area.slider__bg {
-                background-image: radial-gradient(circle at top, rgba(69, 248, 130, 0.14), transparent 36%), linear-gradient(180deg, #0f161e 0%, #09131a 100%) !important;
-            }
-            .is-mobile-lite .nft-item__area,
-            .is-mobile-lite .about__area,
-            .is-mobile-lite .gallery__area,
-            .is-mobile-lite .about__area-two,
-            .is-mobile-lite .team__area,
-            .is-mobile-lite .video__area,
-            .is-mobile-lite .roadMap__area,
-            .is-mobile-lite .trendingNft-area,
-            .is-mobile-lite .social__area {
-                display: none !important;
-            }
-            .slider__bg {
-                padding-top: 148px;
-                padding-bottom: 44px;
-                min-height: auto;
-            }
-            .slider__content {
-                margin-bottom: 12px;
-            }
-            .mobile-hero-controls {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 12px;
-                margin-top: 18px;
-            }
-            .mobile-hero-arrow {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                width: 42px;
-                height: 42px;
-                border: 1px solid rgba(69, 248, 130, 0.45);
-                border-radius: 999px;
-                background: rgba(15, 22, 27, 0.88);
-                color: #45f882;
-                font-size: 20px;
-                line-height: 1;
-            }
-            .mobile-hero-dots {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 8px;
-            }
-            .mobile-hero-dot {
-                width: 24px;
-                height: 24px;
-                padding: 0;
-                border: 0;
-                border-radius: 999px;
-                background: transparent;
-                position: relative;
-            }
-            .mobile-hero-dot::before {
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 9px;
-                height: 9px;
-                border-radius: 999px;
-                background: rgba(255, 255, 255, 0.28);
-                transform: translate(-50%, -50%);
-            }
-            .mobile-hero-dot.is-active {
-                width: 24px;
-            }
-            .mobile-hero-dot.is-active::before {
-                width: 24px;
-                background: #45f882;
-            }
-            body,
-            p,
-            li,
-            input,
-            select,
-            textarea,
-            button {
-                font-size: 16px;
-                line-height: 1.5;
-            }
-            .section__title .title {
-                font-size: 32px;
-                line-height: 1.15;
-            }
-            .social__item a {
-                padding: 14px 12px;
-            }
-            .tgmobile__menu .navigation li > a,
-            .tgmobile__menu .navigation li .dropdown-btn {
-                min-height: 48px;
-            }
-        }
-        @media (min-width: 768px) {
-            .mobile-hero-controls {
-                display: none !important;
-            }
-        }
-    </style>
+        <link rel="stylesheet" href="assets/css/index-page.css">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Letsdo Creative",
-      "url": "https://www.letsdocreative.com/",
-      "logo": "https://www.letsdocreative.com/assets/img/logo/logo.webp",
+      "url": "https://letsdocreative.com/",
+      "logo": "https://letsdocreative.com/assets/img/logo/logo.webp",
       "email": "info@letsdocreative.com",
       "telephone": "+91 9677913334",
       "address": {
@@ -2072,7 +872,7 @@
                             </div>
                         </div>
                         <div class="about__three-paragraph">
-                            <p class="tg__animate-text style2">Our team builds high-performance, scalable, and engaging digital experiences Ã¢â‚¬” from concept and design to development and launch. We blend creativity, technology, and innovation to deliver world-class gaming products for global clients.</p>
+                            <p class="tg__animate-text style2">Our team builds high-performance, scalable, and engaging digital experiences ÃƒÂ¢Ã¢â€šÂ¬â€ from concept and design to development and launch. We blend creativity, technology, and innovation to deliver world-class gaming products for global clients.</p>
                         </div>
                     </div>
                 </div>
@@ -2750,7 +1550,7 @@
                         <div class="video__content text-center">
                             <!--<a href="https://www.youtube.com/watch?v=ssrNcwxALS4" class="popup-video"><i class="flaticon-play"></i></a>-->
                             <h2 class="title">Your Partner in <span>Digital Innovation</span></h2>
-                            <p>We deliver powerful whitelabel solutions across industries — AI, retail, fitness, ERP, and more, helping businesses thrive in the modern market.</p>
+                            <p>We deliver powerful whitelabel solutions across industries â€” AI, retail, fitness, ERP, and more, helping businesses thrive in the modern market.</p>
                             <a href="contact.html" class="video__btn tg-btn-1">
                                 <span>START YOUR PROJECT</span>
                                 <svg preserveAspectRatio="none" viewBox="0 0 197 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3009,7 +1809,97 @@
     </main>
     <!-- main-area-end -->
      
-    <!-- faq-area -->
+    
+        <!-- seo-text-ratio-block:start -->
+        <section class="section-pt-120 section-pb-120 seo-showcase-area">
+              <div class="container">
+                  <div class="row justify-content-center">
+                      <div class="col-xl-10">
+                          <div class="section__title text-center mb-40">
+                              <span class="sub-title tg__animate-text">company overview and delivery model</span>
+                              <h3 class="title">A practical product and growth partner for modern digital teams</h3>
+                          </div>
+                          <div class="seo-copy__content seo-showcase">
+                              <div class="seo-showcase__hero">
+                                  <div class="seo-showcase__hero-copy">
+                                      <span class="seo-chip">structured execution for launch-ready products</span>
+                                      <p>Letsdo Creative works with startups, founders, agencies, product teams, and established businesses that need digital execution with stronger structure behind it. Our work spans game development, AR and VR experiences, Web3 products, mobile apps, web platforms, ecommerce systems, design services, marketing assets, and white-label products that can be adapted for different customer or business needs.</p>
+                                      <p>What ties these engagements together is not just the technology stack. It is the need for clear scoping, visible progress, launch readiness, and support that continues after the first version goes live. Teams usually come to us when they want a cleaner path from concept to production and from production to measurable improvement.</p>
+                                  </div>
+                                  <div class="seo-showcase__signal-panel">
+                                      <div class="seo-stat-card">
+                                          <strong>01</strong>
+                                          <span>Partner for product, design, engineering, and launch support.</span>
+                                      </div>
+                                      <div class="seo-stat-card">
+                                          <strong>02</strong>
+                                          <span>Built for companies that need visibility, continuity, and less rework.</span>
+                                      </div>
+                                      <div class="seo-stat-card">
+                                          <strong>03</strong>
+                                          <span>Coimbatore-based execution with delivery support for India and wider markets.</span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="seo-showcase__grid">
+                                  <article class="seo-feature-card">
+                                      <span class="seo-feature-card__eyebrow">What we build</span>
+                                      <h4>Connected delivery across product categories</h4>
+                                      <p>On the product side, our capabilities cover mobile game development, browser-based experiences, multiplayer systems, AR and VR use cases, metaverse-related builds, blockchain-enabled experiences, token and wallet integrations, ecommerce storefronts, custom web apps, backend and API systems, landing pages, branding assets, trailers, motion content, and campaign execution support.</p>
+                                      <ul>
+                                          <li>Game, immersive, and Web3 development aligned to product goals and production feasibility.</li>
+                                          <li>Web, mobile, ecommerce, and backend delivery that supports usability, growth, and maintainability.</li>
+                                          <li>Brand, creative, video, and marketing execution that strengthens launch quality and campaign continuity.</li>
+                                      </ul>
+                                  </article>
+                                  <article class="seo-feature-card">
+                                      <span class="seo-feature-card__eyebrow">Who we help</span>
+                                      <h4>Founders, growth teams, and brands that need one operating partner</h4>
+                                      <p>Our clients range from early-stage founders validating a new concept to established companies improving an existing product line, service experience, or marketing engine. Some need a technical partner that can also think through design and usability. Others need creative and launch support backed by product understanding.</p>
+                                      <div class="seo-audience-list">
+                                          <span>Startups shipping V1</span>
+                                          <span>Agencies with overflow delivery</span>
+                                          <span>Teams modernizing existing products</span>
+                                          <span>Brands rolling out white-label systems</span>
+                                      </div>
+                                  </article>
+                              </div>
+                              <div class="seo-process-panel">
+                                  <div class="seo-process-panel__intro">
+                                      <span class="seo-feature-card__eyebrow">How we deliver</span>
+                                      <h4>A process designed to reduce risk before production expands</h4>
+                                      <p>We do not treat product delivery as a sequence of disconnected tasks. Discovery, planning, design, development, QA, optimization, launch preparation, and iteration all influence each other. When those steps are separated too late or handled by disconnected teams, businesses lose time, rebuild features, and struggle to keep product goals aligned with actual implementation.</p>
+                                  </div>
+                                  <div class="seo-process-steps">
+                                      <div class="seo-process-step">
+                                          <strong>Discover</strong>
+                                          <p>We clarify business goals, audiences, requirements, constraints, and the decisions that shape scope.</p>
+                                      </div>
+                                      <div class="seo-process-step">
+                                          <strong>Plan</strong>
+                                          <p>We turn priorities into milestones, dependencies, review points, and outputs that teams can actually track.</p>
+                                      </div>
+                                      <div class="seo-process-step">
+                                          <strong>Build</strong>
+                                          <p>Design, development, QA, and launch preparation move together instead of through fragmented handoffs.</p>
+                                      </div>
+                                      <div class="seo-process-step">
+                                          <strong>Improve</strong>
+                                          <p>Post-launch work focuses on performance, clarity, usability, growth readiness, and operational continuity.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="seo-note-band">
+                                  <p class="mb-0">For businesses evaluating Letsdo Creative, the key takeaway is straightforward: we are built to support digital teams that need dependable execution, not just isolated deliverables. Whether the requirement is a new game, an immersive product, a commerce platform, a mobile application, or a white-label product that can be deployed under multiple brands, we focus on making the work usable, launchable, and easier to improve over time.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+        </section>
+        <!-- seo-text-ratio-block:end -->
+
+<!-- faq-area -->
         <section class="faq-area">
             <div class="container">
                 <div class="row justify-content-center">
@@ -3042,7 +1932,7 @@
                                         </h2>
                                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                                Yes. We offer complete game development services Ã¢â‚¬” from concept design and prototyping to development, testing, deployment, and post-launch support.
+                                                Yes. We offer complete game development services ÃƒÂ¢Ã¢â€šÂ¬â€ from concept design and prototyping to development, testing, deployment, and post-launch support.
                                             </div>
                                         </div>
                                     </div>
@@ -3066,7 +1956,7 @@
                                         </h2>
                                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                                Project timelines vary based on complexity. Simple games may take 4Ã¢â‚¬“6 weeks, while advanced multiplayer or blockchain games can take several months.
+                                                Project timelines vary based on complexity. Simple games may take 4ÃƒÂ¢Ã¢â€šÂ¬â€œ6 weeks, while advanced multiplayer or blockchain games can take several months.
                                             </div>
                                         </div>
                                     </div>
@@ -3459,296 +2349,9 @@
 
 
     <!-- JS here -->
-    <script>
-        (function () {
-            var isMobileViewport = window.matchMedia('(max-width: 767.98px)').matches;
-            var scriptsStarted = false;
-            var scriptQueue = [
-                'assets/js/vendor/jquery-3.6.0.min.js',
-                'assets/js/bootstrap.min.js',
-                'assets/js/jquery.magnific-popup.min.js',
-                'assets/js/swiper-bundle.js',
-                'assets/js/slick.min.js',
-                'assets/js/ajax-form.js',
-                'assets/js/main.js'
-            ];
-
-            function loadScript(src) {
-                return new Promise(function (resolve, reject) {
-                    if (document.querySelector('script[src="' + src + '"]')) {
-                        resolve();
-                        return;
-                    }
-
-                    var script = document.createElement('script');
-                    script.src = src;
-                    script.async = false;
-                    script.defer = true;
-                    script.onload = resolve;
-                    script.onerror = reject;
-                    document.body.appendChild(script);
-                });
-            }
-
-            function loadScriptsSequentially(list) {
-                return list.reduce(function (promise, src) {
-                    return promise.then(function () {
-                        return loadScript(src);
-                    });
-                }, Promise.resolve());
-            }
-
-            function startScriptLoading() {
-                if (scriptsStarted) {
-                    return;
-                }
-
-                scriptsStarted = true;
-                if (typeof window.loadInteractiveStyles === 'function') {
-                    window.loadInteractiveStyles();
-                }
-                loadScriptsSequentially(scriptQueue);
-            }
-
-            function observeDesktopInteractiveSections() {
-                if (isMobileViewport || !('IntersectionObserver' in window)) {
-                    return;
-                }
-
-                var targets = document.querySelectorAll('.slider__area, .gallery__area, .video__area, .faq-area, .brand-area, .social__area, .trendingNft-area');
-
-                if (!targets.length) {
-                    return;
-                }
-
-                var observer = new IntersectionObserver(function (entries) {
-                    if (!entries.some(function (entry) { return entry.isIntersecting; })) {
-                        return;
-                    }
-
-                    startScriptLoading();
-                    observer.disconnect();
-                }, { rootMargin: '200px 0px' });
-
-                targets.forEach(function (target) {
-                    observer.observe(target);
-                });
-            }
-
-            ['pointerdown', 'touchstart', 'keydown'].forEach(function (eventName) {
-                window.addEventListener(eventName, startScriptLoading, { once: true, passive: true });
-            });
-
-            window.addEventListener('wheel', startScriptLoading, { once: true, passive: true });
-
-            if (!isMobileViewport) {
-                document.addEventListener('DOMContentLoaded', observeDesktopInteractiveSections, { once: true });
-            }
-        })();
-    </script>
-    <script>
-        (function () {
-            if (!window.matchMedia('(max-width: 767.98px)').matches) {
-                return;
-            }
-
-            function setupMobileHeroSlider() {
-                var track = document.querySelector('.slider-active');
-                var slides = track ? Array.prototype.slice.call(track.querySelectorAll('.single-slider')) : [];
-                var dotsWrap = document.querySelector('.mobile-hero-dots');
-                var prevButton = document.querySelector('.mobile-hero-prev');
-                var nextButton = document.querySelector('.mobile-hero-next');
-
-                if (!track || slides.length < 2 || !dotsWrap || !prevButton || !nextButton) {
-                    return;
-                }
-
-                dotsWrap.innerHTML = '';
-                slides.forEach(function (_, index) {
-                    var dot = document.createElement('button');
-                    dot.type = 'button';
-                    dot.className = 'mobile-hero-dot';
-                    dot.setAttribute('aria-label', 'Go to slide ' + (index + 1));
-                    dot.addEventListener('click', function () {
-                        track.scrollTo({ left: index * track.clientWidth, behavior: 'smooth' });
-                    });
-                    dotsWrap.appendChild(dot);
-                });
-
-                var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.mobile-hero-dot'));
-
-                function getActiveIndex() {
-                    return Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / Math.max(track.clientWidth, 1))));
-                }
-
-                function updateState() {
-                    var activeIndex = getActiveIndex();
-
-                    dots.forEach(function (dot, index) {
-                        dot.classList.toggle('is-active', index === activeIndex);
-                    });
-
-                    prevButton.disabled = activeIndex === 0;
-                    nextButton.disabled = activeIndex === slides.length - 1;
-                }
-
-                function scrollToIndex(index) {
-                    track.scrollTo({
-                        left: Math.max(0, Math.min(slides.length - 1, index)) * track.clientWidth,
-                        behavior: 'smooth'
-                    });
-                }
-
-                prevButton.addEventListener('click', function () {
-                    scrollToIndex(getActiveIndex() - 1);
-                });
-
-                nextButton.addEventListener('click', function () {
-                    scrollToIndex(getActiveIndex() + 1);
-                });
-
-                track.addEventListener('scroll', function () {
-                    window.requestAnimationFrame(updateState);
-                }, { passive: true });
-
-                window.addEventListener('resize', updateState);
-                updateState();
-            }
-
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', setupMobileHeroSlider, { once: true });
-                return;
-            }
-
-            setupMobileHeroSlider();
-        })();
-    </script>
-    <script>
-        (function () {
-            if (!window.matchMedia('(max-width: 767.98px)').matches) {
-                return;
-            }
-
-            function onReady(callback) {
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', callback, { once: true });
-                    return;
-                }
-                callback();
-            }
-
-            onReady(function () {
-                var body = document.body;
-                var menuOuter = document.querySelector('.tgmobile__menu-outer');
-                var menuSource = document.querySelector('.tgmenu__wrap .tgmenu__main-menu');
-                var openButton = document.querySelector('.mobile-nav-toggler');
-                var closeButton = document.querySelector('.tgmobile__menu .close-btn');
-                var backdrop = document.querySelector('.tgmobile__menu-backdrop');
-                var scrollButton = document.querySelector('.scroll-to-target');
-
-                if (menuOuter && menuSource && !menuOuter.children.length) {
-                    menuOuter.innerHTML = menuSource.innerHTML;
-                }
-
-                function dedupeMobileMenu() {
-                    if (!menuOuter) {
-                        return;
-                    }
-
-                    var navigationLists = menuOuter.querySelectorAll('.navigation');
-
-                    if (navigationLists.length > 1) {
-                        Array.prototype.forEach.call(navigationLists, function (list, index) {
-                            if (index > 0) {
-                                list.remove();
-                            }
-                        });
-                    }
-                }
-
-                dedupeMobileMenu();
-
-                if (menuOuter) {
-                    Array.prototype.forEach.call(menuOuter.querySelectorAll('li.menu-item-has-children'), function (item) {
-                        var existingButton = null;
-                        var submenu = null;
-
-                        Array.prototype.forEach.call(item.children, function (child) {
-                            if (!existingButton && child.classList && child.classList.contains('dropdown-btn')) {
-                                existingButton = child;
-                            }
-                            if (!submenu && child.tagName === 'UL') {
-                                submenu = child;
-                            }
-                        });
-
-                        if (existingButton) {
-                            return;
-                        }
-
-                        var button = document.createElement('button');
-
-                        button.type = 'button';
-                        button.className = 'dropdown-btn';
-                        button.setAttribute('aria-label', 'Toggle submenu');
-                        button.innerHTML = '<span class="plus-line"></span>';
-                        item.appendChild(button);
-
-                        if (submenu) {
-                            submenu.style.display = 'none';
-                            button.addEventListener('click', function () {
-                                var isOpen = button.classList.toggle('open');
-                                submenu.style.display = isOpen ? 'block' : 'none';
-                            });
-                        }
-                    });
-                }
-
-                function openMenu() {
-                    body.classList.add('mobile-menu-visible');
-                }
-
-                function closeMenu() {
-                    body.classList.remove('mobile-menu-visible');
-                }
-
-                if (openButton) {
-                    openButton.addEventListener('click', openMenu);
-                }
-                if (closeButton) {
-                    closeButton.addEventListener('click', closeMenu);
-                }
-                if (backdrop) {
-                    backdrop.addEventListener('click', closeMenu);
-                }
-
-                function updateScrollButton() {
-                    if (!scrollButton) {
-                        return;
-                    }
-                    scrollButton.classList.toggle('open', window.scrollY >= 245);
-                }
-
-                if (scrollButton) {
-                    scrollButton.addEventListener('click', function (event) {
-                        event.preventDefault();
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    });
-                    updateScrollButton();
-                    window.addEventListener('scroll', updateScrollButton, { passive: true });
-                }
-
-                window.setTimeout(dedupeMobileMenu, 1500);
-            });
-        })();
-    </script>
-    <script>
-        window.ChatbotWidgetConfig = {
-            widgetKey: "saara-896ad6f0",
-            apiBaseUrl: "http://localhost:3000/api/widget",
-        };
-    </script>
-    <script src="http://localhost:3000/widget/embed.js" defer></script>
+        <script src="assets/js/index-footer.js"></script>
+    
+    
 </body>
 
 </html>
