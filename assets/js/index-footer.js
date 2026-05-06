@@ -53,7 +53,7 @@
                     return;
                 }
 
-                var targets = document.querySelectorAll('.slider__area, .gallery__area, .video__area, .faq-area, .brand-area, .social__area, .trendingNft-area');
+                var targets = document.querySelectorAll('.slider__area, .gallery__area, .video__area, .testimonial-highlight-area, .faq-area, .brand-area, .social__area, .trendingNft-area');
 
                 if (!targets.length) {
                     return;
@@ -158,6 +158,82 @@
             }
 
             setupMobileHeroSlider();
+        })();
+
+(function () {
+            function onReady(callback) {
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', callback, { once: true });
+                    return;
+                }
+                callback();
+            }
+
+            function waitForSwiper(callback, attempts) {
+                if (typeof window.Swiper === 'function') {
+                    callback();
+                    return;
+                }
+
+                if (attempts <= 0) {
+                    return;
+                }
+
+                window.setTimeout(function () {
+                    waitForSwiper(callback, attempts - 1);
+                }, 200);
+            }
+
+            onReady(function () {
+                waitForSwiper(function () {
+                    var slider = document.querySelector('.testimonial-highlight-slider');
+                    var shell = document.querySelector('.testimonial-highlight-shell');
+                    var prevButton = shell ? shell.querySelector('.testimonial-highlight-prev') : null;
+                    var nextButton = shell ? shell.querySelector('.testimonial-highlight-next') : null;
+                    var pagination = document.querySelector('.testimonial-highlight-pagination');
+
+                    if (!slider || slider.dataset.sliderReady === 'true') {
+                        return;
+                    }
+
+                    slider.dataset.sliderReady = 'true';
+
+                    var testimonialSwiper = new window.Swiper(slider, {
+                        loop: true,
+                        slidesPerView: 1,
+                        centeredSlides: true,
+                        speed: 900,
+                        spaceBetween: 24,
+                        grabCursor: true,
+                        autoplay: {
+                            delay: 3400,
+                            disableOnInteraction: false,
+                            reverseDirection: true,
+                            pauseOnMouseEnter: true
+                        },
+                        navigation: {
+                            nextEl: nextButton,
+                            prevEl: prevButton
+                        },
+                        pagination: {
+                            el: pagination,
+                            clickable: true
+                        }
+                    });
+
+                    if (prevButton) {
+                        prevButton.addEventListener('click', function () {
+                            testimonialSwiper.slidePrev();
+                        });
+                    }
+
+                    if (nextButton) {
+                        nextButton.addEventListener('click', function () {
+                            testimonialSwiper.slideNext();
+                        });
+                    }
+                }, 40);
+            });
         })();
 
 (function () {
