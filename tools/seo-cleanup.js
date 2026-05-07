@@ -6,7 +6,7 @@ const SITE_URL = "https://letsdocreative.com";
 
 const noindexPages = new Set([
   "404.html",
-  "blog-details.html",
+  "blog.html",
   "cart.html",
   "checkout.html",
   "index-2.html",
@@ -15,7 +15,7 @@ const noindexPages = new Set([
   "index-5.html",
   "login.html",
   "reset-password.html",
-  "services-details.html",
+  "services.html",
   "shop.html",
   "shop-details.html",
   "sign-up.html",
@@ -131,7 +131,7 @@ const serviceTypeMap = [
       "iOS-app-development.html",
       "cross-platform.html",
       "UI-UX-for-mobile-apps.html",
-      "App-maintenance-support.html",
+      "App-maintenance-index.html#contact",
     ]),
     suffix: "Mobile App Services",
     description: (heading) =>

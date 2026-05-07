@@ -9,7 +9,7 @@
   }
 
   function buildPostUrl(slug) {
-    return "blog-details.html?slug=" + encodeURIComponent(slug);
+    return "blog.html";
   }
 
   function updateMeta(selector, value, attribute) {

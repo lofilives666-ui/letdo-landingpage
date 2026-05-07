@@ -3,9 +3,9 @@ const path = require("path");
 
 const ROOT = process.cwd();
 const INDEX_FILE = "index.html";
-const INDEX_STYLE_FILE = "assets/css/index-page.css";
-const INDEX_HEAD_SCRIPT_FILE = "assets/js/index-head.js";
-const INDEX_FOOTER_SCRIPT_FILE = "assets/js/index-footer.js";
+const INDEX_STYLE_FILE = "assets/css/index-page.min.css";
+const INDEX_HEAD_SCRIPT_FILE = "assets/js/index-head.min.js";
+const INDEX_FOOTER_SCRIPT_FILE = "assets/js/index-footer.min.js";
 const BLOCK_MARKER = "seo-text-ratio-block";
 
 const skipPages = new Set([
@@ -13,7 +13,7 @@ const skipPages = new Set([
   "blog-admin-editor.html",
   "blog-admin-login.html",
   "blog-admin.html",
-  "blog-details.html",
+  "blog.html",
   "cart.html",
   "checkout.html",
   "index-2.html",
@@ -72,7 +72,7 @@ const groups = {
   ]),
   mobile: new Set([
     "android-app-development.html",
-    "App-maintenance-support.html",
+    "App-maintenance-index.html#contact",
     "cross-platform.html",
     "iOS-app-development.html",
     "UI-UX-for-mobile-apps.html",

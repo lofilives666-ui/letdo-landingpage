@@ -7,8 +7,8 @@
                 'assets/js/jquery.magnific-popup.min.js',
                 'assets/js/swiper-bundle.js',
                 'assets/js/slick.min.js',
-                'assets/js/ajax-form.js',
-                'assets/js/main.js'
+                'assets/js/ajax-form.min.js',
+                'assets/js/main.min.js'
             ];
 
             function loadScript(src) {

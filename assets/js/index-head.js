@@ -3,11 +3,11 @@
             var deferredStylesLoaded = false;
             var deferredStyleHrefs = [
                 'assets/css/fontawesome-all.min.css',
-                'assets/css/flaticon.css'
+                'assets/css/flaticon.min.css'
             ];
             var deferredInteractiveStyleHrefs = [
                 'assets/css/magnific-popup.css',
-                'assets/css/swiper-bundle.css',
+                'assets/css/swiper-bundle.min.css',
                 'assets/css/slick.css'
             ];
 

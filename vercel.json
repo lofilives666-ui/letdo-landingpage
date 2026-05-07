@@ -2,6 +2,26 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/blog-details.html",
+      "destination": "/blog.html",
+      "permanent": true
+    },
+    {
+      "source": "/services-details.html",
+      "destination": "/services.html",
+      "permanent": true
+    },
+    {
+      "source": "/whitelable/gymlandingpage/coming-soon.html",
+      "destination": "/whitelable/gymlandingpage/index.html",
+      "permanent": true
+    },
+    {
+      "source": "/whitelable/gymlandingpage/support.html",
+      "destination": "/whitelable/gymlandingpage/index.html",
+      "permanent": true
+    },
+    {
       "source": "/casino-games.html",
       "destination": "/casino-game-development.html",
       "permanent": true

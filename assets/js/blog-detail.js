@@ -9,7 +9,7 @@
   }
 
   function buildPostUrl(slug) {
-    return "blog-details.html?slug=" + encodeURIComponent(slug);
+    return "blog.html";
   }
 
   function updateMeta(selector, value, attribute) {
@@ -25,7 +25,7 @@
   function updateDetailSeo(post) {
     var title = (post.seoTitle || post.title || "Blog Details") + " | Letsdo Creative";
     var description = post.seoDescription || post.excerpt || stripHtml(post.contentHtml).slice(0, 160) || "Read detailed Letsdo Creative articles on products, services, design, and development.";
-    var canonicalUrl = window.location.origin + "/blog-details.html?slug=" + encodeURIComponent(post.slug || "");
+    var canonicalUrl = window.location.origin + "/blog.html";
 
     document.title = title;
     updateMeta('meta[name="description"]', description);

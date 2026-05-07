@@ -22,7 +22,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0f161e">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" media="print" onload="this.media='all'">
-        <script src="assets/js/index-head.js"></script>
+        <script src="assets/js/index-head.min.js"></script>
     
     
     <!-- Place favicon.ico in the root directory -->
@@ -30,33 +30,58 @@
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/spacing.css">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/main.min.css">
     <noscript>
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/spacing.css">
-        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="assets/css/main.min.css">
         <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="assets/css/flaticon.css">
+        <link rel="stylesheet" href="assets/css/flaticon.min.css">
         <link rel="stylesheet" href="assets/css/slick.css">
         <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/swiper-bundle.css">
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
     </noscript>
-        <link rel="stylesheet" href="assets/css/index-page.css">
+        <link rel="stylesheet" href="assets/css/index-page.min.css">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "ProfessionalService",
+      "@id": "https://letsdocreative.com/#professional-service",
       "name": "Letsdo Creative",
       "url": "https://letsdocreative.com/",
+      "image": "https://letsdocreative.com/assets/img/logo/logo.webp",
       "logo": "https://letsdocreative.com/assets/img/logo/logo.webp",
       "email": "info@letsdocreative.com",
       "telephone": "+91 9677913334",
+      "priceRange": "$$",
+      "description": "Letsdo Creative is a Coimbatore-based digital product studio delivering game development, AR/VR, Web3, ecommerce, mobile app, design, marketing, and white-label software services.",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Rain Tree Centre, 102 & 102/1, 8th Street, VKL Nagar, PO, Thudiyalur",
         "addressLocality": "Coimbatore",
+        "addressRegion": "Tamil Nadu",
+        "postalCode": "641034",
         "addressCountry": "IN"
       },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "India"
+        },
+        {
+          "@type": "State",
+          "name": "Tamil Nadu"
+        }
+      ],
+      "serviceType": [
+        "Game development",
+        "AR and VR development",
+        "Web3 development",
+        "Ecommerce development",
+        "Mobile app development",
+        "White-label software development"
+      ],
       "sameAs": [
         "https://www.facebook.com/profile.php?id=61587178422851",
         "https://x.com/letsdoveera",
@@ -266,7 +291,7 @@
                                         <li class="menu-item-has-children"><a href="blog.html">Blog</a>
                                             <ul class="sub-menu">
                                                 <li><a href="blog.html">Our Blog</a></li>
-                                                <li><a href="blog-details.html?slug=how-white-label-casino-products-reduce-time-to-market">Blog Details</a></li>
+                                                <li><a href="blog.html">Blog Details</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#products">Portfolio</a></li>
@@ -943,7 +968,7 @@
                                     <i class="flaticon-diamond"></i>
                                 </div>
                                 <div class="services__content">
-                                    <h4 class="title"><a href="services-details.html">5+ Years of Experience</a></h4>
+                                    <h4 class="title"><a href="services.html">5+ Years of Experience</a></h4>
                                     <p>With over 5 years of proven expertise in delivering whitelabel solutions, we build reliable, scalable, and high-quality digital products for businesses across multiple industries.</p>
                                 </div>
                             </div>
@@ -952,7 +977,7 @@
                                     <i class="flaticon-user-profile"></i>
                                 </div>
                                 <div class="services__content">
-                                    <h4 class="title"><a href="services-details.html">Expert Teams</a></h4>
+                                    <h4 class="title"><a href="services.html">Expert Teams</a></h4>
                                     <p>Our skilled designers, developers, and artists collaborate to build engaging games using modern tools and industry best practices.</p>
                                 </div>
                             </div>
@@ -961,7 +986,7 @@
                                     <i class="flaticon-ethereum"></i>
                                 </div>
                                 <div class="services__content">
-                                    <h4 class="title"><a href="services-details.html">Best NFT Game</a></h4>
+                                    <h4 class="title"><a href="services.html">Best NFT Game</a></h4>
                                     <p>We create premium-quality games with smooth performance, engaging gameplay, and visually stunning design.</p>
                                 </div>
                             </div>
@@ -970,7 +995,7 @@
                                     <i class="flaticon-settings-1"></i>
                                 </div>
                                 <div class="services__content">
-                                    <h4 class="title"><a href="services-details.html">Worldwide Client</a></h4>
+                                    <h4 class="title"><a href="services.html">Worldwide Client</a></h4>
                                     <p>Trusted by global clients, startups, and gaming studios to deliver projects on time with consistent quality and support.</p>
                                 </div>
                             </div>
@@ -1937,8 +1962,61 @@
                                       </div>
                                   </div>
                               </div>
+                              <div class="seo-showcase__grid">
+                                  <article class="seo-feature-card">
+                                      <span class="seo-feature-card__eyebrow">Why teams choose us</span>
+                                      <h4>Decision support that keeps delivery practical from the start</h4>
+                                      <p>Many businesses do not struggle because they lack ideas. They struggle because scope, execution, communication, and launch priorities drift apart once multiple stakeholders, channels, and deadlines enter the picture. That is where Letsdo Creative creates value. We help teams translate broad product ambition into priorities that can be reviewed, built, tested, and launched without losing momentum every time requirements change.</p>
+                                      <p>This is especially useful for white-label software products, CRM rollouts, ERP systems, ecommerce delivery, AI chatbot products, gaming builds, and immersive experiences where brand decisions, operational needs, and technical dependencies all move together. Instead of treating these as separate conversations, we map them into one production flow so delivery decisions remain visible and easier to validate.</p>
+                                      <ul>
+                                          <li>Clearer scoping for founders, agencies, and in-house teams managing multiple workstreams.</li>
+                                          <li>Practical prioritization for launches that need speed without turning maintainability into a future problem.</li>
+                                          <li>Shared visibility across design, engineering, content, testing, and rollout support.</li>
+                                          <li>Delivery planning built around usable milestones instead of isolated task lists.</li>
+                                      </ul>
+                                  </article>
+                                  <article class="seo-feature-card">
+                                      <span class="seo-feature-card__eyebrow">India-focused execution</span>
+                                      <h4>Coimbatore-based delivery for regional, national, and white-label growth</h4>
+                                      <p>Our location in Coimbatore gives clients a grounded operational partner for software, product, and launch execution in India, while our delivery model is flexible enough to support businesses serving wider markets. For companies building in Tamil Nadu, South India, or across India, that combination matters. It means the partner handling product execution also understands launch pacing, coordination needs, and post-launch support expectations in a market where speed and adaptability often matter as much as the feature set.</p>
+                                      <p>That is why our work is not limited to a single niche. Some clients approach us for custom software development in Coimbatore. Others need a white-label CRM, white-label ERP, ecommerce platform, AI chatbot CRM, game development support, or launch creative that can be delivered under their own brand. In each case, the goal stays the same: make the system easier to present, easier to operate, and easier to improve over time.</p>
+                                      <ul>
+                                          <li>Structured support for businesses launching digital products in India.</li>
+                                          <li>White-label thinking across branding, onboarding, demos, and deployment.</li>
+                                          <li>Operational continuity for teams that need one accountable delivery partner.</li>
+                                          <li>Stronger alignment between production output and measurable business use.</li>
+                                      </ul>
+                                  </article>
+                              </div>
+                              <div class="seo-process-panel">
+                                  <div class="seo-process-panel__intro">
+                                      <span class="seo-feature-card__eyebrow">Before build scales</span>
+                                      <h4>Questions we help answer before a project becomes harder to change</h4>
+                                      <p>Good execution depends on resolving a few business-critical questions early. What should be launched first? Which features genuinely support adoption? What needs customization and what can remain standardized? How should content, onboarding, reporting, and support work once the product is live? These decisions affect timelines, costs, stakeholder confidence, and the quality of the customer experience after release.</p>
+                                      <p>We help clients answer those questions before production complexity expands. That includes clarifying the primary user flow, identifying decision-makers, documenting dependencies, and making sure launch assets, implementation steps, and post-launch ownership are understood by the people who will actually run the product.</p>
+                                  </div>
+                                  <div class="seo-process-steps">
+                                      <div class="seo-process-step">
+                                          <strong>Priorities</strong>
+                                          <p>We define what must be live for the first launch, what can follow later, and which requests should wait until there is clearer usage data.</p>
+                                      </div>
+                                      <div class="seo-process-step">
+                                          <strong>Operations</strong>
+                                          <p>We review how sales, support, admins, internal teams, and end users will interact with the product so delivery reflects real operating conditions.</p>
+                                      </div>
+                                      <div class="seo-process-step">
+                                          <strong>Branding</strong>
+                                          <p>For white-label products, we plan around how the system will be presented, branded, onboarded, and maintained across different customer contexts.</p>
+                                      </div>
+                                      <div class="seo-process-step">
+                                          <strong>Continuity</strong>
+                                          <p>We prepare for handoff, launch support, iteration, and measurement so the product remains useful after the first go-live milestone is complete.</p>
+                                      </div>
+                                  </div>
+                              </div>
                               <div class="seo-note-band">
-                                  <p class="mb-0">For businesses evaluating Letsdo Creative, the key takeaway is straightforward: we are built to support digital teams that need dependable execution, not just isolated deliverables. Whether the requirement is a new game, an immersive product, a commerce platform, a mobile application, or a white-label product that can be deployed under multiple brands, we focus on making the work usable, launchable, and easier to improve over time.</p>
+                                  <p>For businesses evaluating Letsdo Creative, the key takeaway is straightforward: we are built to support digital teams that need dependable execution, not just isolated deliverables. Whether the requirement is a new game, an immersive product, a commerce platform, a mobile application, or a white-label product that can be deployed under multiple brands, we focus on making the work usable, launchable, and easier to improve over time.</p>
+                                  <p class="mb-0">That positioning is intentional. Search terms such as software company in Coimbatore, white-label CRM in India, white-label ERP development, ecommerce development company, AI chatbot CRM provider, or game development partner may describe different entry points, but they often lead to the same business need: a partner that can connect strategy, design, engineering, QA, launch, and ongoing support without forcing the client to manage every gap in between. That is the role we are designed to play.</p>
                               </div>
                           </div>
                       </div>
@@ -2096,6 +2174,13 @@
                                         <p>Choose a product path based on your current priority, or talk to our team about the right white-label rollout for your business.</p>
                                     </div>
                                     <div class="faq-conversion-bar__actions">
+                                        <a href="services.html" class="tg-btn-1">
+                                            <span>View All Services</span>
+                                            <svg preserveAspectRatio="none" viewBox="0 0 197 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path class="cls-1" d="M191 59H6.5L1 52V6.5L7 1H192L196 6.5V52L191 59Z" />
+                                                <path class="cls-2" d="M185.5 53H11.5L8 49V10.5L11.5 7H185.5L189 10.5V49L185.5 53Z" />
+                                            </svg>
+                                        </a>
                                         <a href="erp-whitelable.html" class="tg-btn-1">
                                             <span>Explore ERP</span>
                                             <svg preserveAspectRatio="none" viewBox="0 0 197 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2383,7 +2468,7 @@
                     </div>
                     <div class="col">
                         <div class="brand__item">
-                            <a href="App-maintenance-support.html" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/python.svg" alt="" aria-hidden="true"><span>Python</span></a>
+                            <a href="App-maintenance-index.html#contact" class="brand__link tech-brand-link"><img src="assets/img/brand/tech/python.svg" alt="" aria-hidden="true"><span>Python</span></a>
                         </div>
                     </div>
                     <div class="col">
@@ -2449,6 +2534,7 @@
                             <div class="footer-el-menu">
                                 <ul class="list-wrap">
                                     <li><a href="index.html">Home</a></li>
+                                    <li><a href="services.html">Services</a></li>
                                     <li><a href="index.html#about">About Us</a></li>
                                     <li><a href="index.html#products">Portfolio</a></li>
                                 </ul>
@@ -2495,7 +2581,7 @@
 
 
     <!-- JS here -->
-        <script src="assets/js/index-footer.js"></script>
+        <script src="assets/js/index-footer.min.js"></script>
     
     
 </body>
