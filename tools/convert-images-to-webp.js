@@ -21,6 +21,7 @@ async function main() {
     `${path.sep}mipmap-`,
     `${path.sep}app-icons${path.sep}`,
     `${path.sep}web${path.sep}icons${path.sep}`,
+    `${path.sep}tools${path.sep}`,
   ];
   const skipFileNames = new Set([
     'favicon.png',

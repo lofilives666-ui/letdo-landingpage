@@ -4668,7 +4668,7 @@ button.animate-btn::after,
   position: absolute;
   inset: 16px 16px 0 16px;
   border-radius: 40px;
-  background-image: url(../images/section/hero-1.jpg);
+  background-image: url(../images/section/hero-1.webp);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -6173,7 +6173,7 @@ button.animate-btn::after,
 .section-page-title {
   padding-top: 60px;
   padding: 180px 0 120px;
-  background-image: url(../images/section/hero-1.jpg);
+  background-image: url(../images/section/hero-1.webp);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
