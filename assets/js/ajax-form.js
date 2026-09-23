@@ -5,6 +5,11 @@ $(function () {
 	var recaptchaSiteKey = '';
 	var recaptchaReadyPromise = null;
 	var recaptchaPrepared = false;
+
+	if (!form.length) {
+		return;
+	}
+
 	var recaptchaTokenInput = form.find('input[name="g-recaptcha-response"]');
 
 	function refreshFormStartedAt() {
@@ -12,7 +17,7 @@ $(function () {
 	}
 
 	function setFormMessage(type, message) {
-		$(formMessages)
+		formMessages
 			.removeClass('success error')
 			.addClass(type || '')
 			.text(message || '');
@@ -84,17 +89,12 @@ $(function () {
 		});
 	}
 
-	if (!form.length) {
-		return;
-	}
-
 	refreshFormStartedAt();
 	form.one('focusin mouseenter touchstart', function () {
 		prepareRecaptcha();
 	});
 
-	$(form).submit(function (e) {
-		var useEmailJs = $(form).data('emailjs') === true || $(form).data('emailjs') === 'true';
+	form.on('submit', function (e) {
 		e.preventDefault();
 		setFormMessage('', 'Sending...');
 		prepareRecaptcha()
@@ -110,30 +110,13 @@ $(function () {
 				}
 				recaptchaTokenInput.val(token);
 
-				if (!useEmailJs) {
-					return $.ajax({
-						type: $(form).attr('method') || 'POST',
-						url: $(form).attr('action'),
-						data: $(form).serialize()
-					}).done(function (response) {
-						setFormMessage('success', response || 'Thank You! Your message has been sent.');
-						$('#contact-form input[type!="hidden"], #contact-form textarea').val('');
-						recaptchaTokenInput.val('');
-						refreshFormStartedAt();
-					});
-				}
-
-				if (typeof emailjs === 'undefined') {
-					throw new Error('Email service is not configured.');
-				}
-
-				return emailjs.sendForm(
-					'service_4vm6rme',
-					'template_0n7v7vu',
-					'#contact-form'
-				).then(function () {
-					setFormMessage('success', 'We received your message and will get back to you shortly.');
-					$('#contact-form input, #contact-form textarea').val('');
+				return $.ajax({
+					type: form.attr('method') || 'POST',
+					url: form.attr('action'),
+					data: form.serialize()
+				}).done(function (response) {
+					setFormMessage('success', response || 'Thank You! Your message has been sent.');
+					form.find('input[type!="hidden"], textarea').val('');
 					recaptchaTokenInput.val('');
 					refreshFormStartedAt();
 				});

@@ -1,259 +1,68 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://letsdocreative.com/</loc>
-    <lastmod>2026-04-06</lastmod>
+    <lastmod>2026-09-23</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://letsdocreative.com/about-us.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://letsdocreative.com/about.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://letsdocreative.com/services.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://letsdocreative.com/service.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://letsdocreative.com/work.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://letsdocreative.com/contact.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://letsdocreative.com/blog.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://letsdocreative.com/blog-standard.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://letsdocreative.com/chatbot-crm-whitelable.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://letsdocreative.com/blog-single.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://letsdocreative.com/erp-whitelable.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://letsdocreative.com/chatbot-crm.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://letsdocreative.com/casino-game-development.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://letsdocreative.com/erp-whitelabel.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://letsdocreative.com/casual-game-development.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://letsdocreative.com/ecommerce-whitelabel.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://letsdocreative.com/hyper-casual-games.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://letsdocreative.com/ai-trainer.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://letsdocreative.com/mini-game-development.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://letsdocreative.com/gym-super-app.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://letsdocreative.com/mobile-game.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/web-games.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/pc-games.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/console-games.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/multiplayer-games.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/telegram-games.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/VR-game-development.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/AR-game-development.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/metaverse-development.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/virtual-reality-experiences.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/augmented-reality-apps.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/3D-interactive-environments.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/NFT-game-development.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/play-to-earn-games.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/smart-ontract-evelopment.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/token-wallet-integration.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/IDO.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/ICO.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/3D-game-art.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/2D-game-art.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/character-design.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/environment-design.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/animation-2D-3D.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/UI-UX.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/website-development.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/web-app-evelopment.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/landing-page-design.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/CMS-development.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/E-commerce-development.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/backend-API-development.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/android-app-development.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/iOS-app-development.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/cross-platform.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/UI-UX-for-mobile-apps.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/App-maintenance-support.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/logo-design.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/brand-identity-design.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/marketing-creatives.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/social-media-creatives.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/presentation-design.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/promotional-videos.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/game-trailers.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/motion-graphics.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/reels-Shorts-editing.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/youtube-video-editing.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/social-media-strategy.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/content-creation.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/paid-ads-campaigns.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/influencer-marketing.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/community-management.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/whitelable/Aitrainer/index.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/whitelable/gymlandingpage/index.html</loc>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://letsdocreative.com/whitelable/ecommerce/index.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://letsdocreative.com/casino-whitelabel.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.9</priority>
   </url>
 </urlset>
